@@ -1,0 +1,45 @@
+body {
+    background: antiquewhite;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin-bottom: 3rem;
+}
+
+a {
+    color: #6f7565;
+    font-size: 1.2em;
+    font-weight: 500;
+    line-height: 1.8;
+    text-decoration: none;
+}
+
+a:hover { color: #9a9e7a; }
+
+h1, h2 { font-family: 'Frank Ruhl Libre', serif; }
+
+h1 {
+    font-size: 2.5em;
+    margin: 1rem 0;
+}
+
+h2 {
+    font-size: 1.7em;
+    margin-bottom: 0;
+}
+
+img {
+    border: 5px solid #000;
+    max-height: 22rem;
+    max-width: 97%;
+}
+
+ul { margin-top: 0; }
+
+.container {
+    margin: auto;
+    max-width: 1170px;
+    padding: 0.5rem 1rem;
+}
+
+.m-0 { margin: 0; }
