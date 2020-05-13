@@ -43,3 +43,7 @@ ul { margin-top: 0; }
 }
 
 .m-0 { margin: 0; }
+
+.entities { margin: 1rem 0; }
+
+.entities ul { padding-inline-start: 20px; }
