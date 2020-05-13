@@ -47,3 +47,10 @@ ul { margin-top: 0; }
 .entities { margin: 1rem 0; }
 
 .entities ul { padding-inline-start: 20px; }
+
+.erd {
+    border: none;
+    max-height: 45rem;
+    max-width: 100%;
+    margin: 2rem 0;
+}
