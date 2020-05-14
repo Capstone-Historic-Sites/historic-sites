@@ -33,11 +33,17 @@
                 <li>historicSiteStreet</li>
                 <li>historicSiteCity</li>
                 <li>historicSiteState</li>
-                <li>historicSiteZipCode</li>
-                <li>historicSiteAmenities</li>
                 <li>historicSiteCost</li>
                 <li>historicSiteLink</li>
                 <li>historicSiteDateAdded</li>
+            </ul>
+            <p class="m-0"><strong>Image</strong></p>
+            <ul>
+                <li>imageId (primary key)</li>
+                <li>imageHistoricSiteId (foreign key)</li>
+                <li>imageDateAdded</li>
+                <li>imageName</li>
+                <li>imagePath</li>
             </ul>
             <p class="m-0"><strong>Tag</strong></p>
             <ul>
@@ -65,6 +71,7 @@
         <h2>Relations</h2>
         <p>
             One <strong>profile</strong> can upload many <strong>historic sites</strong> - (1 to many)<br/>
+            One <strong>historic site</strong> can have many <strong>images</strong> - (1 to many)<br/>
             Many <strong>profiles</strong> can have many <strong>historic sites</strong> on a <strong>travel list</strong> - (many to many)<br/>
             Many <strong>tags</strong> can belong to many <strong>historic sites</strong> - (many to many)</p>
     </section>
