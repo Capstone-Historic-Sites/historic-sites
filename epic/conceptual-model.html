@@ -17,25 +17,26 @@
             <ul>
                 <li>profileId (primary key)</li>
                 <li>profileActivationToken</li>
+                <li>profileDateAdded</li>
                 <li>profileEmail</li>
                 <li>profileHash</li>
+                <li>profileIsAdmin</li>
                 <li>profileName</li>
                 <li>profileOrganization</li>
-                <li>profileDateAdded</li>
             </ul>
             <p class="m-0"><strong>Historic Site</strong></p>
             <ul>
                 <li>historicSiteId (primary key)</li>
                 <li>historicSiteProfileId (foreign key)</li>
-                <li>historicSiteName</li>
-                <li>historicSiteDate</li>
-                <li>historicSiteDescription</li>
-                <li>historicSiteStreet</li>
-                <li>historicSiteCity</li>
-                <li>historicSiteState</li>
                 <li>historicSiteCost</li>
-                <li>historicSiteLink</li>
+                <li>historicSiteDate</li>
                 <li>historicSiteDateAdded</li>
+                <li>historicSiteDescription</li>
+                <li>historicSiteLat</li>
+                <li>historicSiteLong</li>
+                <li>historicSiteMunicipality</li>
+                <li>historicSiteName</li>
+                <li>historicSiteState</li>
             </ul>
             <p class="m-0"><strong>Image</strong></p>
             <ul>
@@ -48,9 +49,9 @@
             <p class="m-0"><strong>Tag</strong></p>
             <ul>
                 <li>tagId (primary key)</li>
+                <li>tagEndDate</li>
                 <li>tagName</li>
                 <li>tagStartDate</li>
-                <li>tagEndDate</li>
             </ul>
             <p class="m-0"><strong>Travel List</strong></p>
             <ul>
