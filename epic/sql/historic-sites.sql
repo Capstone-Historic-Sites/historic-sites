@@ -59,7 +59,7 @@ CREATE TABLE tag(
 
 CREATE TABLE travelList(
   travelListProfileId binary(16) not null,
-  travelListHistoicSitesId binary (16) not null,
+  travelListHistoricSiteId binary (16) not null,
   travelListRank decimal(2,0),
   travelListDateAdded datetime(3) not null,
   index(travelListProfileId),
