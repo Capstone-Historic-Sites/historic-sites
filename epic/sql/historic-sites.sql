@@ -6,75 +6,75 @@ DROP TABLE IF EXISTS historicSite;
 DROP TABLE IF EXISTS profile;
 
 CREATE TABLE profile(
-  profileId binary(16) not null,
-  profileActivationToken char(32),
-  profileDateAdded datetime(3) not null,
-  profileEmail varchar (128) not null,
-  profileHash char(97) not null,
-  profileIsAdmin varchar(8),
-  profileName varchar(32) not null,
-  profileOrganization varchar(128),
-  unique(profileEmail),
-  unique(profileName),
-  index(profileEmail),
-  primary key(profileId)
+  profileId BINARY(16) NOT NULL,
+  profileActivationToken CHAR(32),
+  profileDateAdded DATETIME(3) NOT NULL,
+  profileEmail VARCHAR(128) NOT NULL,
+  profileHash CHAR(97) NOT NULL,
+  profileIsAdmin VARCHAR(8),
+  profileName VARCHAR(32) NOT NULL,
+  profileOrganization VARCHAR(128),
+  UNIQUE(profileEmail),
+  UNIQUE (profileName),
+  INDEX (profileEmail),
+  PRIMARY KEY (profileId)
 );
 
 CREATE TABLE historicSite(
-  historicSiteId binary(16) not null,
-  historicSiteProfileId binary(16) not null,
-  historicSiteCost char(4) not null,
-  historicSiteDate date not null,
-  historicSiteDateAdded datetime(3) not null,
-  historicSiteDescription varchar(244) not null,
-  historicSiteLat decimal(8,6),
-  historicSiteLong decimal(8,6),
-  historicSiteMunicipality varchar(36),
-  historicSiteName varchar(48) not null,
-  historicSiteState char(2) not null,
-  unique(historicSiteName),
-  index(historicSiteProfileId),
-  foreign key(historicSiteProfileId) references profile(profileId),
-  primary key(historicSiteId)
+  historicSiteId BINARY(16) NOT NULL,
+  historicSiteProfileId BINARY(16) NOT NULL,
+  historicSiteCost CHAR(4) NOT NULL,
+  historicSiteDate DATE NOT NULL,
+  historicSiteDateAdded DATETIME(3),
+  historicSiteDescription varchar(244) NOT NULL,
+  historicSiteLat DECIMAL(8,6),
+  historicSiteLong DECIMAL(8,6),
+  historicSiteMunicipality VARCHAR(36),
+  historicSiteName VARCHAR(48) NOT NULL,
+  historicSiteState CHAR(2) NOT NULL,
+  UNIQUE(historicSiteName),
+  INDEX(historicSiteProfileId),
+  FOREIGN KEY(historicSiteProfileId) REFERENCES profile(profileId),
+  PRIMARY KEY(historicSiteId)
 );
 
 CREATE TABLE image(
-  imageId binary(16) not null,
-  imageHistoricSiteId binary(16) not null,
-  imageDateAdded datetime(3) not null,
-  imageName varchar(32) not null,
-  imagePath varchar(255),
-  index(imageHistoricSiteId),
-  foreign key(imageHistoricSiteId) references historicSite(historicSiteId),
-  primary key(imageId)
+  imageId BINARY(16) NOT NULL,
+  imageHistoricSiteId BINARY(16) NOT NULL,
+  imageDateAdded DATETIME(3) NOT NULL,
+  imageName VARCHAR(32) NOT NULL,
+  imagePath VARCHAR(255),
+  INDEX(imageHistoricSiteId),
+  FOREIGN KEY(imageHistoricSiteId) REFERENCES historicSite(historicSiteId),
+  PRIMARY KEY(imageId)
 );
 
 CREATE TABLE tag(
-  tagId binary(16) not null,
-  tagEndDate date not null,
-  tagName varchar(32) not null,
-  tagStartDate date not null,
-  primary key (tagId)
+  tagId BINARY(16) NOT NULL,
+  tagEndDate DATE NOT NULL,
+  tagName VARCHAR(32) NOT NULL,
+  tagStartDate DATE NOT NULL,
+  PRIMARY KEY(tagId)
 );
 
 CREATE TABLE travelList(
-  travelListProfileId binary(16) not null,
-  travelListHistoricSiteId binary (16) not null,
-  travelListRank decimal(2,0),
-  travelListDateAdded datetime(3) not null,
-  index(travelListProfileId),
-  index(travelListHistoricSiteId),
-  foreign key(travelListProfileId) references profile(profileId),
-  foreign key(travelListHistoricSiteId) references historicSite(historicSiteId),
-  primary key(travelListProfileId, travelListHistoricSiteId)
+  travelListProfileId BINARY(16) NOT NULL,
+  travelListHistoricSiteId BINARY(16) NOT NULL,
+  travelListRank DECIMAL(2,0),
+  travelListDateAdded DATETIME(3) NOT NULL,
+  INDEX(travelListProfileId),
+  INDEX(travelListHistoricSiteId),
+  FOREIGN KEY(travelListProfileId) REFERENCES profile(profileId),
+  FOREIGN KEY(travelListHistoricSiteId) REFERENCES historicSite(historicSiteId),
+  PRIMARY KEY(travelListProfileId, travelListHistoricSiteId)
 );
 
 CREATE TABLE historicSiteTag(
-  historicSiteTagHistoricSiteId binary(16) not null,
-  historicSiteTagTagId binary(16) not null,
+  historicSiteTagHistoricSiteId BINARY(16) NOT NULL,
+  historicSiteTagTagId BINARY(16) NOT NULL,
   index(historicSiteTagHistoricSiteId),
   index(historicSiteTagTagId),
-  foreign key(historicSiteTagHistoricSiteId) references historicSite(historicSiteId),
-  foreign key(historicSiteTagTagId) references tag(tagId),
-  primary key(historicSiteTagHistoricSiteId, historicSiteTagTagId)
+  FOREIGN KEY(historicSiteTagHistoricSiteId) REFERENCES historicSite(historicSiteId),
+  FOREIGN KEY(historicSiteTagTagId) REFERENCES tag(tagId),
+  PRIMARY KEY(historicSiteTagHistoricSiteId, historicSiteTagTagId)
 );
