@@ -26,7 +26,7 @@ CREATE TABLE historicSite(
   historicSiteCost CHAR(4) NOT NULL,
   historicSiteDate DATE NOT NULL,
   historicSiteDateAdded DATETIME(3),
-  historicSiteDescription varchar(244) NOT NULL,
+  historicSiteDescription VARCHAR(244) NOT NULL,
   historicSiteLat DECIMAL(8,6),
   historicSiteLong DECIMAL(8,6),
   historicSiteMunicipality VARCHAR(36),
@@ -72,8 +72,8 @@ CREATE TABLE travelList(
 CREATE TABLE historicSiteTag(
   historicSiteTagHistoricSiteId BINARY(16) NOT NULL,
   historicSiteTagTagId BINARY(16) NOT NULL,
-  index(historicSiteTagHistoricSiteId),
-  index(historicSiteTagTagId),
+  INDEX(historicSiteTagHistoricSiteId),
+  INDEX(historicSiteTagTagId),
   FOREIGN KEY(historicSiteTagHistoricSiteId) REFERENCES historicSite(historicSiteId),
   FOREIGN KEY(historicSiteTagTagId) REFERENCES tag(tagId),
   PRIMARY KEY(historicSiteTagHistoricSiteId, historicSiteTagTagId)
