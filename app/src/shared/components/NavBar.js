@@ -1,9 +1,21 @@
 import React from 'react'
+import { Nav, Navbar } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const NavBar = () => {
   return (
     <>
-      <h1>Nav Bar</h1>
+      <Navbar bg="dark" variant="dark">
+        <Nav>
+          <Nav.Link href="/travel-list">
+            <FontAwesomeIcon icon="user-circle" /> Profile
+          </Nav.Link>
+        </Nav>
+        <Nav className="ml-auto">
+          <Nav.Link href="/search-results">Search</Nav.Link>
+          <Nav.Link href="/upload">Upload</Nav.Link>
+        </Nav>
+      </Navbar>
     </>
   )
 }
