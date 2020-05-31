@@ -9,6 +9,10 @@ import { HistoricSite } from './pages/HistoricSite'
 import { Upload } from './pages/Upload'
 import { TravelList } from './pages/TravelList'
 import { FourOhFour } from './pages/FourOhFour'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {  } from '@fortawesome/free-solid-svg-icons'
+
+library.add()
 
 const Routing = () => (
   <>
