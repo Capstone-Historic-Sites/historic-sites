@@ -11,8 +11,12 @@ export const Upload = () => {
       <h2 className="text-center"><strong>Upload Historic Sites</strong></h2>
       <form>
         <div className="form-group">
-          <label htmlFor="exampleFormControlInput1">Email address</label>
-          <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          <label htmlFor="formGroupExampleInput">Example label</label>
+          <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Example input"/>
+        </div>
+        <div className="form-group">
+          <label htmlFor="formGroupExampleInput2">Another label</label>
+          <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
         </div>
       </form>
     </>
