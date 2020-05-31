@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavBar } from '../shared/components/NavBar'
+import Button from 'react-bootstrap/Button'
 
 export const Home = () => {
   return (
@@ -16,6 +17,11 @@ export const Home = () => {
           laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
           voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
           non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+        <div className="mb-2" align="center">
+          <Button variant="primary" size="lg">
+            Create Profile
+          </Button>{' '}
+        </div>
       </div>
     </>
   )
