@@ -9,3 +9,16 @@ body {
     padding: 5px 10px;
     font-weight: bold;
 }
+
+.title-section, .about-section {
+    display: flex;
+    align-items: center;
+    height: 50vh;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.about-section {
+    background: #e5d6c6;
+}
+
