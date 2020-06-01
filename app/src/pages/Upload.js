@@ -22,30 +22,31 @@ export const Upload = () => {
               <label htmlFor="formGroupExampleInput2">Street Address</label>
               <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
             </div>
-            <div className="form-group, d-inline-block, form-inline justify-content:left">
+            <div className="form-groups, d-inline-block, form-inline">
               <div className="w-50">
-                <label htmlFor="formGroupExampleInput2">City</label>
-                <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
+                <label htmlFor="formGroupExampleInput2" className="justify-content-start">City</label>
+                <input type="text" className="form-control w-100" id="formGroupExampleInput2" placeholder="Another input"/>
               </div>
               <div className="w-50">
-                <label htmlFor="formGroupExampleInput2">State</label>
+                <label htmlFor="formGroupExampleInput2" className="justify-content-start">State</label>
                 <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
               </div>
-
             </div>
             <div className="form-group">
               <label htmlFor="formGroupExampleInput2">Description</label>
               <textarea className="form-control" id="formGroupExampleInput3" placeholder="Another input"/>
             </div>
-            <div className="form-group">
-              <label htmlFor="formGroupExampleInput2">Historic Date</label>
-              <input type="text" className="form-control" id="formGroupExampleInput3" placeholder="Another input"/>
-            </div>
-            <div className="form-check">
-              <label htmlFor="defaultCheck1" className="mr-4">Free</label>
-              <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
-              <label htmlFor="defaultCheck1" className="mr-4 ml-3">Paid</label>
-              <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
+            <div className="form-group, form-inline">
+              <div className="form-group w-50">
+                <label htmlFor="formGroupExampleInput2" className="justify-content-start">Historic Date</label>
+                <input type="text" className="form-control w-100" id="formGroupExampleInput3" placeholder="Another input"/>
+              </div>
+              <div className="form-check">
+                <label htmlFor="defaultCheck1" className="mr-4">Free</label>
+                <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
+                <label htmlFor="defaultCheck1" className="mr-4 ml-3">Paid</label>
+                <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
+              </div>
             </div>
             <div className="form-group">
               <label htmlFor="formGroupExampleInput2">Resource Link</label>
