@@ -29,7 +29,7 @@ export const Upload = () => {
               </div>
               <div className="w-50">
                 <label htmlFor="formGroupExampleInput2" className="justify-content-start">State</label>
-                <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
+                <input type="text" className="form-control w-100" id="formGroupExampleInput2" placeholder="Another input"/>
               </div>
             </div>
             <div className="form-group">
@@ -42,9 +42,9 @@ export const Upload = () => {
                 <input type="text" className="form-control w-100" id="formGroupExampleInput3" placeholder="Another input"/>
               </div>
               <div className="form-check">
-                <label htmlFor="defaultCheck1" className="mr-4">Free</label>
+                <label htmlFor="defaultCheck1" className="mr-2 ml-3">Free</label>
                 <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
-                <label htmlFor="defaultCheck1" className="mr-4 ml-3">Paid</label>
+                <label htmlFor="defaultCheck1" className="mr-2 ml-3">Paid</label>
                 <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
               </div>
             </div>
