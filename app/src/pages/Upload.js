@@ -22,9 +22,34 @@ export const Upload = () => {
               <label htmlFor="formGroupExampleInput2">Street Address</label>
               <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
             </div>
+            <div className="form-group, d-inline-block, form-inline justify-content:left">
+              <div className="w-50">
+                <label htmlFor="formGroupExampleInput2">City</label>
+                <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
+              </div>
+              <div className="w-50">
+                <label htmlFor="formGroupExampleInput2">State</label>
+                <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
+              </div>
+
+            </div>
             <div className="form-group">
               <label htmlFor="formGroupExampleInput2">Description</label>
-              <input type="textarea" className="form-control" id="formGroupExampleInput3" placeholder="Another input"/>
+              <textarea className="form-control" id="formGroupExampleInput3" placeholder="Another input"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="formGroupExampleInput2">Historic Date</label>
+              <input type="text" className="form-control" id="formGroupExampleInput3" placeholder="Another input"/>
+            </div>
+            <div className="form-check">
+              <label htmlFor="defaultCheck1" className="mr-4">Free</label>
+              <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
+              <label htmlFor="defaultCheck1" className="mr-4 ml-3">Paid</label>
+              <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="formGroupExampleInput2">Resource Link</label>
+              <input type="text" className="form-control" id="formGroupExampleInput3" placeholder="Another input"/>
             </div>
             <div className="d-flex justify-content-between">
               <div className="mb-3" align="left">
