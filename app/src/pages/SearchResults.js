@@ -1,7 +1,8 @@
 import React from 'react'
-import { NavBar } from '../shared/components/NavBar'
+import { NavBar, } from '../shared/components/NavBar'
 import { ProfileSidebar } from '../shared/components/ProfileSidebar'
 import Carousel from 'react-bootstrap/Carousel'
+import { InputGroupCheckbox} from 'react-bootstrap/InputGroup'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
@@ -9,29 +10,49 @@ export const SearchResults = () => {
 
   return (
     <>
-      <NavBar />
-      <div className="grid-container">
+      {/*NavBar*/}
+      < NavBar />
+      {/*/Navbar*/}
 
+      <div className="grid-container">
+          {/*ProfileSideBar*/}
         <div className='container'>
           <div className="profile-sidebar p-4" style={{height: '75rem'}}>
-            <h5>Profile Name</h5>
-            <h5>Organization</h5>
-            <p className="my-4">emailaddress@gmail.com</p>
+            <h5>Filter By</h5>
             <hr/>
-            <h5>Travel List</h5>
-            <h5>Settings</h5>
-            <h5>Upload Site</h5>
+            <div className='ml-2' >
+              <label><input type="checkbox" value='1'/> Tag 1 </label>
+            </div>
+            <div className='ml-2'>
+              <label><input type="checkbox" value='1'/> Tag 2 </label>
+            </div>
+            <div className='ml-2'>
+              <label><input type="checkbox" value='1'/> Tag 3 </label>
+            </div>
+            <div className='ml-2'>
+              <label><input type="checkbox" value='1'/> Tag 4 </label>
+            </div>
+            <div className='ml-2'>
+              <label><input type="checkbox" value='1'/> Tag 5 </label>
+            </div>
+            <div className='ml-2'>
+              <label><input type="checkbox" value='1'/> Tag 6 </label>
+            </div>
             <p className="position-absolute" style={{bottom: 0}}>Sign Out</p>
           </div>
         </div>
+          {/*/ProfileSideBar*/}
 
         <div className="container" style={{paddingTop: '1.5rem' }}>
+
           {/*Search Bar*/}
           <div className="row">
             <div className="col" >
               <input className="form-control" type="text" placeholder="Search" aria-label="Search" />
             </div>
           </div>
+          {/*/Search Bar*/}
+
           {/*Map View & List View*/}
           <div className="row pt-2">
             <div className="col pl-4" style={{fontSize: '1.1rem'}}>
@@ -43,6 +64,7 @@ export const SearchResults = () => {
               <p className="d-inline-block ml-1">Map View</p>
             </div>
           </div>
+          {/*/Map View & List View*/}
         </div>
 
         <div className="container"><hr/></div>
@@ -96,7 +118,7 @@ export const SearchResults = () => {
               <FontAwesomeIcon icon="plus-circle" /> <p className="d-inline-block">Add Site</p>
             </div>
           </div>
-
+          {/*/First Site*/}
           <hr/>
           {/*Second Site*/}
           <div className="row mb-3">
@@ -145,7 +167,7 @@ export const SearchResults = () => {
               <FontAwesomeIcon icon="plus-circle" /> <p className="d-inline-block">Add Site</p>
             </div>
           </div>
-
+          {/*/Second Site*/}
           <hr/>
           {/*Third Site*/}
           <div className="row mb-3">
@@ -194,6 +216,7 @@ export const SearchResults = () => {
               <FontAwesomeIcon icon="plus-circle" /> <p className="d-inline-block">Add Site</p>
             </div>
           </div>
+          {/*/Third Site*/}
         </div>
       </div>
     </>
