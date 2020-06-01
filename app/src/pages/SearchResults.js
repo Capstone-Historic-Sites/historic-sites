@@ -17,7 +17,7 @@ export const SearchResults = () => {
       <div className="grid-container">
           {/*ProfileSideBar*/}
         <div className='container'>
-          <div className="profile-sidebar p-4" style={{height: '75rem'}}>
+          <div className="profile-sidebar p-4" style={{height: '75rem', background: '#6f7565'}}>
             <h5>Filter By</h5>
             <hr/>
             <div className='ml-2' >
