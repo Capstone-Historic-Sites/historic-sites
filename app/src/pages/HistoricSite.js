@@ -7,7 +7,7 @@ export const HistoricSite = () => {
     <>
       <NavBar/>
       <div className="container my-4">
-        <div className="row py-4">
+        <div className="row py-5">
           <div className="col-md-5">
             <img className="w-100" src="http://placekitten.com/700/700" alt="Historic Site Main Image"/>
             <div className="py-3 text-center">

@@ -34,3 +34,22 @@ h1, h2 {
     background: #e5d6c6;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: 300px auto;
+}
+
+.profile-sidebar {
+    background: #526984;
+    border-right: 5px solid #333;
+    color: #fff;
+    height: calc(100vh - 56px);
+    width: 300px;
+    position: absolute;
+    left: 0;
+}
+
+.profile-sidebar hr {
+    border: 1px solid #fff;
+    margin: 2rem 0;
+}
