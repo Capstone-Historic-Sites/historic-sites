@@ -1,8 +1,6 @@
 import React from 'react'
 import { NavBar, } from '../shared/components/NavBar'
-import { ProfileSidebar } from '../shared/components/ProfileSidebar'
 import Carousel from 'react-bootstrap/Carousel'
-import { InputGroupCheckbox} from 'react-bootstrap/InputGroup'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
