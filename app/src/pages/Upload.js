@@ -48,10 +48,6 @@ export const Upload = () => {
                 <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
               </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="formGroupExampleInput2">Resource Link</label>
-              <input type="text" className="form-control" id="formGroupExampleInput3" placeholder="Another input"/>
-            </div>
             <div className="d-flex justify-content-between">
               <div className="mb-3" align="left">
                 <Button variant="primary" size="md">
