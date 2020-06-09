@@ -5,9 +5,9 @@ import {Image} from "../interfaces/image";
 export async function insertImage(image: Image) {
     try {
         const mySqlConnection = await connect()
-        const mySqlQuery = 'INSERT INTO historicSite(imageId, imageHistoricSiteId, imageDateAdded, imageName, imagePath) VALUES(UUID_TO_BIN(UUID(imageId)), UUID_TO_BIN(UUID()), :imageDateAdded, :imageName, :imagePath)'
+        const mySqlQuery = 'DELETE FROM image WHERE imageId UUID_TO_BIN(UUID(imageId))'
         const [rows] = await mySqlConnection.execute(mySqlQuery, Image)
-        return "Images Uploaded Successfully"
+        return "Images Deleted Successfully"
     } catch (error) {
         console.log(error)
     }
