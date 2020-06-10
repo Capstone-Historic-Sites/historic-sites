@@ -24,7 +24,7 @@ CREATE TABLE historicSite(
   historicSiteId BINARY(16) NOT NULL,
   historicSiteProfileId BINARY(16) NOT NULL,
   historicSiteCost CHAR(4) NOT NULL,
-  historicSiteDate DATE NOT NULL,
+  historicSiteDate VARCHAR(10) NOT NULL,
   historicSiteDateAdded DATETIME(3),
   historicSiteDescription VARCHAR(244) NOT NULL,
   historicSiteLat DECIMAL(8,5),
