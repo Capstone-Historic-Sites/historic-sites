@@ -1,10 +1,10 @@
 export interface Profile {
     profileId: string | null,
-    profileActivationToken: string,u
-    profileDateAdded: string,
-    profileEmail: string,u
-    profileHash: string,u
+    profileActivationToken: string,
+    profileDateAdded: Date | null,
+    profileEmail: string,
+    profileHash: string,
     profileIsAdmin: boolean,
-    profileName: string,u
+    profileName: string,
     profileOrganization: string
 }
