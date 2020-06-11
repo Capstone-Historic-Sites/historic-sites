@@ -31,9 +31,10 @@ export async function postProfileController(req: Request, res: Response, nextFun
 }
 export async function putProfileController(req: Request, res: Response, next: NextFunction) {
     try {
+        const {profileActivationToken, profileEmail, profileHash, profileName} = req.body
         const {profileId} = req.params;
-
-        const result = await updateProfile(profileId)
+        const profile: Profile = {profileId, profileActivationToken, profileEmail, profileHash, profileName}
+        const result = await updateProfile(profile)
         return  res.json({status: 200, data: null, message: result})
     } catch (error) {
         console.log(error)
@@ -42,10 +43,11 @@ export async function putProfileController(req: Request, res: Response, next: Ne
 }
 export async function deleteProfileController(req: Request, res: Response, next: NextFunction) {
     try {
+        console.log(req.params)
         const {profileId} = req.params;
-
         const result = await deleteProfile(profileId)
-        return res.json({status: 200, data: null, message: result})
+        const status: Status = {status: 200, data, message: null}
+        return res.json(status)
     } catch (error) {
         console.log(error)
     }
