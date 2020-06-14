@@ -3,7 +3,7 @@ import React from 'react'
 export const ProfileSidebar = () => {
   return (
     <>
-      <div className="profile-sidebar p-4">
+      <div className="sidebar p-4">
         <h5>Profile Name</h5>
         <h5>Organization</h5>
         <p className="my-4">emailaddress@gmail.com</p>

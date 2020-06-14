@@ -15,7 +15,7 @@ export const SearchResults = () => {
       <div className="grid-container">
           {/*ProfileSideBar*/}
         <div className='container'>
-          <div className="profile-sidebar p-4" style={{height: '75rem', background: '#6f7565'}}>
+          <div className="sidebar p-4" style={{background: '#6f7565'}}>
             <h5>Filter By</h5>
             <hr/>
             <div className='ml-2' >
@@ -36,7 +36,6 @@ export const SearchResults = () => {
             <div className='ml-2'>
               <label><input type="checkbox" value='1'/> Tag 6 </label>
             </div>
-            <p className="position-absolute" style={{bottom: 0}}>Sign Out</p>
           </div>
         </div>
           {/*/ProfileSideBar*/}
