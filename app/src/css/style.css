@@ -14,18 +14,27 @@ h1, h2 {
     font-weight: bold;
 }
 
-.navbar {
-    z-index: 20;
-}
-
 .display-2 {
     font-weight: bold;
+}
+
+.navbar {
+    z-index: 20;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: 300px auto;
     padding-top: 56px;
+}
+
+.search-icon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+.form-control.search-input {
+    padding-left: 2.5rem;
 }
 
 .tag {
@@ -37,6 +46,9 @@ h1, h2 {
 }
 
 @media only screen and (max-width: 767px) {
+    .display-2 {
+        font-size: 3rem;
+    }
     .grid-container {
         grid-template-columns: auto;
     }
@@ -49,13 +61,25 @@ h1, h2 {
 .title-section, .about-section {
     display: flex;
     align-items: center;
-    height: 50vh;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+.title-section {
+    padding-top: 56px;
+    height: calc(100vh - 370px);
+    min-height: 25rem;
+}
+
 .about-section {
     background: #e5d6c6;
+    padding: 5rem 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .about-section {
+        padding: 3.5rem 0;
+    }
 }
 
 /****************************
@@ -84,3 +108,26 @@ h1, h2 {
     }
 }
 
+/****************************
+* FORMS
+*****************************/
+
+.form-control {
+    font-size: 1.1em;
+    padding: 1.5rem 1rem;
+}
+.form-control:focus {
+    border-color: #526984;
+    box-shadow: 0 0 0 0.1rem rgba(82, 105, 132, 0.25);
+}
+
+.btn-primary {
+    background-color: #526984;
+    border-color: #526984;
+    border-radius: 0;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #69839e;
+    border-color: #69839e;
+    box-shadow: none;
+}
