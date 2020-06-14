@@ -15,10 +15,10 @@ export const historicSiteRouter = Router()
 historicSiteRouter.route('/')
     .get(getAllHistoricSitesController)
     .post(postHistoricSiteController)
-    .put(putHistoricSiteController)
 
 historicSiteRouter.route('/:historicSiteId')
     .get(getHistoricSiteByHistoricSiteIdController)
+    .put(putHistoricSiteController)
     .delete(deleteHistoricSiteController)
 
 historicSiteRouter.route('/profileId/:profileId')
