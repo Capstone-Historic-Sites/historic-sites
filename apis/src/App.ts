@@ -3,6 +3,7 @@ import morgan from 'morgan';
 
 // Routes
 import {indexRouter} from './routes/index.route';
+import {travelListRoute} from "./routes/travel-list.route";
 
 
 // The following class creates the app and instantiates the server
@@ -34,6 +35,7 @@ export class App {
     // private method for setting up routes in their basic sense (ie. any route that performs an action on profiles starts with /profiles)
     private routes () {
         this.app.use(indexRouter)
+        this.app.use('/apis/travel-list', travelListRoute)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port

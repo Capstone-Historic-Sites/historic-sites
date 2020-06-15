@@ -7,17 +7,17 @@ import {
 } from '../controllers/travel-list.controller';
 
 
-export const TravelListRoute = Router()
+export const travelListRoute = Router()
 
-TravelListRoute.route('/')
+travelListRoute.route('/')
     .post(postTravelListController)
 
-TravelListRoute.route('/:travelListProfileId')
+travelListRoute.route('/:travelListProfileId')
     .get(selectTravelListByForeignKeysController)
     .put(updateTravelListController)
 
 
-TravelListRoute.route('/:historicSiteId')
+travelListRoute.route('/:historicSiteId')
     .delete(deleteTravelListController)
 
-TravelListRoute.route('/')
+travelListRoute.route('/')
