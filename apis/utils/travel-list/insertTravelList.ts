@@ -1,4 +1,3 @@
-import {HistoricSite} from "../interfaces/historic-site"
 import {connect} from "../../src/database"
 import {TravelList} from "../interfaces/travel-list";
 
