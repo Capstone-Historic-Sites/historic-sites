@@ -5,6 +5,7 @@ import {insertTravelList} from "../../utils/travel-list/insertTravelList";
 import {deleteTravelList} from "../../utils/travel-list/deleteTravelList";
 import {updateTravelList} from "../../utils/travel-list/updateTravelList";
 import {selectTravelListByForeignKeys} from '../../utils/travel-list/selectTravelListByForeignKeys'
+import {validationResult} from 'express-validator';
 
 
 export async function postTravelListController(req: Request, res: Response, next: NextFunction) {

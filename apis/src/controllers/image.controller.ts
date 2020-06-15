@@ -4,7 +4,7 @@ import {Image} from '../../utils/interfaces/image';
 import {insertImage} from '../../utils/image/insertImage';
 import {deleteImage} from '../../utils/image/deleteImage';
 import {selectImageByHistoricSiteId} from '../../utils/image/selectImageByHistoricSiteId';
-
+import {validationResult} from 'express-validator';
 
 export async function postImageController(req: Request, res: Response, next: NextFunction) {
     try {
