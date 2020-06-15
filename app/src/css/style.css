@@ -131,6 +131,11 @@ h1, h2 {
     margin: 2rem 0;
 }
 
+.profile-select:hover {
+    background: #6a85a0;
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 767px) {
     .sidebar {
         margin-left: -300px;
