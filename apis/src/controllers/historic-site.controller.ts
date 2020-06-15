@@ -77,10 +77,10 @@ export async function getHistoricSiteBySearchController(req: Request, res: Respo
 
 export async function postHistoricSiteController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteAddress, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
+        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
         //TODO geocode address here for lat and long
         const historicSite: HistoricSite = {historicSiteId: null, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded: null, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState}
-        const result = await insertHistoricSite(historicSite)
+        const result = insertHistoricSite(historicSite)
         const status: Status = {status: 200, data: null, message: result}
         return res.json(status)
     } catch (error) {
@@ -91,7 +91,7 @@ export async function postHistoricSiteController(req: Request, res: Response, ne
 export async function putHistoricSiteController(req: Request, res: Response, next: NextFunction) {
     try {
         const {historicSiteId} = req.params
-        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded, historicSiteDescription, historicSiteAddress, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
+        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
         //TODO geocode address here for lat and long
         const historicSite: HistoricSite = {historicSiteId, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState}
         const result = await updateHistoricSite(historicSite)
