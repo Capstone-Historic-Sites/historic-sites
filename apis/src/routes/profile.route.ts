@@ -15,4 +15,3 @@ ProfileRoute.route("/:profileId")
     .delete(deleteProfileController)
 
 
-ProfileRoute.route("/delete/:profileId")
