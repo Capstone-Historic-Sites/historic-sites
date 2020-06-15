@@ -80,7 +80,7 @@ export async function postHistoricSiteController(req: Request, res: Response, ne
         const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
         //TODO geocode address here for lat and long
         const historicSite: HistoricSite = {historicSiteId: null, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded: null, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState}
-        const result = insertHistoricSite(historicSite)
+        const result = await insertHistoricSite(historicSite)
         const status: Status = {status: 200, data: null, message: result}
         return res.json(status)
     } catch (error) {
