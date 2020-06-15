@@ -1,8 +1,11 @@
 import {Router} from "express";
-import {getProfileByProfileIdController,
+import {
+        getProfileByProfileIdController,
         postProfileController,
         putProfileController,
-        deleteProfileController} from "../controllers/profile.controller";
+        deleteProfileController,
+        getProfileByProfileEmailController
+} from "../controllers/profile.controller";
 
 export const ProfileRoute = Router()
 
@@ -14,4 +17,5 @@ ProfileRoute.route("/:profileId")
     .put(putProfileController)
     .delete(deleteProfileController)
 
-
+ProfileRoute.route("/profileEmail/:profileEmail")
+    .get(getProfileByProfileEmailController)
