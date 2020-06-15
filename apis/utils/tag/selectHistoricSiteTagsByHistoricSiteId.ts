@@ -1,7 +1,7 @@
 import {HistoricSiteTag} from "../interfaces/historic-site-tag";
 import {connect} from "../../src/database";
 
-async function getHisroticSiteByHistoricSiteId(historicSiteTagHistoricSiteId : string | null,) {
+export async function selectHistoricSiteTagsByHistoricSiteId(historicSiteTagHistoricSiteId : string | null,) {
     try {
         const mysqlConnection = await connect();
 

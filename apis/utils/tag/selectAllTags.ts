@@ -1,8 +1,7 @@
-import {connect} from "../interfaces/tag";
 import {Tag} from "../interfaces/tag";
+import {connect} from "../../src/database";
 
-
-export async function getAllTags() {
+export async function selectAllTags() {
     try {
 
         const mysqlConnection = await connect()
