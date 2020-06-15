@@ -113,12 +113,13 @@ h1, h2 {
 *****************************/
 
 .form-control {
+    border: 1px solid #333;
     font-size: 1.1em;
     padding: 1.5rem 1rem;
 }
 .form-control:focus {
     border-color: #526984;
-    box-shadow: 0 0 0 0.1rem rgba(82, 105, 132, 0.25);
+    box-shadow: 0 0 0 0.15rem rgba(82, 105, 132, 0.25);
 }
 
 .btn-primary {

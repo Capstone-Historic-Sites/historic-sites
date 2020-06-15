@@ -8,12 +8,10 @@ export const SearchResults = () => {
 
   return (
     <>
-      {/*NavBar*/}
       < NavBar />
-      {/*/Navbar*/}
 
       <div className="grid-container">
-          {/*ProfileSideBar*/}
+
         <div className='container'>
           <div className="sidebar p-4" style={{background: '#6f7565'}}>
             <h5>Filter By</h5>
@@ -38,9 +36,8 @@ export const SearchResults = () => {
             </div>
           </div>
         </div>
-          {/*/ProfileSideBar*/}
 
-        <div className="container" style={{paddingTop: '1.5rem' }}>
+        <div className="container pt-5">
 
           {/*Search Bar*/}
           <div className="row">
