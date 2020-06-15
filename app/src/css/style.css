@@ -83,6 +83,35 @@ h1, h2 {
 }
 
 /****************************
+* SEARCH RESULTS
+*****************************/
+
+.list-view, .map-view {
+    font-size: 1.1rem;
+}
+
+.list-view:hover, .map-view:hover {
+    color: #6f7565;
+    cursor: pointer;
+}
+
+.filter-toggle {
+    background: #6f7565;
+    border: 1px solid #333;
+    border-radius: 0.25em;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 11px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.filter-toggle:hover {
+    background: #7e8473;
+    cursor: pointer;
+}
+
+/****************************
 * SIDEBAR
 *****************************/
 
@@ -104,7 +133,8 @@ h1, h2 {
 
 @media only screen and (max-width: 767px) {
     .sidebar {
-        display: none;
+        margin-left: -300px;
+        transition: margin-left 0.25s;
     }
 }
 

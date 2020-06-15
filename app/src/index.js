@@ -11,9 +11,9 @@ import { Upload } from './pages/Upload'
 import { TravelList } from './pages/TravelList'
 import { FourOhFour } from './pages/FourOhFour'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserCircle, faSearch, faMapMarkerAlt, faList, faPlusCircle, faUpload, faCog, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faBars, faCog, faList, faMapMarkerAlt, faPlusCircle, faSearch, faUpload, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 
-library.add( faUserCircle, faSearch, faMapMarkerAlt, faList, faPlusCircle, faUpload, faCog, faBars )
+library.add( faArrowLeft, faBars, faCog, faList, faMapMarkerAlt, faPlusCircle, faSearch, faUpload, faUserCircle )
 
 const Routing = () => (
   <>
