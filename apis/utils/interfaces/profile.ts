@@ -1,7 +1,7 @@
 export interface Profile {
     profileId: string | null,
     profileActivationToken: string,
-    profileDateAdded: string,
+    profileDateAdded: Date | null,
     profileEmail: string,
     profileHash: string,
     profileIsAdmin: boolean,
