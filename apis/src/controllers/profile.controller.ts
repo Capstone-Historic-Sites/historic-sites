@@ -7,6 +7,7 @@ import {deleteProfile} from "../../utils/profile/deleteProfile";
 import {selectProfileByProfileId} from "../../utils/profile/selectProfileByPrimaryKey";
 import {setActivationToken, setHash} from "../../utils/auth.utils";
 import {selectProfileByProfileEmail} from "../../utils/profile/selectProfileByProfileEmail";
+import {selectProfileByProfileActivationToken} from "../../utils/profile/selectProfileByActivationToken";
 
 export async function getProfileByProfileIdController(req: Request, res: Response, next: NextFunction) {
         try {
@@ -59,6 +60,16 @@ export async function getProfileByProfileEmailController(req: Request, res: Resp
                 const data = await selectProfileByProfileEmail(profileEmail)
                 const status: Status = {status: 200, data, message: null}
                 return res.json(status)
+        } catch (error) {
+                console.log(error)
+        }
+}
+export async function getProfileByProfileActivationTokenController(req: Request, res: Response, next: NextFunction) {
+        try {
+                const {profileActivationToken} = req.params;
+                const data = await  selectProfileByProfileActivationToken(profileActivationToken)
+                const status: Status = {status: 200, data, message: null}
+                return  res.json(status)
         } catch (error) {
                 console.log(error)
         }
