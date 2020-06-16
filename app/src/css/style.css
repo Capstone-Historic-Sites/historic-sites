@@ -131,6 +131,11 @@ h1, h2 {
     margin: 2rem 0;
 }
 
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .profile-select:hover {
     background: #6a85a0;
     cursor: pointer;

@@ -4,6 +4,12 @@ import { ProfileSidebar } from '../shared/components/ProfileSidebar'
 import Button from 'react-bootstrap/Button'
 
 export const Upload = () => {
+
+  window.onload = () => {
+    document.getElementById('upload').style.background = '#6a85a0'
+    document.getElementById('upload-caret').style.display = 'block'
+  }
+
   return (
     <>
       <NavBar />

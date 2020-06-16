@@ -5,6 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export const TravelList = () => {
+
+  window.onload = () => {
+    document.getElementById('travel-list').style.background = '#6a85a0'
+    document.getElementById('travel-caret').style.display = 'block'
+  }
+
   return (
     <>
       <NavBar />
