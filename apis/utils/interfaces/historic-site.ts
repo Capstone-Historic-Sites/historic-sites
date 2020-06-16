@@ -3,7 +3,7 @@ export interface HistoricSite {
     historicSiteProfileId: string | null,
     historicSiteCost: string,
     historicSiteDate: string,
-    historicSiteDateAdded: string,
+    historicSiteDateAdded: Date | null,
     historicSiteDescription: string,
     historicSiteLat: number,
     historicSiteLong: number,

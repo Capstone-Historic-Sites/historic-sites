@@ -3,5 +3,5 @@ import {indexController} from '../controllers/index.controller'
 
 export const indexRouter = Router()
 
-indexRouter.route('/apis')
+indexRouter.route('/')
     .get(indexController)
