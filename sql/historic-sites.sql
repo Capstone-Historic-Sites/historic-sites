@@ -51,9 +51,9 @@ CREATE TABLE image(
 
 CREATE TABLE tag(
   tagId BINARY(16) NOT NULL,
-  tagEndDate DATE NOT NULL,
+  tagEndDate VARCHAR(10) NOT NULL,
   tagName VARCHAR(32) NOT NULL,
-  tagStartDate DATE NOT NULL,
+  tagStartDate VARCHAR(10) NOT NULL,
   PRIMARY KEY(tagId)
 );
 
@@ -78,3 +78,7 @@ CREATE TABLE historicSiteTag(
   FOREIGN KEY(historicSiteTagTagId) REFERENCES tag(tagId),
   PRIMARY KEY(historicSiteTagHistoricSiteId, historicSiteTagTagId)
 );
+
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "1930", "1920's Theaters", "1920");
+
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "1945", "WWII", "1941");

@@ -1,4 +1,4 @@
-import {Request, Response, NextFunction} from 'express'
+import {Request, Response, NextFunction} from 'express';
 import {Status} from '../../utils/interfaces/status'
 import {selectAllTags} from '../../utils/tag/selectAllTags'
 import {selectHistoricSiteTagsByHistoricSiteId} from "../../utils/tag/selectHistoricSiteTagsByHistoricSiteId";
@@ -26,7 +26,7 @@ export async function getHistoricSiteTagsByHistoricSiteIdController(req: Request
     }
 }
 
-export async function postHistoricSiteTagController(req: Request, res: Response, next: NextFunction)
+export async function postHistoricSiteTagController(req: Request, res: Response, next: NextFunction) {
     try {
         const {historicSiteTagHistoricSiteId, historicSiteTagTagId} = req.body
         const historicSiteTag: HistoricSiteTag = {historicSiteTagHistoricSiteId, historicSiteTagTagId}
