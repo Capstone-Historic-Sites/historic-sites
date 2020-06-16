@@ -1,6 +1,6 @@
 export interface TravelList {
     travelListProfileId: string | null,
     travelListHistoricSiteId: string | null,
-    travelListDateAdded: string,
+    travelListDateAdded: Date | null,
     travelListRank: number
 }
