@@ -2,6 +2,7 @@ import {Request, Response, NextFunction} from 'express'
 import {Status} from '../../utils/interfaces/status'
 import {HistoricSite} from '../../utils/interfaces/historic-site'
 import {deleteHistoricSite} from '../../utils/historic-site/deleteHistoricSite'
+import {getHistoricSiteLatLong} from "../../utils/historic-site/getHistoricSiteLatLong";
 import {insertHistoricSite} from '../../utils/historic-site/insertHistoricSite'
 import {searchHistoricSite} from '../../utils/historic-site/searchHistoricSite'
 import {selectAllHistoricSites} from '../../utils/historic-site/selectAllHistoricSites'
@@ -77,9 +78,10 @@ export async function getHistoricSiteBySearchController(req: Request, res: Respo
 
 export async function postHistoricSiteController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
-        //TODO geocode address here for lat and long
-        const historicSite: HistoricSite = {historicSiteId: null, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded: null, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState}
+        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteAddress, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
+        const latLong = getHistoricSiteLatLong(historicSiteAddress, historicSiteMunicipality, historicSiteState)
+        console.log(latLong)
+        const historicSite: HistoricSite = {historicSiteId: null, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded: null, historicSiteDescription, historicSiteLat: 100, historicSiteLong: 100, historicSiteMunicipality, historicSiteName, historicSiteState}
         const result = await insertHistoricSite(historicSite)
         const status: Status = {status: 200, data: null, message: result}
         return res.json(status)
