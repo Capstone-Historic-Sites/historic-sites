@@ -35,7 +35,7 @@ export async function getAllHistoricSitesController(req: Request, res: Response,
 export async function getHistoricSiteByHistoricSiteIdController(req: Request, res: Response, next: NextFunction) {
     try {
         const {historicSiteId} = req.params
-        const data = await selectHistoricSiteByProfileId(historicSiteId)
+        const data = await selectHistoricSiteByHistoricSiteId(historicSiteId)
         const status: Status = {status: 200, data, message: null}
         return res.json(status)
     } catch (error) {
@@ -46,7 +46,7 @@ export async function getHistoricSiteByHistoricSiteIdController(req: Request, re
 export async function getHistoricSiteByProfileIdController(req: Request, res: Response, next: NextFunction) {
     try {
         const {profileId} = req.params
-        const data = await selectHistoricSiteByHistoricSiteId(profileId)
+        const data = await selectHistoricSiteByProfileId(profileId)
         const status: Status = {status: 200, data, message: null}
         return res.json(status)
     } catch (error) {
@@ -79,7 +79,7 @@ export async function getHistoricSiteBySearchController(req: Request, res: Respo
 export async function postHistoricSiteController(req: Request, res: Response, next: NextFunction) {
     try {
         const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteAddress, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
-        const latLong = getHistoricSiteLatLong(historicSiteAddress, historicSiteMunicipality, historicSiteState)
+        const latLong = await getHistoricSiteLatLong(historicSiteAddress, historicSiteMunicipality, historicSiteState)
         console.log(latLong)
         const historicSite: HistoricSite = {historicSiteId: null, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded: null, historicSiteDescription, historicSiteLat: 100, historicSiteLong: 100, historicSiteMunicipality, historicSiteName, historicSiteState}
         const result = await insertHistoricSite(historicSite)
