@@ -6,13 +6,11 @@ let options = {
 
 let geoCoder = nodeGeocoder(options)
 
-export async function getHistoricSiteLatLong(historicSiteAddress: string, historicSiteMunicipality: string, historicSiteState: string) {
-    geoCoder.geocode(`${historicSiteAddress}, ${historicSiteMunicipality} ${historicSiteState}`)
-        .then((res: any) => {
-            console.log(res)
-            return res
-        })
-        .catch((error: any) => {
-            console.log(error)
-        })
+export async function getHistoricSiteLatLong(historicSiteName: string) {
+    try {
+        return await geoCoder.geocode(historicSiteName)
+    }
+    catch (error) {
+        console.log(error)
+    }
 }

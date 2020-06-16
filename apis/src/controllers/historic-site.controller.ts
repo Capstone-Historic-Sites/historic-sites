@@ -78,10 +78,11 @@ export async function getHistoricSiteBySearchController(req: Request, res: Respo
 
 export async function postHistoricSiteController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteAddress, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
-        const latLong = await getHistoricSiteLatLong(historicSiteAddress, historicSiteMunicipality, historicSiteState)
-        console.log(latLong)
-        const historicSite: HistoricSite = {historicSiteId: null, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded: null, historicSiteDescription, historicSiteLat: 100, historicSiteLong: 100, historicSiteMunicipality, historicSiteName, historicSiteState}
+        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
+        const historicSiteLatLong = await getHistoricSiteLatLong(historicSiteName)
+        const historicSiteLat = historicSiteLatLong[0].latitude
+        const historicSiteLong = historicSiteLatLong[0].longitude
+        const historicSite: HistoricSite = {historicSiteId: null, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded: null, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState}
         const result = await insertHistoricSite(historicSite)
         const status: Status = {status: 200, data: null, message: result}
         return res.json(status)
@@ -93,9 +94,11 @@ export async function postHistoricSiteController(req: Request, res: Response, ne
 export async function putHistoricSiteController(req: Request, res: Response, next: NextFunction) {
     try {
         const {historicSiteId} = req.params
-        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
-        //TODO geocode address here for lat and long
-        const historicSite: HistoricSite = {historicSiteId, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState}
+        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
+        const historicSiteLatLong = await getHistoricSiteLatLong(historicSiteName)
+        const historicSiteLat = historicSiteLatLong[0].latitude
+        const historicSiteLong = historicSiteLatLong[0].longitude
+        const historicSite: HistoricSite = {historicSiteId, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded: null, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState}
         const result = await updateHistoricSite(historicSite)
         const status: Status = {status: 200, data: null, message: result}
         return res.json(status)
