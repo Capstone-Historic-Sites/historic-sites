@@ -6,6 +6,7 @@ import morgan from 'morgan'
 import {indexRouter} from './routes/index.route'
 import {ProfileRoute} from './routes/profile.route'
 import {historicSiteRouter} from './routes/historic-site.route'
+import {imageRoute} from './routes/image.route'
 import {tagRouter} from './routes/tag.route'
 import {travelListRoute} from './routes/travel-list.route'
 
@@ -43,6 +44,7 @@ export class App {
         this.app.use('/apis', indexRouter)
         this.app.use('/apis/profile', ProfileRoute)
         this.app.use('/apis/historic-site', historicSiteRouter)
+        this.app.use('/apis/image', imageRoute)
         this.app.use("/apis/tag", tagRouter)
         this.app.use('/apis/travel-list', travelListRoute)
     }

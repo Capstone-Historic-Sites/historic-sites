@@ -10,8 +10,8 @@ import {validationResult} from 'express-validator';
 
 export async function postTravelListController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {travelListHistoricSiteId, travelListRank} = req.body
-        const travelList: TravelList = {travelListProfileId: null, travelListHistoricSiteId, travelListDateAdded:null, travelListRank}
+        const {travelListProfileId, travelListHistoricSiteId, travelListRank} = req.body
+        const travelList: TravelList = {travelListProfileId, travelListHistoricSiteId, travelListDateAdded: null, travelListRank}
         const result = await insertTravelList(travelList)
         console.log(result)
         const status: Status = {status: 200, data:null, message: result}
@@ -25,9 +25,9 @@ export async function postTravelListController(req: Request, res: Response, next
 export async function deleteTravelListController(req: Request, res: Response, next: NextFunction) {
     try {
 
-        const {travelListProfileId} = req.params;
+        const {travelListProfileId, travelListHistoricSiteId} = req.params;
 
-        const result = await deleteTravelList(travelListProfileId);
+        const result = await deleteTravelList(travelListProfileId, travelListHistoricSiteId);
         console.log(result)
         const status: Status = {status: 200, data: null, message: result}
         return res.json(status)
@@ -37,10 +37,10 @@ export async function deleteTravelListController(req: Request, res: Response, ne
 }
 
 
-export async function updateTravelListController(req: Request, res: Response, next: NextFunction) {
+export async function putTravelListController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {travelListHistoricSiteId, travelListRank} = req.body
-        const travelList: TravelList = {travelListProfileId: null, travelListHistoricSiteId, travelListDateAdded:null, travelListRank}
+        const {travelListProfileId, travelListHistoricSiteId, travelListRank} = req.body
+        const travelList: TravelList = {travelListProfileId, travelListHistoricSiteId, travelListDateAdded:null, travelListRank}
         const result = await updateTravelList(travelList)
         console.log(result)
         const status: Status = {status: 200, data:null, message: result}
@@ -51,11 +51,11 @@ export async function updateTravelListController(req: Request, res: Response, ne
 }
 
 
-export async function selectTravelListByForeignKeysController(req: Request, res: Response, next: NextFunction) {
+export async function getTravelListByForeignKeysController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {travelListProfileId} = req.params
-        const result = await selectTravelListByForeignKeys(travelListProfileId)
-        const status: Status = {status: 200, data: null, message: null}
+        const {travelListProfileId, travelListHistoricSiteId} = req.params
+        const data = await selectTravelListByForeignKeys(travelListProfileId, travelListHistoricSiteId)
+        const status: Status = {status: 200, data, message: null}
         return res.json(status)
     } catch (error) {
         console.log(error)

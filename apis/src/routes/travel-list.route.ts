@@ -2,8 +2,8 @@ import {Router} from 'express';
 import {
     postTravelListController,
     deleteTravelListController,
-    updateTravelListController,
-    selectTravelListByForeignKeysController
+    putTravelListController,
+    getTravelListByForeignKeysController
 } from '../controllers/travel-list.controller';
 
 
@@ -11,13 +11,10 @@ export const travelListRoute = Router()
 
 travelListRoute.route('/')
     .post(postTravelListController)
-
-travelListRoute.route('/:travelListProfileId')
-    .get(selectTravelListByForeignKeysController)
-    .put(updateTravelListController)
+    .put(putTravelListController)
 
 
-travelListRoute.route('/:historicSiteId')
+travelListRoute.route('/travelListProfileId/:travelListProfileId/travelListHistoricSiteId/:travelListHistoricSiteId')
     .delete(deleteTravelListController)
-
+    .get(getTravelListByForeignKeysController)
 travelListRoute.route('/')

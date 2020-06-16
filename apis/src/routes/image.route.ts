@@ -6,15 +6,15 @@ import {
 } from '../controllers/image.controller';
 
 
-export const ImageRoute = Router()
+export const imageRoute = Router()
 
-ImageRoute.route("/")
+imageRoute.route("/")
     .post(postImageController)
 
-ImageRoute.route("/:imageId")
+imageRoute.route("/:imageId")
 
     .delete(deleteImageController)
 
-ImageRoute.route('/historic-site/:historicSiteId')
+imageRoute.route('/historic-site/:historicSiteId')
     .get(selectImageByHistoricSiteIdController)
 
