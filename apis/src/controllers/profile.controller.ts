@@ -7,7 +7,7 @@ import {deleteProfile} from "../../utils/profile/deleteProfile";
 import {selectProfileByProfileId} from "../../utils/profile/selectProfileByPrimaryKey";
 import {setActivationToken, setHash} from "../../utils/auth.utils";
 import {selectProfileByProfileEmail} from "../../utils/profile/selectProfileByProfileEmail";
-import {selectProfileByProfileActivationToken} from "../../utils/profile/selectProfileByActivationToken";
+import {selectProfileByProfileActivationToken} from "../../utils/profile/selectProfileByProfileActivationToken";
 
 export async function getProfileByProfileIdController(req: Request, res: Response, next: NextFunction) {
         try {
