@@ -27,5 +27,5 @@ historicSiteRouter.route('/profileId/:profileId')
 historicSiteRouter.route('/tagId/:tagId')
     .get(getHistoricSiteByTagIdController)
 
-historicSiteRouter.route('/search')
+historicSiteRouter.route('/search/:search')
     .get(getHistoricSiteBySearchController)

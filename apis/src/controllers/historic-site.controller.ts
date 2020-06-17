@@ -67,7 +67,7 @@ export async function getHistoricSiteByTagIdController(req: Request, res: Respon
 
 export async function getHistoricSiteBySearchController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {search} = req.body
+        const {search} = req.params
         const data = await searchHistoricSite(search)
         const status: Status = {status: 200, data, message: null}
         return res.json(status)
