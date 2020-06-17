@@ -26,7 +26,7 @@ CREATE TABLE historicSite(
   historicSiteCost CHAR(4) NOT NULL,
   historicSiteDate VARCHAR(10) NOT NULL,
   historicSiteDateAdded DATETIME(3),
-  historicSiteDescription VARCHAR(500) NOT NULL,
+  historicSiteDescription VARCHAR(600) NOT NULL,
   historicSiteLat DECIMAL(8,5),
   historicSiteLong DECIMAL(8,5),
   historicSiteMunicipality VARCHAR(36),
