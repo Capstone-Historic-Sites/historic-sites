@@ -1,4 +1,3 @@
-import {Search} from "../interfaces/search";
 import {connect} from '../../src/database'
 
 export async function searchHistoricSite(search: string) {
