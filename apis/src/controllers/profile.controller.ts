@@ -35,6 +35,7 @@ export async function postProfileController(req: Request, res: Response, next: N
 export async function putProfileController(req: Request, res: Response, next: NextFunction) {
     try {
         const {profileActivationToken, profileEmail, profileHash, profileName} = req.body
+        //I took out the Token and Hash from the updateProfile function
         const {profileId} = req.params;
         const profile: Profile = {profileId, profileActivationToken, profileDateAdded: null, profileEmail, profileHash,profileIsAdmin: false, profileName, profileOrganization: " "}
         const result = await updateProfile(profile)
