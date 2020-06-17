@@ -7,16 +7,19 @@ import {
         getProfileByProfileEmailController,
         getProfileByProfileActivationTokenController
 } from "../controllers/profile.controller";
-import {asyncValidatorController} from "../controllers/asyncValidator.controller";;
+import {asyncValidatorController} from "../controllers/asyncValidator.controller";
 import {profileValidator} from "../validators/profile.validator";
+import {activationController} from "../controllers/activation.controller";
 import {check,param} from "express-validator";
 
-const { checkSchema } = require{'express-validator'};
+const { checkSchema } = require,{'express-validator'};
 
 export const ProfileRoute = Router()
 
 ProfileRoute.route("/signup")
-    .post(postProfileController)
+    .post(asyncValidatorController(checkSchema(profileValidator)),postProfileController);
+ProfileRoute.route('/activation/:activation')
+    .get(asyncValidatorController(param("activation", "invalid activation link").isHexadecimal().notEmpty()), activationController)
 
 ProfileRoute.route("/:profileId")
     .get(getProfileByProfileIdController)
