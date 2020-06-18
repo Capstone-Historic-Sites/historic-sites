@@ -32,10 +32,10 @@ export async function deleteImageController(req: Request, res: Response, next: N
         console.log(error)
     }
 }
-export async function selectImageByHistoricSiteIdController(req: Request, res: Response, next: NextFunction) {
+export async function getImageByHistoricSiteIdController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {historicSiteId} = req.params
-        const data = await selectImageByHistoricSiteId(historicSiteId)
+        const {imageHistoricSiteId} = req.params
+        const data = await selectImageByHistoricSiteId(imageHistoricSiteId)
         const status: Status = {status: 200, data, message: null}
         return res.json(status)
     } catch (error) {
