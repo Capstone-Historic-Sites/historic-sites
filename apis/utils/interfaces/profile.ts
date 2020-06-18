@@ -1,6 +1,6 @@
 export interface Profile {
     profileId: string | null,
-    profileActivationToken: string,
+    profileActivationToken: string | null,
     profileDateAdded: Date | null,
     profileEmail: string,
     profileHash: string,
