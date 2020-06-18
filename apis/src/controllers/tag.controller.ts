@@ -4,6 +4,7 @@ import {selectAllTags} from '../../utils/tag/selectAllTags'
 import {selectHistoricSiteTagsByHistoricSiteId} from "../../utils/tag/selectHistoricSiteTagsByHistoricSiteId";
 import {insertHistoricSiteTag} from "../../utils/tag/insertHistoricSiteTag";
 import {HistoricSiteTag} from "../../utils/interfaces/historic-site-tag";
+import {validationResult} from "express-validator";
 
 export async function getAllTagsController(req: Request, res: Response, next: NextFunction) {
     try {
