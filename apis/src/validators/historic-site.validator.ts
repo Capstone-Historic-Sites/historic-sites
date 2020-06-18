@@ -69,7 +69,7 @@ export const historicSiteValidator = {
 }
 
 export const historicSiteTagTagIdValidator = {
-    historicSiteTagTagId: {
+    tagId: {
         isUUID: {
             errorMessage: 'Please provide a valid tagId'
         },

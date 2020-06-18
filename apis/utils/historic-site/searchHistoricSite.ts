@@ -8,5 +8,6 @@ export async function searchHistoricSite(search: string) {
         return rows
     } catch (error) {
         console.log(error)
+        return error.message
     }
 }

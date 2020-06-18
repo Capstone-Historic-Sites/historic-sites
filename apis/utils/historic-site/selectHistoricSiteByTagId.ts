@@ -10,5 +10,6 @@ export async function selectHistoricSiteByTagId(tagId: string) {
         return rows
     } catch (error) {
         console.log(error)
+        return error.message
     }
 }

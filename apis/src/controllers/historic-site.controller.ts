@@ -45,8 +45,8 @@ export async function getHistoricSiteByHistoricSiteIdController(req: Request, re
 
 export async function getHistoricSiteByProfileIdController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {profileId} = req.params
-        const data = await selectHistoricSiteByProfileId(profileId)
+        const {historicSiteProfileId} = req.params
+        const data = await selectHistoricSiteByProfileId(historicSiteProfileId)
         const status: Status = {status: 200, data, message: null}
         return res.json(status)
     } catch (error) {

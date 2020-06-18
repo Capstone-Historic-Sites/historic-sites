@@ -9,5 +9,6 @@ export async function insertHistoricSite(historicSite: HistoricSite) {
         return 'Historic Site Uploaded Successfully'
     } catch (error) {
         console.log(error)
+        return error.message
     }
 }

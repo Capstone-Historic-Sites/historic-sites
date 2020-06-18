@@ -32,7 +32,7 @@ historicSiteRouter.route('/:historicSiteId')
     .put(asyncValidatorController(checkSchema(putHistoricSiteValidator)), putHistoricSiteController)
     .delete(asyncValidatorController(checkSchema(historicSiteIdValidator)), deleteHistoricSiteController)
 
-historicSiteRouter.route('/profileId/:profileId')
+historicSiteRouter.route('/profileId/:historicSiteProfileId')
     .get(asyncValidatorController(checkSchema(historicSiteProfileIdValidator)), getHistoricSiteByProfileIdController)
 
 historicSiteRouter.route('/tagId/:tagId')
