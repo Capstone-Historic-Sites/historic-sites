@@ -50,7 +50,7 @@ export class App {
         this.app.use("/apis/tag", tagRouter)
         this.app.use('/apis/travel-list', travelListRoute)
         this.app.use('/apis/sign-up', SignupRouter)
-        this.app.use('apis/sign-in', SignInRouter)
+        this.app.use('/apis/sign-in', SignInRouter)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port

@@ -1,14 +1,14 @@
-import {NextFunction, Request, Response} from "express";
-import {setActivationToken, setHash} from "../../utils/auth.utils";
-import {Profile} from "../../utils/interfaces/profile";
-import {insertProfile} from "../../utils/profile/insertProfile";
-import {Status} from "../../utils/interfaces/status";
+import { NextFunction, Request, Response } from "express";
+import { setActivationToken, setHash } from "../../utils/auth.utils";
+import { Profile } from "../../utils/interfaces/profile";
+import { insertProfile } from "../../utils/profile/insertProfile";
+import { Status } from "../../utils/interfaces/status";
 import MailComposer from "nodemailer/lib/mail-composer";
 const mailgun = require("mailgun-js")
 
 export async function signUpController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {profileEmail, profileIsAdmin, profileName, profileOrganization, profilePassword} = req.body
+        const {profileEmail, profileName, profileOrganization, profilePassword, profilePasswordConfirm} = req.body
         const profileHash = await setHash(profilePassword);
         const profileActivationToken = setActivationToken();
         const basePath = `${req.protocol}://${req.get('host')}${req.originalUrl}/activation/${profileActivationToken}`
@@ -24,7 +24,7 @@ export async function signUpController(req: Request, res: Response, next: NextFu
             text: 'test email text',
             html: message
         }
-        const profile: Profile = {profileId: null, profileActivationToken, profileDateAdded: null, profileEmail, profileHash, profileIsAdmin, profileName, profileOrganization
+        const profile: Profile = {profileId: null, profileActivationToken, profileDateAdded: null, profileEmail, profileHash, profileIsAdmin: false, profileName, profileOrganization
         };
         const result = await insertProfile(profile)
 
