@@ -1,3 +1,7 @@
+/****************************
+* GLOBAL STYLES
+*****************************/
+
 @import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Inter:wght@100;200;400;500;600;700;800;900&display=swap');
 
 body {
@@ -14,6 +18,25 @@ h1, h2 {
     font-weight: bold;
 }
 
+.navbar {
+    z-index: 20;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 300px auto;
+    padding-top: 56px;
+}
+
+.search-icon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+.form-control.search-input {
+    padding-left: 2.5rem;
+}
+
 .tag {
     background: #6f7565;
     color: #fff;
@@ -22,46 +45,130 @@ h1, h2 {
     font-weight: bold;
 }
 
+@media only screen and (max-width: 767px) {
+    .display-2 {
+        font-size: 3rem;
+    }
+    .grid-container {
+        grid-template-columns: auto;
+    }
+}
+
+/****************************
+* HOME PAGE
+*****************************/
+
 .title-section, .about-section {
     display: flex;
     align-items: center;
-    height: 50vh;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+.title-section {
+    padding-top: 56px;
+    height: calc(100vh - 370px);
+    min-height: 25rem;
+}
+
 .about-section {
     background: #e5d6c6;
+    padding: 5rem 0;
 }
 
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 300px auto;
+@media only screen and (max-width: 767px) {
+    .about-section {
+        padding: 3.5rem 0;
+    }
 }
 
-.profile-sidebar {
+/****************************
+* SEARCH RESULTS
+*****************************/
+
+.list-view, .map-view {
+    font-size: 1.1rem;
+}
+
+.list-view:hover, .map-view:hover {
+    color: #6f7565;
+    cursor: pointer;
+}
+
+.filter-toggle {
+    background: #6f7565;
+    border: 1px solid #333;
+    border-radius: 0.25em;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 11px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.filter-toggle:hover {
+    background: #7e8473;
+    cursor: pointer;
+}
+
+/****************************
+* SIDEBAR
+*****************************/
+
+.sidebar {
     background: #526984;
     border-right: 5px solid #333;
     color: #fff;
     height: calc(100vh - 56px);
     width: 300px;
-    position: absolute;
+    position: fixed;
     left: 0;
-    z-index: 11;
+    z-index: 20;
 }
 
-.profile-sidebar hr {
+.sidebar hr {
     border: 1px solid #fff;
     margin: 2rem 0;
 }
 
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.profile-select:hover {
+    background: #6a85a0;
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 767px) {
-    .grid-container {
-        grid-template-columns: auto;
-    }
-    .profile-sidebar {
-        display: none;
+    .sidebar {
+        margin-left: -300px;
+        transition: margin-left 0.25s;
     }
 }
 
+/****************************
+* FORMS
+*****************************/
+
+.form-control {
+    border: 1px solid #333;
+    font-size: 1.1em;
+    padding: 1.5rem 1rem;
+}
+.form-control:focus {
+    border-color: #526984;
+    box-shadow: 0 0 0 0.15rem rgba(82, 105, 132, 0.25);
+}
+
+.btn-primary {
+    background-color: #526984;
+    border-color: #526984;
+    border-radius: 0;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #69839e;
+    border-color: #69839e;
+    box-shadow: none;
+}
