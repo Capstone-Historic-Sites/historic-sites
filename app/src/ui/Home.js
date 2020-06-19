@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavBar } from '../shared/components/NavBar'
+import { NavBar } from './shared/components/NavBar'
 import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 

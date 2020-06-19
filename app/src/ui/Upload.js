@@ -1,6 +1,6 @@
 import React from 'react'
-import { NavBar } from '../shared/components/NavBar'
-import { ProfileSidebar } from '../shared/components/ProfileSidebar'
+import { NavBar } from './shared/components/NavBar'
+import { ProfileSidebar } from './shared/components/ProfileSidebar'
 import Button from 'react-bootstrap/Button'
 
 export const Upload = () => {
