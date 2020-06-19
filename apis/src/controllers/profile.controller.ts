@@ -22,9 +22,9 @@ export async function getProfileByProfileIdController(req: Request, res: Respons
 export async function putProfileController(req: Request, res: Response, next: NextFunction) {
     try {
         const {profileId} = req.params
-        const {profileActivationToken, profileEmail, profileName, profileOrganization, profilePassword} = req.body
+        const {profileEmail, profileName, profileOrganization, profilePassword} = req.body
         const profileHash = await setHash(profilePassword)
-        const profile: Profile = {profileId, profileActivationToken, profileDateAdded: null, profileEmail, profileHash, profileIsAdmin: false, profileName, profileOrganization}
+        const profile: Profile = {profileId, profileActivationToken: null, profileDateAdded: null, profileEmail, profileHash, profileIsAdmin: false, profileName, profileOrganization}
         const result = await updateProfile(profile)
         return res.json({status: 200, data: null, message: result})
     } catch (error) {

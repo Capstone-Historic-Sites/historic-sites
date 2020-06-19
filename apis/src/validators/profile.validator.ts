@@ -1,28 +1,28 @@
 export const profileValidator = {
-    profileActivationToken: {
+    profileName: {
         escape: true,
         trim: true,
         isLength: {
-            errorMessage: 'profileActivationToken must be null or thirty two characters',
-            options: { min: 4, max: 32 }
+            errorMessage: 'Profile name must be between 3 and 32 characters',
+            options: { min: 3, max: 32 }
+        }
+    },
+    profileOrganization: {
+        escape: true,
+        trim: true,
+        isLength: {
+            errorMessage: 'Organization name must be less than 128 characters',
+            options: { min: 1, max: 128}
         }
     },
     profilePassword: {
         escape: true,
         trim: true,
         isLength: {
-            errorMessage: 'profile password must not be empty',
-            options: { min: 1,}
+            errorMessage: 'Password must be at least eight characters',
+            options: { min: 8 }
         }
-    },
-    profileName: {
-        escape: true,
-        trim: true,
-        isLength: {
-            errorMessage: 'profile name must be between three and thirty two characters',
-            options: { min: 3, max: 32 }
-        }
-    },
+    }
 }
 
 export const profileIdValidator = {

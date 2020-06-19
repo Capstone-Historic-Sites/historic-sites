@@ -10,7 +10,7 @@ export const signUpValidator = {
         escape: true,
         trim: true,
         isLength: {
-            errorMessage: 'profileName must be between three and thirty two characters',
+            errorMessage: 'Profile name must be between 3 and 32 characters',
             options: { min: 3, max: 32 }
         }
     },

@@ -9,5 +9,6 @@ export async function insertProfile(profile: Profile) {
         return 'Profile successfully created, please check your email.'
     } catch (error) {
         console.log(error)
+        return error.message
     }
 }
