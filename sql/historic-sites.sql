@@ -14,7 +14,7 @@ CREATE TABLE profile(
   profileIsAdmin VARCHAR(8),
   profileName VARCHAR(32) NOT NULL,
   profileOrganization VARCHAR(128),
-  UNIQUE(profileEmail),
+  UNIQUE (profileEmail),
   UNIQUE (profileName),
   INDEX (profileEmail),
   PRIMARY KEY (profileId)
