@@ -45,8 +45,8 @@ export async function getHistoricSiteByHistoricSiteIdController(req: Request, re
 
 export async function getHistoricSiteByProfileIdController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {profileId} = req.params
-        const data = await selectHistoricSiteByProfileId(profileId)
+        const {historicSiteProfileId} = req.params
+        const data = await selectHistoricSiteByProfileId(historicSiteProfileId)
         const status: Status = {status: 200, data, message: null}
         return res.json(status)
     } catch (error) {
@@ -67,7 +67,7 @@ export async function getHistoricSiteByTagIdController(req: Request, res: Respon
 
 export async function getHistoricSiteBySearchController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {search} = req.body
+        const {search} = req.params
         const data = await searchHistoricSite(search)
         const status: Status = {status: 200, data, message: null}
         return res.json(status)

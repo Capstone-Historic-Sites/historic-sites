@@ -9,5 +9,6 @@ export async function selectAllHistoricSites() {
         return rows
     } catch (error) {
         console.log(error)
+        return error.message
     }
 }

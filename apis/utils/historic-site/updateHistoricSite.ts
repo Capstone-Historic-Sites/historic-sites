@@ -9,5 +9,6 @@ export async function updateHistoricSite(historicSite: HistoricSite) {
         return 'Historic Site Updated Successfully'
     } catch (error) {
         console.log(error)
+        return error.message
     }
 }

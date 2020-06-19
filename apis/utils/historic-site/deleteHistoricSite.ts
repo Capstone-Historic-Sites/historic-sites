@@ -9,5 +9,6 @@ export async function deleteHistoricSite(historicSiteId: string) {
         return 'Historic Site Deleted Successfully'
     } catch (error) {
         console.log(error)
+        return error.message
     }
 }

@@ -1,18 +1,16 @@
-import { Request, Response, NextFunction } from 'express';
-const { validationResult } = require('express-validator');
+import { Request, Response, NextFunction } from 'express'
+const { validationResult } = require('express-validator')
 
 export const asyncValidatorController = (validations : any) => {
-    return async (request: Request, response: Response, next: NextFunction) => {
-        // console.log(request.body)
-        await Promise.all(validations.map((validation : any) => validation.run(request)));
+    return async (req: Request, res: Response, next: NextFunction) => {
+        //console.log(req.body)
+        await Promise.all(validations.map((validation : any) => validation.run(req)))
 
-        const errors = validationResult(request);
-        // console.log(errors)
+        const errors = validationResult(req);
+        //console.log(errors)
         if (errors.isEmpty()) {
-            return next();
+            return next()
         }
-
-        response.json({ status: 418, data: null, message: errors.array()[0].msg });
-    };
-};
-
+        res.json({ status: 406, data: null, message: errors.array()[0].msg })
+    }
+}

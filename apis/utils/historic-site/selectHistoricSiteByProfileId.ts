@@ -10,5 +10,6 @@ export async function selectHistoricSiteByProfileId(profileId: string) {
         return rows
     } catch (error) {
         console.log(error)
+        return error.message
     }
 }

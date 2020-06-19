@@ -12,5 +12,6 @@ export async function getHistoricSiteLatLong(historicSiteName: string) {
     }
     catch (error) {
         console.log(error)
+        return error.message
     }
 }
