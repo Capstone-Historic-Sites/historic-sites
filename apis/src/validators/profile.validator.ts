@@ -3,23 +3,15 @@ export const profileValidator = {
         escape: true,
         trim: true,
         isLength: {
-            errorMessage: 'profileActivationToken must be between three and thirty two characters',
-            options: { min: 3, max: 32 }
+            errorMessage: 'profileActivationToken must be null or thirty two characters',
+            options: { min: 4, max: 32 }
         }
-    },
-
-    profileEmail: {
-        isEmail: {
-            errorMessage: 'Please provide a valid Email'
-        },
-        normalizeEmail: true,
-        trim: true
     },
     profilePassword: {
         escape: true,
         trim: true,
         isLength: {
-            errorMessage: 'profileActivationToken must be between three and thirty two characters',
+            errorMessage: 'profile password must not be empty',
             options: { min: 1,}
         }
     },
@@ -27,7 +19,7 @@ export const profileValidator = {
         escape: true,
         trim: true,
         isLength: {
-            errorMessage: 'profileName must be between three and thirty two characters',
+            errorMessage: 'profile name must be between three and thirty two characters',
             options: { min: 3, max: 32 }
         }
     },
@@ -43,7 +35,18 @@ export const profileIdValidator = {
     }
 }
 
+export const profileEmailValidator = {
+    profileEmail: {
+        isEmail: {
+            errorMessage: 'Please provide a valid email'
+        },
+        normalizeEmail: true,
+        trim: true
+    },
+}
+
 export const updateProfileValidator = {
     ...profileIdValidator,
+    ...profileEmailValidator,
     ...profileValidator
 }

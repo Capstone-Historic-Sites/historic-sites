@@ -1,11 +1,11 @@
-import { Router } from "express";
-import { signInValidator } from "../validators/sign-in.validator";
-import { signInController } from "../controllers/sign-in.controller";
-import { asyncValidatorController } from "../controllers/asyncValidator.controller";
+import { Router } from 'express'
+import { signInController } from '../controllers/sign-in.controller'
+import { asyncValidatorController } from '../controllers/asyncValidator.controller'
+import { signInValidator } from '../validators/sign-in.validator'
 
-const {checkSchema} = require("express-validator");
+const {checkSchema} = require('express-validator')
 
-export const SignInRouter = Router();
+export const signInRouter = Router()
 
-SignInRouter.route('/')
+signInRouter.route('/')
     .post(asyncValidatorController(checkSchema(signInValidator)), signInController);

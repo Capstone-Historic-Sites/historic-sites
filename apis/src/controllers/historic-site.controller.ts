@@ -2,7 +2,7 @@ import {Request, Response, NextFunction} from 'express'
 import {Status} from '../../utils/interfaces/status'
 import {HistoricSite} from '../../utils/interfaces/historic-site'
 import {deleteHistoricSite} from '../../utils/historic-site/deleteHistoricSite'
-import {getHistoricSiteLatLong} from "../../utils/historic-site/getHistoricSiteLatLong";
+import {getHistoricSiteLatLong} from '../../utils/historic-site/getHistoricSiteLatLong'
 import {insertHistoricSite} from '../../utils/historic-site/insertHistoricSite'
 import {searchHistoricSite} from '../../utils/historic-site/searchHistoricSite'
 import {selectAllHistoricSites} from '../../utils/historic-site/selectAllHistoricSites'

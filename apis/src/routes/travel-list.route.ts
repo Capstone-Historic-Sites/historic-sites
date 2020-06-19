@@ -10,13 +10,13 @@ import {travelListIdsValidator, travelListValidator} from "../validators/travel-
 
 const {checkSchema} = require("express-validator");
 
-export const travelListRoute = Router()
+export const travelListRouter = Router()
 
-travelListRoute.route('/')
+travelListRouter.route('/')
     .post(asyncValidatorController(checkSchema(travelListValidator)),postTravelListController)
     .put(asyncValidatorController(checkSchema(travelListValidator)),putTravelListController)
 
 
-travelListRoute.route('/travelListProfileId/:travelListProfileId/travelListHistoricSiteId/:travelListHistoricSiteId')
+travelListRouter.route('/travelListProfileId/:travelListProfileId/travelListHistoricSiteId/:travelListHistoricSiteId')
     .delete(asyncValidatorController(checkSchema(travelListIdsValidator)),deleteTravelListController)
     .get(asyncValidatorController(checkSchema(travelListIdsValidator)),getTravelListByForeignKeysController)

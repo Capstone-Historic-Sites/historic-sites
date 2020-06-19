@@ -13,15 +13,15 @@ import {
 
 const {checkSchema} = require("express-validator");
 
-export const imageRoute = Router()
+export const imageRouter = Router()
 
-imageRoute.route("/")
+imageRouter.route("/")
     .post(asyncValidatorController(checkSchema(postImageValidator)), postImageController)
 
-imageRoute.route("/:imageId")
+imageRouter.route("/:imageId")
 
     .delete(asyncValidatorController(checkSchema(imageIdValidator)),deleteImageController)
 
-imageRoute.route('/historic-site/:imageHistoricSiteId')
+imageRouter.route('/historic-site/:imageHistoricSiteId')
     .get(asyncValidatorController(checkSchema(imageHistoricSiteIdValidator)),getImageByHistoricSiteIdController)
 

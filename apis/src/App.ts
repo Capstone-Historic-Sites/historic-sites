@@ -3,15 +3,18 @@ import morgan from 'morgan'
 
 // Routes
 import {indexRouter} from './routes/index.route'
-import {ProfileRoute} from './routes/profile.route'
+import {profileRouter} from './routes/profile.route'
 import {historicSiteRouter} from './routes/historic-site.route'
-import {imageRoute} from './routes/image.route'
+import {imageRouter} from './routes/image.route'
 import {tagRouter} from './routes/tag.route'
-import {travelListRoute} from './routes/travel-list.route'
-import {SignupRouter} from "./routes/sign-up.route";
-import {SignInRouter} from "./routes/sign-in.route";
+import {travelListRouter} from './routes/travel-list.route'
+import {signUpRouter} from './routes/sign-up.route'
+import {signInRouter} from './routes/sign-in.route'
+import passport from 'passport'
+import {passportMiddleware} from './controllers/sign-in.controller'
 
-
+const session = require('express-session')
+const memoryStore = require('memorystore')(session)
 
 // The following class creates the app and instantiates the server
 export class App {
@@ -21,6 +24,7 @@ export class App {
     constructor (
         private port?: number | string
     ) {
+        passportMiddleware
         this.app = express()
         this.settings()
         this.middlewares()
@@ -37,18 +41,32 @@ export class App {
     private middlewares () {
         this.app.use(morgan('dev'))
         this.app.use(express.json())
+
+        const sessionConfig = {
+            store: new memoryStore({
+                checkPeriod: 10800
+            }),
+            secret: process.env.SESSION_SECRET,
+            saveUninitialized: true,
+            resave: true,
+            maxAge: "3h"
+        }
+
+        this.app.use(session(sessionConfig))
+        this.app.use(passport.initialize())
+        this.app.use(passport.session())
     }
 
     // private method for setting up routes in their basic sense (ie. any route that performs an action on profiles starts with /profiles)
     private routes () {
         this.app.use('/apis', indexRouter)
-        this.app.use('/apis/profile', ProfileRoute)
+        this.app.use('/apis/profile', profileRouter)
         this.app.use('/apis/historic-site', historicSiteRouter)
-        this.app.use('/apis/image', imageRoute)
+        this.app.use('/apis/image', imageRouter)
         this.app.use('/apis/tag', tagRouter)
-        this.app.use('/apis/travel-list', travelListRoute)
-        this.app.use('/apis/sign-up', SignupRouter)
-        this.app.use('/apis/sign-in', SignInRouter)
+        this.app.use('/apis/travel-list', travelListRouter)
+        this.app.use('/apis/sign-in', signInRouter)
+        this.app.use('/apis/sign-up', signUpRouter)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port

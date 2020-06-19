@@ -1,12 +1,11 @@
-export const signupValidator = {
+export const signUpValidator = {
     profileEmail: {
         isEmail: {
-            errorMessage: 'Please provide a valid Email'
+            errorMessage: 'Please provide a valid email'
         },
         normalizeEmail: true,
         trim: true
     },
-
     profileName: {
         escape: true,
         trim: true,
@@ -20,20 +19,12 @@ export const signupValidator = {
         trim: true,
         isLength: {
             errorMessage: 'Organization name must be less than 128 characters',
-            options: { min: 0, max: 128 }
+            options: { min: 1, max: 128 }
         }
     },
     profilePassword: {
         isLength: {
             errorMessage: 'Password must be at least eight characters',
-            options: { min: 8 }
-        },
-        trim: true,
-        escape: true
-    },
-    profilePasswordConfirm: {
-        isLength: {
-            errorMessage: 'Confirm password must be at least eight characters',
             options: { min: 8 }
         },
         trim: true,

@@ -1,24 +1,26 @@
-import {Router} from "express";
+import {Router} from 'express'
 import {
         getProfileByProfileIdController,
         putProfileController,
-        deleteProfileController, getProfileByProfileEmailController,
-} from "../controllers/profile.controller";
-import {asyncValidatorController} from "../controllers/asyncValidator.controller";
+        deleteProfileController,
+        getProfileByProfileEmailController,
+} from '../controllers/profile.controller'
+import {asyncValidatorController} from '../controllers/asyncValidator.controller'
 import {
-        updateProfileValidator,
         profileIdValidator,
-} from "../validators/profile.validator";
-import { isLoggedIn } from "../controllers/isLoggedIn.controller";
+        profileEmailValidator,
+        updateProfileValidator,
+} from '../validators/profile.validator'
+import { isLoggedIn } from '../controllers/isLoggedIn.controller'
 
-const { checkSchema } = require("express-validator");
+const { checkSchema } = require('express-validator')
 
-export const ProfileRoute = Router()
+export const profileRouter = Router()
 
-ProfileRoute.route("/:profileId")
+profileRouter.route('/:profileId')
     .get(asyncValidatorController(checkSchema(profileIdValidator)), getProfileByProfileIdController)
     .put(asyncValidatorController(checkSchema(updateProfileValidator)), putProfileController)
     .delete(asyncValidatorController(checkSchema(profileIdValidator)), deleteProfileController)
 
-ProfileRoute.route("/profileEmail/:profileEmail")
-    .get(getProfileByProfileEmailController)
+profileRouter.route('/profileEmail/:profileEmail')
+    .get(asyncValidatorController(checkSchema(profileEmailValidator)), getProfileByProfileEmailController)
