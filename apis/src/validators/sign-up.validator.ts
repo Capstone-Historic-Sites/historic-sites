@@ -19,7 +19,7 @@ export const signUpValidator = {
         trim: true,
         isLength: {
             errorMessage: 'Organization name must be less than 128 characters',
-            options: { min: 1, max: 128 }
+            options: { max: 128 }
         }
     },
     profilePassword: {

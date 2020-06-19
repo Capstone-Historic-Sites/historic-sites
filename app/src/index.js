@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router'
 import { Home } from './ui/Home'
 import { SearchResults } from './ui/search-results/SearchResults'
 import { HistoricSite } from './ui/HistoricSite'
+import { SignUp } from './ui/profile/SignUp'
 import { Upload } from './ui/Upload'
 import { TravelList } from './ui/TravelList'
 import { FourOhFour } from './ui/FourOhFour'
@@ -29,6 +30,7 @@ const Routing = (store) => (
             <Route exact path="/" component={Home} />
             <Route exact path="/search-results" component={SearchResults} />
             <Route exact path="/historic-site" component={HistoricSite} />
+            <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/upload" component={Upload} />
             <Route exact path="/travel-list" component={TravelList} />
             <Route component={FourOhFour} />
