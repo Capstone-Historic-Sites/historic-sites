@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const NavBar = () => {
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" className="position-fixed w-100">
         <Nav>
           <Nav.Link href="/travel-list">
             <FontAwesomeIcon icon="user-circle" /> Profile

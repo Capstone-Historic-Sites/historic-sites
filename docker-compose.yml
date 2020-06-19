@@ -1,0 +1,24 @@
+version: "3"
+services:
+  sql:
+    build: ./sql
+    volumes:
+      - historic-sites:/var/lib/mysql
+    env_file:
+      - ./.env
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+  node:
+    build: ./apis
+    env_file:
+      - .env
+    ports:
+      - 8080:1912
+    user: "node"
+    volumes:
+      - ./apis/src:/home/node/app/src
+      - ./apis/utils:/home/node/app/utils/
+      - ./apis/tsconfig.json:/home/node/app/tsconfig.json
+volumes:
+  historic-sites:
