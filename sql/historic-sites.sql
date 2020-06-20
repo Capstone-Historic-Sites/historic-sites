@@ -79,6 +79,19 @@ CREATE TABLE historicSiteTag(
   PRIMARY KEY(historicSiteTagHistoricSiteId, historicSiteTagTagId)
 );
 
-INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "1930", "1920's Theaters", "1920");
-
-INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "1945", "WWII", "1941");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Catholic Church", "N/A");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Gothic Revival Style", "N/A");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Fort", "N/A");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "1945", "WWII", "1939");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "1918", "WWI", "1914");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "1865", "Civil War", "1861");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "1900", "Wild West", "1865");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Petroglyph", "N/A");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Native American", "N/A");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Ruins", "N/A");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Hiking", "N/A");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Pueblo", "N/A");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Adobe Style", "N/A");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Theatre", "N/A");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "N/A", "Art Deco", "1920");
+INSERT INTO tag(tagId, tagEndDate, tagName, tagStartDate) VALUES(UUID_TO_BIN(UUID()), "1930", "Early Film", "1890");
