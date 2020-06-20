@@ -3,13 +3,11 @@ import { NavBar } from '../shared/components/NavBar'
 import { ProfileSidebar } from '../shared/components/ProfileSidebar'
 import Button from 'react-bootstrap/Button'
 import { httpConfig } from '../../utils/http-config'
-import { useDispatch } from 'react-redux'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 
 export function SignUp () {
 
-  const dispatch = useDispatch()
   const validator = Yup.object().shape({
     profileEmail: Yup.string()
       .required('Email is required')
@@ -64,8 +62,6 @@ export function SignUp () {
                 values,
                 errors,
                 touched,
-                dirty,
-                isSubmitting,
                 handleChange,
                 handleBlur,
                 handleSubmit,
