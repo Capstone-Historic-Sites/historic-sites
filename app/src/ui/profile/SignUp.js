@@ -82,7 +82,7 @@ export function SignUp () {
                         onBlur={handleBlur}
                         value={values.profileEmail}
                       />
-                      {errors.profileEmail && (<div className="alert alert-danger">{errors.profileEmail}</div>)}
+                      {errors.profileEmail && touched.profileEmail && (<div className="alert alert-danger">{errors.profileEmail}</div>)}
                     </div>
                     <div className="form-group">
                       <label htmlFor="profile-name">Profile Name</label>
@@ -96,7 +96,7 @@ export function SignUp () {
                         onBlur={handleBlur}
                         value={values.profileName}
                       />
-                      {errors.profileName && (<div className="alert alert-danger">{errors.profileName}</div>)}
+                      {errors.profileName && touched.profileName && (<div className="alert alert-danger">{errors.profileName}</div>)}
                     </div>
                     <div className="form-group">
                       <label htmlFor="profile-organization">Profile Organization</label>
@@ -110,7 +110,7 @@ export function SignUp () {
                         onBlur={handleBlur}
                         value={values.profileOrganization}
                       />
-                      {errors.profileOrganization && (<div className="alert alert-danger">{errors.profileOrganization}</div>)}
+                      {errors.profileOrganization && touched.profileOrganization && (<div className="alert alert-danger">{errors.profileOrganization}</div>)}
                     </div>
                     <div className="form-group">
                       <label htmlFor="profile-password">Profile Password</label>
@@ -124,7 +124,7 @@ export function SignUp () {
                         onBlur={handleBlur}
                         value={values.profilePassword}
                       />
-                      {errors.profilePassword && (<div className="alert alert-danger">{errors.profilePassword}</div>)}
+                      {errors.profilePassword && touched.profilePassword && (<div className="alert alert-danger">{errors.profilePassword}</div>)}
                     </div>
                     <div className="d-flex justify-content-between">
                       <div className="mb-3" align="left">
