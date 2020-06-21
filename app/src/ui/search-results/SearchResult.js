@@ -32,8 +32,9 @@ export function SearchResult (props) {
             </Carousel.Item>
           </Carousel>
         </div>
-        <div className="col-lg-7 p-4">
+        <div className="col-lg-7 px-4">
           <h2>{historicSite.historicSiteName}</h2>
+          <p>{historicSite.historicSiteMunicipality}, {historicSite.historicSiteState}</p>
           <p>{historicSite.historicSiteDescription}</p>
           <FontAwesomeIcon icon="plus-circle" /> <p className="d-inline-block">Add Site</p>
         </div>
