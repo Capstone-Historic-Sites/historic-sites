@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavBar } from '../shared/components/NavBar'
 import { SearchResult } from './SearchResult'
+import { Mapbox } from '../mapbox/Mapbox'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllHistoricSites } from '../../store/historic-site'
@@ -109,7 +110,7 @@ export const SearchResults = () => {
         </div>
 
         <div className="container py-4" id="map-view" style={{display: 'none'}}>
-          <h1>Map View</h1>
+          <Mapbox historicSites={historicSites} />
         </div>
       </div>
     </>
