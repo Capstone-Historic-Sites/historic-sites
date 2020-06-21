@@ -1,24 +1,25 @@
-import {Router} from 'express';
+import {Router} from 'express'
 import {
     postImageController,
     deleteImageController,
     getImageByHistoricSiteIdController
-} from '../controllers/image.controller';
-import {asyncValidatorController} from "../controllers/asyncValidator.controller";
+} from '../controllers/image.controller'
+import {imageUploader} from "../lib/multer";
+import {asyncValidatorController} from '../controllers/asyncValidator.controller'
 import {
     imageHistoricSiteIdValidator,
     imageIdValidator,
     postImageValidator
-} from "../validators/image.validator";
+} from '../validators/image.validator'
 
-const {checkSchema} = require("express-validator");
+const {checkSchema} = require('express-validator')
 
 export const imageRouter = Router()
 
-imageRouter.route("/")
-    .post(asyncValidatorController(checkSchema(postImageValidator)), postImageController)
+imageRouter.route('/')
+    .post(imageUploader, asyncValidatorController(checkSchema(postImageValidator)), postImageController)
 
-imageRouter.route("/:imageId")
+imageRouter.route('/:imageId')
 
     .delete(asyncValidatorController(checkSchema(imageIdValidator)),deleteImageController)
 
