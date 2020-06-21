@@ -2,13 +2,57 @@ import React from 'react'
 import { NavBar } from './shared/components/NavBar'
 import { ProfileSidebar } from './shared/components/ProfileSidebar'
 import Button from 'react-bootstrap/Button'
+import * as Yup from 'yup'
+import { httpConfig } from '../utils/http-config'
+import { Formik } from 'formik'
 
 export const Upload = () => {
+
+  const validator = Yup.object().shape({
+    historicSiteDescription: Yup.string()
+      .required('Description is required')
+      .max(600, 'Please provide a description shorter than 600 characters'),
+    historicSiteName: Yup.string()
+      .required('Historic Site name is required')
+      .max(48, 'Name must be shorter than 48 characters'),
+    historicSiteState: Yup.string()
+      .required('State of the Historic Site is required')
+      .max(2, 'Must be 2 characters'),
+    historicSiteMunicipality: Yup.string()
+      .max(36, 'Please provide a municipality no longer than 36 characters'),
+    historicSiteCost: Yup.string()
+      .required(' Site Cost is required')
+      .max(4, 'Must be least 4 characters at most'),
+    historicSiteDate: Yup.string()
+      .required('Date is required')
+      .max(10, 'Please provide a date no longer than 10 characters'),
+  })
+
+  const historicSite = {
+    historicSiteDescription: '',
+    historicSiteName: '',
+    historicSiteState: '',
+    historicSiteMunicipality: '',
+    historicSiteCost: '',
+    historicSiteDate: ''
+  }
+
+  const uploadHistoricSites = (values, {resetForm, setStatus}) => {
+    httpConfig.post("/apis/historic-site", values).then(reply => {
+      let {message, type} = reply
+      if (reply.status === 200) {
+        resetForm()
+      }
+      setStatus({message, type})
+    })
+  }
 
   window.onload = () => {
     document.getElementById('upload').style.background = '#6a85a0'
     document.getElementById('upload-caret').style.display = 'block'
   }
+
+
 
   return (
     <>
@@ -19,10 +63,29 @@ export const Upload = () => {
         </div>
         <div className="container py-5">
           <h2 className="text-left">Upload Historic Site</h2>
+          <Formik onSubmit={uploadHistoricSites} initialValues={historicSite} validationSchema={validator}>
+            {(props) => {
+              const {
+                status,
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                handleReset
+              } = props
+              return (
+                <>
+                <form onSubmit={handleSubmit}>
           <form>
             <div className="form-group">
               <label htmlFor="formGroupExampleInput">Name of Historic Site</label>
-              <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Example input"/>
+              <input
+                type="text"
+                className="form-control"
+                id="formGroupExampleInput"
+                placeholder="Example input"/>
             </div>
             <div className="form-group">
               <label htmlFor="formGroupExampleInput2">Street Address</label>
