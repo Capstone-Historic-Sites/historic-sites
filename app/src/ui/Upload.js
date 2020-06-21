@@ -9,32 +9,30 @@ import { Formik } from 'formik'
 export const Upload = () => {
 
   const validator = Yup.object().shape({
-    historicSiteDescription: Yup.string()
-      .required('Description is required')
-      .max(600, 'Please provide a description shorter than 600 characters'),
-    historicSiteName: Yup.string()
-      .required('Historic Site name is required')
-      .max(48, 'Name must be shorter than 48 characters'),
-    historicSiteState: Yup.string()
-      .required('State of the Historic Site is required')
-      .max(2, 'Must be 2 characters'),
-    historicSiteMunicipality: Yup.string()
-      .max(36, 'Please provide a municipality no longer than 36 characters'),
-    historicSiteCost: Yup.string()
-      .required(' Site Cost is required')
-      .max(4, 'Must be least 4 characters at most'),
     historicSiteDate: Yup.string()
-      .required('Date is required')
-      .max(10, 'Please provide a date no longer than 10 characters'),
+      .required('Historic site date is required')
+      .max(10, 'Please provide a date or date range no longer than 10 characters'),
+    historicSiteDescription: Yup.string()
+      .required('Historic site description is required')
+      .max(600, 'Please provide a description shorter than 600 characters'),
+    historicSiteMunicipality: Yup.string()
+      .required('Historic site municipality is required')
+      .max(36, 'Please provide a city and/or municipality no longer than 36 characters'),
+    historicSiteName: Yup.string()
+      .required('Historic site name is required')
+      .max(48, 'Historic site name must be shorter than 48 characters'),
+    historicSiteState: Yup.string()
+      .required('US state for historic site is required')
+      .max(2, 'Please provide the two letter abbreviation for the state'),
   })
 
   const historicSite = {
+    historicSiteCost: '',
+    historicSiteDate: '',
     historicSiteDescription: '',
     historicSiteName: '',
     historicSiteState: '',
     historicSiteMunicipality: '',
-    historicSiteCost: '',
-    historicSiteDate: ''
   }
 
   const uploadHistoricSites = (values, {resetForm, setStatus}) => {
@@ -63,21 +61,6 @@ export const Upload = () => {
         </div>
         <div className="container py-5">
           <h2 className="text-left">Upload Historic Site</h2>
-          <Formik onSubmit={uploadHistoricSites} initialValues={historicSite} validationSchema={validator}>
-            {(props) => {
-              const {
-                status,
-                values,
-                errors,
-                touched,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                handleReset
-              } = props
-              return (
-                <>
-                <form onSubmit={handleSubmit}>
           <form>
             <div className="form-group">
               <label htmlFor="formGroupExampleInput">Name of Historic Site</label>
