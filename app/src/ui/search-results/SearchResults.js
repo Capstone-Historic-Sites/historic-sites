@@ -98,7 +98,9 @@ export const SearchResults = () => {
 
         {/*Sites Container*/}
         <div className="container py-4" id="list-view">
-          {historicSites.map(historicSite => <SearchResult historicSite={historicSite} key={historicSite.historicSiteId} />)}
+          {
+            historicSites.map(historicSite => <SearchResult historicSite={historicSite} key={historicSite.historicSiteId} />)
+          }
         </div>
 
         <div className="container py-4" id="map-view" style={{display: 'none'}}>

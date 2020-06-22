@@ -9,7 +9,7 @@ const slice = createSlice({
       return action.payload
     },
     getHistoricSiteByHistoricSiteId : (posts, action) => {
-      posts.push(action.payload)
+      return action.payload
     }
   }
 })
@@ -19,6 +19,11 @@ export const {getAllHistoricSites, getHistoricSiteByHistoricSiteId} = slice.acti
 export const fetchAllHistoricSites = () => async (dispatch) => {
   const {data} = await httpConfig('/apis/historic-site')
   dispatch(getAllHistoricSites(data))
+}
+
+export const fetchHistoricSiteByHistoricSiteId = () => async (dispatch) => {
+  const {data} = await httpConfig('/apis/historic-site/2af43714-b341-11ea-ad34-0242c0a82003')
+  dispatch(getHistoricSiteByHistoricSiteId(data))
 }
 
 export default slice.reducer
