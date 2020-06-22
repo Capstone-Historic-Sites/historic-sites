@@ -30,12 +30,12 @@ export const Upload = () => {
     historicSiteCost: '',
     historicSiteDate: '',
     historicSiteDescription: '',
-    historicSiteName: '',
-    historicSiteState: '',
     historicSiteMunicipality: '',
+    historicSiteName: '',
+    historicSiteState: ''
   }
 
-  const uploadHistoricSites = (values, {resetForm, setStatus}) => {
+  const uploadHistoricSite = (values, {resetForm, setStatus}) => {
     httpConfig.post("/apis/historic-site", values).then(reply => {
       let {message, type} = reply
       if (reply.status === 200) {
@@ -50,8 +50,6 @@ export const Upload = () => {
     document.getElementById('upload-caret').style.display = 'block'
   }
 
-
-
   return (
     <>
       <NavBar />
@@ -61,58 +59,102 @@ export const Upload = () => {
         </div>
         <div className="container py-5">
           <h2 className="text-left">Upload Historic Site</h2>
-          <form>
-            <div className="form-group">
-              <label htmlFor="formGroupExampleInput">Name of Historic Site</label>
-              <input
-                type="text"
-                className="form-control"
-                id="formGroupExampleInput"
-                placeholder="Example input"/>
-            </div>
-            <div className="form-group">
-              <label htmlFor="formGroupExampleInput2">Street Address</label>
-              <input type="text" className="form-control" id="formGroupExampleInput2" placeholder="Another input"/>
-            </div>
-            <div className="form-groups, d-inline-block, form-inline">
-              <div className="w-50">
-                <label htmlFor="formGroupExampleInput2" className="justify-content-start">City</label>
-                <input type="text" className="form-control w-100" id="formGroupExampleInput2" placeholder="Another input"/>
-              </div>
-              <div className="w-50">
-                <label htmlFor="formGroupExampleInput2" className="justify-content-start">State</label>
-                <input type="text" className="form-control w-100" id="formGroupExampleInput2" placeholder="Another input"/>
-              </div>
-            </div>
-            <div className="form-group">
-              <label htmlFor="formGroupExampleInput2">Description</label>
-              <textarea className="form-control" id="formGroupExampleInput3" placeholder="Another input"/>
-            </div>
-            <div className="form-group, form-inline">
-              <div className="form-group w-50">
-                <label htmlFor="formGroupExampleInput2" className="justify-content-start">Historic Date</label>
-                <input type="text" className="form-control w-100" id="formGroupExampleInput3" placeholder="Another input"/>
-              </div>
-              <div className="form-check">
-                <label htmlFor="defaultCheck1" className="mr-2 ml-3">Free</label>
-                <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
-                <label htmlFor="defaultCheck1" className="mr-2 ml-3">Paid</label>
-                <input  type="checkbox" className="form-check-input" id="defaultCheck1" value="" />
-              </div>
-            </div>
-            <div className="d-flex justify-content-between">
-              <div className="mb-3" align="left">
-                <Button variant="primary" size="md">
-                  Select Photos
-                </Button>{' '}
-              </div>
-              <div className="mb-3" align="right">
-                <Button variant="primary" size="md">
-                  Upload
-                </Button>{' '}
-              </div>
-            </div>
-          </form>
+          <Formik onSubmit={uploadHistoricSite} initialValues={historicSite} validationSchema={validator}>
+            {(props) => {
+              const {
+                status,
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                handleReset
+              } = props
+              return (
+                <>
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                      <label htmlFor="name">Name of Historic Site</label>
+                      <input
+                        className="form-control"
+                        id="name"
+                        name="historicSiteName"
+                        type="text"
+                        placeholder="Name of historic site"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.historicSiteName}
+                      />
+                      {errors.historicSiteName && touched.historicSiteName && (
+                        <div className="alert alert-danger">{errors.historicSiteName}</div>)}
+                    </div>
+                    <div className="form-groups, d-inline-block, form-inline">
+                      <div className="w-50">
+                        <label htmlFor="municipality" className="justify-content-start">City/Municipality</label>
+                        <input
+                          className="form-control w-100"
+                          id="municipality"
+                          name="historicSiteMunicipality"
+                          type="text"
+                          placeholder="City or municipality for historic site"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.historicSiteMunicipality}
+                        />
+                        {errors.historicSiteMunicipality && touched.historicSiteMunicipality && (
+                          <div className="alert alert-danger">{errors.historicSiteMunicipality}</div>)}
+                      </div>
+                      <div className="w-50">
+                        <label htmlFor="state" className="justify-content-start">US State</label>
+                        <input
+                          className="form-control w-100"
+                          id="state"
+                          name="historicSiteMunicipality"
+                          type="text"
+                          placeholder="Two letter abbreviation for US state"
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          value={values.historicSiteState}
+                        />
+                        {errors.historicSiteState && touched.historicSiteState && (
+                          <div className="alert alert-danger">{errors.historicSiteState}</div>)}
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="formGroupExampleInput2">Description</label>
+                      <textarea className="form-control" id="formGroupExampleInput3" placeholder="Another input"/>
+                    </div>
+                    <div className="form-group, form-inline">
+                      <div className="form-group w-50">
+                        <label htmlFor="formGroupExampleInput2" className="justify-content-start">Historic Date</label>
+                        <input type="text" className="form-control w-100" id="formGroupExampleInput3"
+                               placeholder="Another input"/>
+                      </div>
+                      <div className="form-check">
+                        <label htmlFor="defaultCheck1" className="mr-2 ml-3">Free</label>
+                        <input type="checkbox" className="form-check-input" id="defaultCheck1" value=""/>
+                        <label htmlFor="defaultCheck1" className="mr-2 ml-3">Paid</label>
+                        <input type="checkbox" className="form-check-input" id="defaultCheck1" value=""/>
+                      </div>
+                    </div>
+                    <div className="d-flex justify-content-between">
+                      <div className="mb-3" align="left">
+                        <Button variant="primary" size="md">
+                          Select Photos
+                        </Button>{' '}
+                      </div>
+                      <div className="mb-3" align="right">
+                        <Button variant="primary" size="md">
+                          Upload
+                        </Button>{' '}
+                      </div>
+                    </div>
+                  </form>
+                </>
+              )
+            }}
+          </Formik>
         </div>
       </div>
     </>
