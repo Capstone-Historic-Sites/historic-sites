@@ -5,7 +5,7 @@ export function TagsProp (props) {
   return (
     <>
       <div>
-        <div className='ml-2' >
+        <div className='form-check' >
           <label><input type="checkbox" value='1'/>{tag.tagName} </label>
         </div>
       </div>
