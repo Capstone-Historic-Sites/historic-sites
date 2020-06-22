@@ -1,13 +1,30 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {useDispatch, useSelector} from 'react-redux'
+import { fetchProfileByProfileId } from '../../../store/profile-sidebar'
 
-export const ProfileSidebar = () => {
+export const ProfileSidebar = (props) => {
+
+  const {profile} = props
+
+  const dispatch = useDispatch()
+
+  const profileSidebar = useSelector(store => {
+    return store.profileSidebar ? store.profileSidebar : []
+  })
+
+  const sideEffects = () => {
+    dispatch(fetchProfileByProfileId())
+  }
+
+  React.useEffect(sideEffects, [])
+
   return (
     <>
       <div className="sidebar p-4">
-        <h5>Profile Name</h5>
-        <h5>Organization</h5>
-        <p className="my-4">emailaddress@gmail.com</p>
+        <h5>{profile.profileName}</h5>
+        <h5>{profile.profileOrganization}</h5>
+        <p className="my-4">{profile.profileEmail}</p>
         <hr/>
         <a href="/travel-list">
           <div className="d-flex p-2 my-2 profile-select" id="travel-list">
