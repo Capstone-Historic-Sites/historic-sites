@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {useDispatch, useSelector} from 'react-redux'
 import { fetchProfileByProfileId } from '../../../store/profile-sidebar'
-import { ProfileSidebarProfile } from './ProfileSidebarProfile'
+import { ProfileSidebarProp } from './ProfileSidebarProp'
 
 export const ProfileSidebar = () => {
 
@@ -22,7 +22,7 @@ export const ProfileSidebar = () => {
     <>
       <div className="sidebar p-4">
         {
-          profileSidebar.map(profile => <ProfileSidebarProfile profile={profile} key={profile.profileId} />)
+          profileSidebar.map(profile => <ProfileSidebarProp profile={profile} key={profile.profileId} />)
         }
         <hr/>
         <a href="/travel-list">
