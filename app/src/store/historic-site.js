@@ -22,7 +22,7 @@ export const fetchAllHistoricSites = () => async (dispatch) => {
 }
 
 export const fetchHistoricSiteByHistoricSiteId = () => async (dispatch) => {
-  const {data} = await httpConfig('/apis/historic-site/2af43714-b341-11ea-ad34-0242c0a82003')
+  const {data} = await httpConfig('/apis/historic-site/7f2bfb47-b340-11ea-ad34-0242c0a82003')
   dispatch(getHistoricSiteByHistoricSiteId(data))
 }
 
