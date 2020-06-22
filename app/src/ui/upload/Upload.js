@@ -27,6 +27,7 @@ export const Upload = () => {
     historicSiteState: Yup.string()
       .required('US state for historic site is required')
       .max(2, 'Please provide the two letter abbreviation for the state'),
+    imagePath: Yup.mixed()
   })
 
   const historicSite = {
@@ -41,10 +42,18 @@ export const Upload = () => {
 
   const uploadHistoricSite = (values, {resetForm, setStatus}) => {
     httpConfig.post('/apis/historic-site', values).then(reply => {
-      console.log(values)
-      let {message, type} = reply
+      let {data, message, type} = reply
       if (reply.status === 200) {
-        httpConfig.post('/apis/image', {...values, imageHistoricSiteId: 'df79e571-b442-11ea-ae97-0242c0a84002', imageName: 'test'})
+        httpConfig.post('/apis/image/upload', values.imagePath).then(reply => {
+          let {message} = reply
+          if (reply.status === 200) {
+            httpConfig.post('apis/image', {
+              imageHistoricSiteId: data.historicSiteId,
+              imageName: 'Test',
+              imagePath: message
+            })
+          }
+        })
         resetForm()
       }
       setStatus({message, type})

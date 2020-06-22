@@ -13,7 +13,7 @@ export const ImageDropZone = ({formikProps}) => {
   return (
     <>
       <div className="form-group" {...getRootProps()}>
-        <div className="input-group input-group-lg">
+        <div className="input-group form-control my-5">
           <input
             className="form-control-file"
             accept="image/*"

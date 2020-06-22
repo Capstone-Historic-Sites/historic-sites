@@ -84,7 +84,7 @@ export async function postHistoricSiteController(req: Request, res: Response, ne
         const historicSiteLong = historicSiteLatLong[0].longitude
         const historicSite: HistoricSite = {historicSiteId: null, historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDateAdded: null, historicSiteDescription, historicSiteLat, historicSiteLong, historicSiteMunicipality, historicSiteName, historicSiteState}
         const result = await insertHistoricSite(historicSite)
-        const status: Status = {status: 200, data: null, message: result}
+        const status: Status = {status: 200, data: result.historicSiteId[0], message: result.message}
         return res.json(status)
     } catch (error) {
         console.log(error)
