@@ -1,8 +1,9 @@
 import React from 'react'
-import Carousel from 'react-bootstrap'
+import Carousel from 'react-bootstrap/Carousel'
 
 export function SearchResultImage (props) {
   const {image} = props
+  console.log(image)
   return (
     <>
       <Carousel.Item>

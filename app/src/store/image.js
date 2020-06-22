@@ -5,7 +5,7 @@ const slice = createSlice({
   name: 'image',
   initialState: [],
   reducers: {
-    getImageByHistoricSiteId : (posts, action) => {
+    getImageByHistoricSiteId : (image, action) => {
       return action.payload
     }
   }
@@ -17,3 +17,5 @@ export const fetchHistoricSiteImages = (historicSiteId) => async (dispatch) => {
   const {data} = await httpConfig(`/apis/image/historic-site/${historicSiteId}`)
   dispatch(getImageByHistoricSiteId(data))
 }
+
+export default slice.reducer

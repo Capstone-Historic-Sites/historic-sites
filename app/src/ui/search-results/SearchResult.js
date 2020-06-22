@@ -3,35 +3,29 @@ import Carousel from 'react-bootstrap/Carousel'
 import { SearchResultImage } from './SearchResultImage'
 import { fetchHistoricSiteImages} from '../../store/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch, useSelector } from 'react-redux'
 
 export function SearchResult (props) {
   const {historicSite} = props
+
+  const dispatch = useDispatch()
+
+  const images = useSelector(store => {
+    return store.images ? store.images : []
+  })
+
+  const sideEffects = () => {
+    dispatch(fetchHistoricSiteImages(historicSite.historicSiteId))
+  }
+
+  React.useEffect(sideEffects, [])
+
   return (
     <>
       <div className="row py-3">
         <div className="col-lg-5">
           <Carousel interval={null}>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://images.pexels.com/photos/2835436/pexels-photo-2835436.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                alt="First slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://images.pexels.com/photos/319882/pexels-photo-319882.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                alt="Third slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://images.pexels.com/photos/531321/pexels-photo-531321.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                alt="Third slide"
-              />
-            </Carousel.Item>
+            {images.map(image => <SearchResultImage image={image} key={image.imageId} />)}
           </Carousel>
         </div>
         <div className="col-lg-7 px-4">
