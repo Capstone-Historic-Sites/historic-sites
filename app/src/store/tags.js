@@ -21,4 +21,9 @@ export const fetchAllTags = () => async (dispatch) => {
   dispatch(getAllTags(data))
 }
 
+export const fetchHistoricSiteTagsByHistoricSiteId = () => async  (dispatch) => {
+  const {data} = await httpConfig('/apis/tag')
+  dispatch(getHistoricSiteTagsByHistoricSiteId(data))
+}
+
 export default slice.reducer
