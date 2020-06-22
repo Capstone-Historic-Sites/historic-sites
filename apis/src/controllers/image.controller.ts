@@ -10,6 +10,7 @@ export async function postImageController(req: Request, res: Response, next: Nex
     try {
         const {imageHistoricSiteId, imageName} = req.body
         const imagePath = await (uploadToCloudinary(req))
+        console.log(imagePath)
         const image: Image = {imageId: null, imageHistoricSiteId, imageDateAdded:null, imageName, imagePath}
         const result = await insertImage(image)
         const status: Status = {status: 200, data:null, message: result}

@@ -20,7 +20,6 @@ imageRouter.route('/')
     .post(imageUploader, asyncValidatorController(checkSchema(postImageValidator)), postImageController)
 
 imageRouter.route('/:imageId')
-
     .delete(asyncValidatorController(checkSchema(imageIdValidator)),deleteImageController)
 
 imageRouter.route('/historic-site/:imageHistoricSiteId')
