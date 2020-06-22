@@ -4,10 +4,9 @@ export function TagsProp (props) {
   const {tag} = props
   return (
     <>
-      <div>
-        <div className='form-check' >
-          <label><input type="checkbox" value='1'/>{tag.tagName} </label>
-        </div>
+      <div className='form-check mt-1'>
+        <input className="form-check-input" type="checkbox"/>
+        <label className="form-check-label" >{tag.tagName} </label>
       </div>
     </>
   )
