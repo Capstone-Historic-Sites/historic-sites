@@ -1,12 +1,10 @@
-import {NextFunction, Request, Response} from "express";
-import {Status} from "../../utils/interfaces/status";
-import {TravelList} from "../../utils/interfaces/travel-list";
-import {insertTravelList} from "../../utils/travel-list/insertTravelList";
-import {deleteTravelList} from "../../utils/travel-list/deleteTravelList";
-import {updateTravelList} from "../../utils/travel-list/updateTravelList";
+import {NextFunction, Request, Response} from 'express'
+import {Status} from '../../utils/interfaces/status'
+import {TravelList} from '../../utils/interfaces/travel-list'
+import {insertTravelList} from '../../utils/travel-list/insertTravelList'
+import {deleteTravelList} from '../../utils/travel-list/deleteTravelList'
+import {updateTravelList} from '../../utils/travel-list/updateTravelList'
 import {selectTravelListByForeignKeys} from '../../utils/travel-list/selectTravelListByForeignKeys'
-import {validationResult} from 'express-validator';
-
 
 export async function postTravelListController(req: Request, res: Response, next: NextFunction) {
     try {
@@ -20,7 +18,6 @@ export async function postTravelListController(req: Request, res: Response, next
         console.log(error)
     }
 }
-
 
 export async function deleteTravelListController(req: Request, res: Response, next: NextFunction) {
     try {
@@ -36,7 +33,6 @@ export async function deleteTravelListController(req: Request, res: Response, ne
     }
 }
 
-
 export async function putTravelListController(req: Request, res: Response, next: NextFunction) {
     try {
         const {travelListProfileId, travelListHistoricSiteId, travelListRank} = req.body
@@ -49,7 +45,6 @@ export async function putTravelListController(req: Request, res: Response, next:
         console.log(error)
     }
 }
-
 
 export async function getTravelListByForeignKeysController(req: Request, res: Response, next: NextFunction) {
     try {
