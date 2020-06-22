@@ -1,5 +1,7 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
+import { SearchResultImage } from './SearchResultImage'
+import { fetchHistoricSiteImages} from '../../store/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export function SearchResult (props) {
