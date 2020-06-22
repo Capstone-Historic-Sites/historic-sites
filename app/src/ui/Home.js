@@ -3,7 +3,7 @@ import { NavBar } from './shared/components/NavBar'
 import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllHistoricSites } from '../../store/historic-site'
+import { fetchAllHistoricSites } from '../store/historic-site'
 import { fetchAllTags } from '../store/tags'
 
 
