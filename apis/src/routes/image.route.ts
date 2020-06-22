@@ -1,5 +1,6 @@
 import {Router} from 'express'
 import {
+    uploadImageController,
     postImageController,
     deleteImageController,
     getImageByHistoricSiteIdController
@@ -16,11 +17,13 @@ const {checkSchema} = require('express-validator')
 
 export const imageRouter = Router()
 
+imageRouter.route('/upload')
+    .post(imageUploader, uploadImageController)
+
 imageRouter.route('/')
-    .post(imageUploader, asyncValidatorController(checkSchema(postImageValidator)), postImageController)
+    .post(asyncValidatorController(checkSchema(postImageValidator)), postImageController)
 
 imageRouter.route('/:imageId')
-
     .delete(asyncValidatorController(checkSchema(imageIdValidator)),deleteImageController)
 
 imageRouter.route('/historic-site/:imageHistoricSiteId')

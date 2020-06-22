@@ -6,10 +6,19 @@ import {deleteImage} from '../../utils/image/deleteImage'
 import {selectImageByHistoricSiteId} from '../../utils/image/selectImageByHistoricSiteId'
 import {uploadToCloudinary} from '../lib/cloudinary'
 
+export async function uploadImageController(req: Request, res: Response, next: NextFunction) {
+    try {
+        const imagePath = await (uploadToCloudinary(req))
+        return res.json({status: 200, data: null, message: imagePath})
+    } catch (error) {
+        console.log(error)
+        return res.json({status: 400, data: null, message: error.message})
+    }
+}
+
 export async function postImageController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {imageHistoricSiteId, imageName} = req.body
-        const imagePath = await (uploadToCloudinary(req))
+        const {imageHistoricSiteId, imageName, imagePath} = req.body
         const image: Image = {imageId: null, imageHistoricSiteId, imageDateAdded:null, imageName, imagePath}
         const result = await insertImage(image)
         const status: Status = {status: 200, data:null, message: result}
