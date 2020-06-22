@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllHistoricSites } from '../../store/historic-site'
 
+
 export const SearchResults = () => {
 
   const dispatch = useDispatch()
@@ -49,24 +50,9 @@ export const SearchResults = () => {
               <FontAwesomeIcon className="d-md-none" icon="arrow-left" onClick={closeSidebar} />
             </div>
             <hr/>
-            <div className='ml-2' >
-              <label><input type="checkbox" value='1'/> Tag 1 </label>
-            </div>
-            <div className='ml-2'>
-              <label><input type="checkbox" value='2'/> Tag 2 </label>
-            </div>
-            <div className='ml-2'>
-              <label><input type="checkbox" value='3'/> Tag 3 </label>
-            </div>
-            <div className='ml-2'>
-              <label><input type="checkbox" value='4'/> Tag 4 </label>
-            </div>
-            <div className='ml-2'>
-              <label><input type="checkbox" value='5'/> Tag 5 </label>
-            </div>
-            <div className='ml-2'>
-              <label><input type="checkbox" value='6'/> Tag 6 </label>
-            </div>
+            {
+
+            }
           </div>
         </div>
 
