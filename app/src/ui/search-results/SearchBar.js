@@ -11,7 +11,7 @@ export const SearchBar = () => {
     document.getElementById('sidebar').style.marginLeft = '0'
   }
 
-  function testFunction () {
+  function getSearchResults () {
     const search = document.getElementById('search-input').value
     dispatch(fetchHistoricSiteBySearch(search))
   }
@@ -19,9 +19,8 @@ export const SearchBar = () => {
   return(
     <>
       <div className="position-relative">
-        <FontAwesomeIcon icon="search" className="search-icon"/>
-        <input id="search-input" className="form-control search-input" type="text" placeholder="Search" aria-label="Search"/>
-        <button onClick={testFunction}>Test</button>
+        <FontAwesomeIcon icon="search" className="search-icon" />
+        <input id="search-input" className="form-control search-input" type="text" placeholder="Search" aria-label="Search" onChange={getSearchResults}/>
         <div className="filter-toggle d-md-none" onClick={openSidebar}>Filter</div>
       </div>
     </>

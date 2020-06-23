@@ -30,7 +30,7 @@ const Routing = (store) => (
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/search-results" component={SearchResults} />
-            <Route exact path="/historic-site" component={HistoricSite} />
+            <Route exact path="/historic-site/:historicSiteId" component={HistoricSite} historicSiteId=":historicSiteId" />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/sign-in" component={SignIn} />
             <Route exact path="/upload" component={Upload} />
