@@ -3,8 +3,9 @@ import { NavBar } from '../shared/components/NavBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { HistoricSiteProp } from './HistoricSiteProp'
 import { fetchHistoricSiteByHistoricSiteId } from '../../store/historic-site'
-import { useDispatch, useSelector } from 'react-redux'
 import { fetchHistoricSiteImages } from '../../store/image'
+import { fetchHistoricSiteTagsByHistoricSiteId} from '../../store/tags'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const HistoricSite = ({match}) => {
   const dispatch = useDispatch()
@@ -17,17 +18,22 @@ export const HistoricSite = ({match}) => {
     return store.images ? store.images : []
   })
 
+  const tags = useSelector(store => {
+    return store.tags ? store.tags : []
+  })
+
   const sideEffects = () => {
     dispatch(fetchHistoricSiteByHistoricSiteId(match.params.historicSiteId))
     dispatch(fetchHistoricSiteImages(match.params.historicSiteId))
+    dispatch(fetchHistoricSiteTagsByHistoricSiteId(match.params.historicSiteId))
   }
   React.useEffect(sideEffects, [match.params.historicSiteId])
   return (
     <>
       <NavBar/>
-      <div className="container pt-5">
+      <div className="container" style={{paddingTop: '5rem'}}>
         {
-          historicSites.map(historicSiteProp => <HistoricSiteProp historicSiteProp={historicSiteProp} images={images} key={historicSiteProp.historicSiteId} />)
+          historicSites.map(historicSite => <HistoricSiteProp historicSite={historicSite} images={images} tags={tags} key={historicSite.historicSiteId} />)
         }
         <div className="row pt-2">
             <h2>Related Sites</h2>
