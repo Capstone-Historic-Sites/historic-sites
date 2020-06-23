@@ -12,7 +12,7 @@ export const NavBar = () => {
           </Nav.Link>
         </Nav>
         <Nav className="ml-auto">
-          <Nav.Link href="/search-results">Search</Nav.Link>
+          <Nav.Link href="/">Search</Nav.Link>
           <Nav.Link href="/upload">Upload</Nav.Link>
         </Nav>
       </Navbar>

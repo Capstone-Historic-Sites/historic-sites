@@ -12,8 +12,9 @@ export const Home = () => {
 
   const handleRedirect = () => {
     let search = document.getElementById('search').value
-    console.log(search)
-    //history.push(`/search/${search}`)
+    if (search !== '') {
+      history.push(`/search/${search}`)
+    }
   }
 
   return (

@@ -4,14 +4,13 @@ import { SearchResult } from './SearchResult'
 import { Mapbox } from '../mapbox/Mapbox'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllHistoricSites, fetchHistoricSiteByHistoricSiteId } from '../../store/historic-site'
 import { fetchHistoricSiteBySearch } from '../../store/historic-site'
 import { fetchAllImages } from '../../store/image'
 import { fetchAllTags } from '../../store/tags'
 import { TagsProp } from './TagsProp'
 import { SearchBar } from './SearchBar'
 
-export const SearchResults = () => {
+export const SearchResults = ({match}) => {
 
   const dispatch = useDispatch()
 
@@ -28,12 +27,12 @@ export const SearchResults = () => {
   })
 
   const sideEffects = () => {
-    dispatch(fetchAllHistoricSites())
+    dispatch(fetchHistoricSiteBySearch(match.params.search))
     dispatch(fetchAllImages())
     dispatch(fetchAllTags())
   }
 
-  React.useEffect(sideEffects, [])
+  React.useEffect(sideEffects, [match.params.search])
 
   const switchToListView = () => {
     document.getElementById('map-view').style.display = 'none'
