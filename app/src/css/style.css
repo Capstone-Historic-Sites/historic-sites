@@ -45,6 +45,9 @@ h1, h2 {
     font-weight: bold;
 }
 
+.historic-link { cursor: pointer; }
+.historic-link:hover { color: #6f7565; }
+
 @media only screen and (max-width: 767px) {
     .display-2 {
         font-size: 3rem;
