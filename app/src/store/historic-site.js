@@ -21,8 +21,8 @@ export const fetchAllHistoricSites = () => async (dispatch) => {
   dispatch(getAllHistoricSites(data))
 }
 
-export const fetchHistoricSiteByHistoricSiteId = () => async (dispatch) => {
-  const {data} = await httpConfig('/apis/historic-site/7f2bfb47-b340-11ea-ad34-0242c0a82003')
+export const fetchHistoricSiteByHistoricSiteId = (historicSiteId) => async (dispatch) => {
+  const {data} = await httpConfig(`/apis/historic-site/${historicSiteId}`)
   dispatch(getHistoricSiteByHistoricSiteId(data))
 }
 
