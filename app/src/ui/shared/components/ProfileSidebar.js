@@ -46,7 +46,7 @@ export const ProfileSidebar = () => {
             <FontAwesomeIcon icon="caret-right" className="mt-1 ml-auto" id="upload-caret" style={{display: 'none'}} />
           </div>
         </a>
-        <p className="position-absolute" style={{bottom: 0}}>Sign Out</p>
+        <a href="/sign-out" className="position-absolute pb-2" style={{bottom: 0}}>Sign Out</a>
       </div>
     </>
   )

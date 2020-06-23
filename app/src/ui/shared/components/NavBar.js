@@ -14,6 +14,9 @@ export const NavBar = () => {
         <Nav className="ml-auto">
           <Nav.Link href="/search-results">Search</Nav.Link>
           <Nav.Link href="/upload">Upload</Nav.Link>
+          <Nav.Link href="/">
+            <FontAwesomeIcon icon="home" />
+          </Nav.Link>
         </Nav>
       </Navbar>
     </>
