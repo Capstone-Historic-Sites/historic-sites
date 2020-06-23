@@ -10,6 +10,7 @@ import {tagRouter} from './routes/tag.route'
 import {travelListRouter} from './routes/travel-list.route'
 import {signUpRouter} from './routes/sign-up.route'
 import {signInRouter} from './routes/sign-in.route'
+import {signOutRouter} from "./routes/sign-out.route";
 import passport from 'passport'
 import {passportMiddleware} from './controllers/sign-in.controller'
 
@@ -67,6 +68,7 @@ export class App {
         this.app.use('/apis/travel-list', travelListRouter)
         this.app.use('/apis/sign-in', signInRouter)
         this.app.use('/apis/sign-up', signUpRouter)
+        this.app.use('/apis/sign-out', signOutRouter)
     }
 
     // starts the server and tells the terminal to post a message that the server is running and on what port
