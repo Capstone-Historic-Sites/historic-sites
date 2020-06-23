@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { HistoricSiteProp } from './HistoricSiteProp'
 import { fetchHistoricSiteByHistoricSiteId } from '../../store/historic-site'
 import { useDispatch, useSelector } from 'react-redux'
+import { fetchHistoricSiteImages } from '../../store/image'
 
 export const HistoricSite = () => {
   const dispatch = useDispatch()
@@ -12,8 +13,13 @@ export const HistoricSite = () => {
     return store.historicSites ? store.historicSites : []
   })
 
+  const images = useSelector(store => {
+    return store.images ? store.images : []
+  })
+
   const sideEffects = () => {
-    dispatch(fetchHistoricSiteByHistoricSiteId())
+    dispatch(fetchHistoricSiteByHistoricSiteId("178134ec-b341-11ea-ad34-0242c0a82003"))
+    dispatch(fetchHistoricSiteImages("178134ec-b341-11ea-ad34-0242c0a82003"))
   }
   React.useEffect(sideEffects, [])
   return (
@@ -21,7 +27,7 @@ export const HistoricSite = () => {
       <NavBar/>
       <div className="container pt-5">
         {
-          historicSites.map(historicSiteProp => <HistoricSiteProp historicSiteProp={historicSiteProp} key={historicSiteProp.historicSiteId} />)
+          historicSites.map(historicSiteProp => <HistoricSiteProp historicSiteProp={historicSiteProp} images={images} key={historicSiteProp.historicSiteId} />)
         }
         <div className="row pt-2">
             <h2>Related Sites</h2>

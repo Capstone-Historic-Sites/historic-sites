@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
 export function HistoricSiteProp (props) {
-  const {historicSiteProp} = props
+  const {historicSiteProp, images} = props
   return (
     <>
       <div className="row py-5">
@@ -25,7 +25,9 @@ export function HistoricSiteProp (props) {
             {historicSiteProp.historicSiteMunicipality}, {historicSiteProp.historicSiteState}<br />
             {historicSiteProp.historicSiteCost}
           </p>
-          <p>{historicSiteProp.historicSiteDescription}</p>
+          <p>
+            <div dangerouslySetInnerHTML={{__html: historicSiteProp.historicSiteDescription}} />
+          </p>
           <p>
             <FontAwesomeIcon icon="plus-circle" /> <strong>Add to Travel List</strong>
           </p>
