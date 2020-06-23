@@ -5,6 +5,7 @@ import { Mapbox } from '../mapbox/Mapbox'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllHistoricSites } from '../../store/historic-site'
+import { fetchAllImages } from '../../store/image'
 import { fetchAllTags } from '../../store/tags'
 import { TagsProp } from './TagsProp'
 
@@ -16,12 +17,17 @@ export const SearchResults = () => {
     return store.historicSites ? store.historicSites : []
   })
 
+  const images = useSelector(store => {
+    return store.images ? store.images : []
+  })
+
   const tags = useSelector(store => {
     return store.tags ? store.tags : []
   })
 
   const sideEffects = () => {
     dispatch(fetchAllHistoricSites())
+    dispatch(fetchAllImages())
     dispatch(fetchAllTags())
   }
 
@@ -98,9 +104,7 @@ export const SearchResults = () => {
 
         {/*Sites Container*/}
         <div className="container py-4" id="list-view">
-          {
-            historicSites.map(historicSite => <SearchResult historicSite={historicSite} key={historicSite.historicSiteId} />)
-          }
+          {historicSites.map(historicSite => <SearchResult historicSite={historicSite} images={images} key={historicSite.historicSiteId} />)}
         </div>
 
         <div className="container py-4" id="map-view" style={{display: 'none'}}>

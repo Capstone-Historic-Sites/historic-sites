@@ -1,7 +1,9 @@
 import {Router} from 'express'
 import {
+    uploadImageController,
     postImageController,
     deleteImageController,
+    getAllImagesController,
     getImageByHistoricSiteIdController
 } from '../controllers/image.controller'
 import {imageUploader} from "../lib/multer";
@@ -16,11 +18,14 @@ const {checkSchema} = require('express-validator')
 
 export const imageRouter = Router()
 
+imageRouter.route('/upload')
+    .post(imageUploader, uploadImageController)
+
 imageRouter.route('/')
-    .post(imageUploader, asyncValidatorController(checkSchema(postImageValidator)), postImageController)
+    .get(getAllImagesController)
+    .post(asyncValidatorController(checkSchema(postImageValidator)), postImageController)
 
 imageRouter.route('/:imageId')
-
     .delete(asyncValidatorController(checkSchema(imageIdValidator)),deleteImageController)
 
 imageRouter.route('/historic-site/:imageHistoricSiteId')

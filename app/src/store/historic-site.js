@@ -5,10 +5,10 @@ const slice = createSlice({
   name: 'historicSite',
   initialState: [],
   reducers:  {
-    getAllHistoricSites : (posts, action) => {
+    getAllHistoricSites : (historicSite, action) => {
       return action.payload
     },
-    getHistoricSiteByHistoricSiteId : (posts, action) => {
+    getHistoricSiteByHistoricSiteId : (historicSite, action) => {
       return action.payload
     }
   }
