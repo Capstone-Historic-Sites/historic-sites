@@ -19,8 +19,8 @@ export const profileRouter = Router()
 
 profileRouter.route('/:profileId')
     .get(asyncValidatorController(checkSchema(profileIdValidator)), getProfileByProfileIdController)
-    .put(asyncValidatorController(checkSchema(updateProfileValidator)), putProfileController)
-    .delete(asyncValidatorController(checkSchema(profileIdValidator)), deleteProfileController)
+    .put(isLoggedIn, asyncValidatorController(checkSchema(updateProfileValidator)), putProfileController)
+    .delete(isLoggedIn, asyncValidatorController(checkSchema(profileIdValidator)), deleteProfileController)
 
 profileRouter.route('/profileEmail/:profileEmail')
     .get(asyncValidatorController(checkSchema(profileEmailValidator)), getProfileByProfileEmailController)

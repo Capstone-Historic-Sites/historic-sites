@@ -10,6 +10,7 @@ import {selectHistoricSiteByHistoricSiteId} from '../../utils/historic-site/sele
 import {selectHistoricSiteByProfileId} from '../../utils/historic-site/selectHistoricSiteByProfileId'
 import {selectHistoricSiteByTagId} from '../../utils/historic-site/selectHistoricSiteByTagId'
 import {updateHistoricSite} from '../../utils/historic-site/updateHistoricSite'
+import {Profile} from '../../utils/interfaces/profile'
 
 export async function deleteHistoricSiteController(req: Request, res: Response, next: NextFunction) {
     try {
@@ -45,7 +46,8 @@ export async function getHistoricSiteByHistoricSiteIdController(req: Request, re
 
 export async function getHistoricSiteByProfileIdController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {historicSiteProfileId} = req.params
+        const profile: Profile = req.session?.profile
+        const historicSiteProfileId : string = 'd88793bf-b33d-11ea-bb68-0242c0a82002'
         const data = await selectHistoricSiteByProfileId(historicSiteProfileId)
         const status: Status = {status: 200, data, message: null}
         return res.json(status)
@@ -78,7 +80,9 @@ export async function getHistoricSiteBySearchController(req: Request, res: Respo
 
 export async function postHistoricSiteController(req: Request, res: Response, next: NextFunction) {
     try {
-        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
+        const profile: Profile = req.session?.profile
+        const historicSiteProfileId : string = 'd88793bf-b33d-11ea-bb68-0242c0a82002'
+        const {historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
         const historicSiteLatLong = await getHistoricSiteLatLong(historicSiteName)
         const historicSiteLat = historicSiteLatLong[0].latitude
         const historicSiteLong = historicSiteLatLong[0].longitude
@@ -93,8 +97,10 @@ export async function postHistoricSiteController(req: Request, res: Response, ne
 
 export async function putHistoricSiteController(req: Request, res: Response, next: NextFunction) {
     try {
+        const profile: Profile = req.session?.profile
+        const historicSiteProfileId : string = 'd88793bf-b33d-11ea-bb68-0242c0a82002'
         const {historicSiteId} = req.params
-        const {historicSiteProfileId, historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
+        const {historicSiteCost, historicSiteDate, historicSiteDescription, historicSiteMunicipality, historicSiteName, historicSiteState} = req.body
         const historicSiteLatLong = await getHistoricSiteLatLong(historicSiteName)
         const historicSiteLat = historicSiteLatLong[0].latitude
         const historicSiteLong = historicSiteLatLong[0].longitude

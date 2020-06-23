@@ -9,6 +9,7 @@ import {
     postHistoricSiteController,
     putHistoricSiteController
 } from '../controllers/historic-site.controller'
+import {isLoggedIn} from '../controllers/isLoggedIn.controller'
 import {asyncValidatorController} from '../controllers/asyncValidator.controller'
 import {
     historicSiteIdValidator,
@@ -25,12 +26,12 @@ export const historicSiteRouter = Router()
 
 historicSiteRouter.route('/')
     .get(getAllHistoricSitesController)
-    .post(asyncValidatorController(checkSchema(postHistoricSiteValidator)), postHistoricSiteController)
+    .post(isLoggedIn, asyncValidatorController(checkSchema(postHistoricSiteValidator)), postHistoricSiteController)
 
 historicSiteRouter.route('/:historicSiteId')
     .get(asyncValidatorController(checkSchema(historicSiteIdValidator)), getHistoricSiteByHistoricSiteIdController)
-    .put(asyncValidatorController(checkSchema(putHistoricSiteValidator)), putHistoricSiteController)
-    .delete(asyncValidatorController(checkSchema(historicSiteIdValidator)), deleteHistoricSiteController)
+    .put(isLoggedIn, asyncValidatorController(checkSchema(putHistoricSiteValidator)), putHistoricSiteController)
+    .delete(isLoggedIn, asyncValidatorController(checkSchema(historicSiteIdValidator)), deleteHistoricSiteController)
 
 historicSiteRouter.route('/profileId/:historicSiteProfileId')
     .get(asyncValidatorController(checkSchema(historicSiteProfileIdValidator)), getHistoricSiteByProfileIdController)

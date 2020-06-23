@@ -1,3 +1,12 @@
+export const travelListProfileIdValidator = {
+    travelListProfileId: {
+        isUUID: {
+            errorMessage: "please provide a valid Profile Id"
+        },
+        trim: true
+    }
+}
+
 export const travelListIdsValidator = {
     travelListProfileId: {
         isUUID: {
