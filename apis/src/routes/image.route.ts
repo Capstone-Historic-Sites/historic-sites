@@ -3,6 +3,7 @@ import {
     uploadImageController,
     postImageController,
     deleteImageController,
+    getAllImagesController,
     getImageByHistoricSiteIdController
 } from '../controllers/image.controller'
 import {imageUploader} from "../lib/multer";
@@ -21,6 +22,7 @@ imageRouter.route('/upload')
     .post(imageUploader, uploadImageController)
 
 imageRouter.route('/')
+    .get(getAllImagesController)
     .post(asyncValidatorController(checkSchema(postImageValidator)), postImageController)
 
 imageRouter.route('/:imageId')

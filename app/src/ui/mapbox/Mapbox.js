@@ -8,7 +8,7 @@ export const Mapbox = (props) => {
 
   const points = historicSites.map(historicSite => ({lat: historicSite.historicSiteLat, lng: historicSite.historicSiteLong}))
   if (points.length > 0) {
-    console.log(points[0].lat)
+    //console.log(points[0].lat)
   }
 
   const Map = ReactMapboxGl({

@@ -3,6 +3,7 @@ import {Status} from '../../utils/interfaces/status'
 import {Image} from '../../utils/interfaces/image'
 import {insertImage} from '../../utils/image/insertImage'
 import {deleteImage} from '../../utils/image/deleteImage'
+import {selectAllImages} from '../../utils/image/selectAllImages'
 import {selectImageByHistoricSiteId} from '../../utils/image/selectImageByHistoricSiteId'
 import {uploadToCloudinary} from '../lib/cloudinary'
 
@@ -38,6 +39,17 @@ export async function deleteImageController(req: Request, res: Response, next: N
         console.log(error)
     }
 }
+
+export async function getAllImagesController(req: Request, res: Response, next: NextFunction) {
+    try {
+        const data = await selectAllImages()
+        const status: Status = {status: 200, data, message: null}
+        return res.json(status)
+    } catch (error) {
+      console.log(error)
+    }
+}
+
 export async function getImageByHistoricSiteIdController(req: Request, res: Response, next: NextFunction) {
     try {
         const {imageHistoricSiteId} = req.params
