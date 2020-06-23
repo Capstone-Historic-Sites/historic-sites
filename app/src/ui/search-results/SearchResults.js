@@ -4,10 +4,12 @@ import { SearchResult } from './SearchResult'
 import { Mapbox } from '../mapbox/Mapbox'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllHistoricSites } from '../../store/historic-site'
+import { fetchAllHistoricSites, fetchHistoricSiteByHistoricSiteId } from '../../store/historic-site'
+import { fetchHistoricSiteBySearch } from '../../store/historic-site'
 import { fetchAllImages } from '../../store/image'
 import { fetchAllTags } from '../../store/tags'
 import { TagsProp } from './TagsProp'
+import { SearchBar } from './SearchBar'
 
 export const SearchResults = () => {
 
@@ -42,9 +44,6 @@ export const SearchResults = () => {
     document.getElementById('map-view').style.display = 'block'
   }
 
-  const openSidebar = () => {
-      document.getElementById('sidebar').style.marginLeft = '0'
-  }
   const closeSidebar = () => {
     document.getElementById('sidebar').style.marginLeft = '-300px'
   }
@@ -73,11 +72,7 @@ export const SearchResults = () => {
           {/*Search Bar*/}
           <div className="row">
             <div className="col" >
-              <div className="position-relative">
-                <FontAwesomeIcon icon="search" className="search-icon"/>
-                <input className="form-control search-input" type="text" placeholder="Search" aria-label="Search" />
-                <div className="filter-toggle d-md-none" onClick={openSidebar}>Filter</div>
-              </div>
+                <SearchBar />
             </div>
           </div>
           {/*Search Bar*/}

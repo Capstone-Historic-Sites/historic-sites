@@ -10,20 +10,28 @@ const slice = createSlice({
     },
     getHistoricSiteByHistoricSiteId : (historicSite, action) => {
       return action.payload
+    },
+    getHistoricSiteBySearch : (historicSite, action) => {
+      return action.payload
     }
   }
 })
 
-export const {getAllHistoricSites, getHistoricSiteByHistoricSiteId} = slice.actions
+export const {getAllHistoricSites, getHistoricSiteByHistoricSiteId, getHistoricSiteBySearch} = slice.actions
 
 export const fetchAllHistoricSites = () => async (dispatch) => {
   const {data} = await httpConfig('/apis/historic-site')
   dispatch(getAllHistoricSites(data))
 }
 
-export const fetchHistoricSiteByIdHistoricSiteId = (historicSiteId) => async (dispatch) => {
+export const fetchHistoricSiteByHistoricSiteId = (historicSiteId) => async (dispatch) => {
   const {data} = await httpConfig(`/apis/historic-site/${historicSiteId}`)
   dispatch(getHistoricSiteByHistoricSiteId(data))
+}
+
+export const fetchHistoricSiteBySearch = (search) => async (dispatch) => {
+  const {data} = await httpConfig(`/apis/historic-site/search/${search}`)
+  dispatch(getHistoricSiteBySearch(data))
 }
 
 export default slice.reducer
