@@ -3,27 +3,18 @@ import { NavBar } from './shared/components/NavBar'
 import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllHistoricSites } from '../store/historic-site'
-import { fetchAllTags } from '../store/tags'
+import { useHistory } from 'react-router'
 
 
 export const Home = () => {
 
-  const dispatch = useDispatch()
+  const history = useHistory()
 
-  const historicSites = useSelector(store => {
-    return store.historicSites ? store.historicSites : []
-  })
-
-  const tags = useSelector(store => {
-    return store.tags ? store.tags : []
-  })
-
-  const sideEffects = () => {
-    dispatch(fetchAllHistoricSites())
+  const handleRedirect = () => {
+    let search = document.getElementById('search').value
+    console.log(search)
+    //history.push(`/search/${search}`)
   }
-
-  React.useEffect(sideEffects, [])
 
   return (
     <>
@@ -34,8 +25,11 @@ export const Home = () => {
               <h1 className="display-2" >Historic Sites</h1>
               <div className="mb-4 position-relative">
                 <FontAwesomeIcon icon="search" className="search-icon"/>
-                <input className="form-control search-input" type="text" placeholder="Search" aria-label="Search" />
+                <input id="search" className="form-control search-input" type="text" placeholder="Search" aria-label="Search" />
               </div>
+              <Button variant="secondary" size="lg" onClick={handleRedirect}>
+                Search
+              </Button>
             </div>
           </div>
         </section>
