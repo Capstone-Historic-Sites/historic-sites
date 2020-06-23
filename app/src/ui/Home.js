@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllHistoricSites } from '../store/historic-site'
 import { fetchAllTags } from '../store/tags'
-
+import {Link} from 'react-router-dom'
 
 export const Home = () => {
 
@@ -49,9 +49,7 @@ export const Home = () => {
               you a better understanding as well as a link to the specific site if you would
               like more in depth knowledge."</p>
             <div className="mb-2">
-              <Button variant="primary" size="lg">
-                Create Profile
-              </Button>
+            <Link to="/sign-up"> <Button>Create Profile</Button> </Link>
             </div>
           </div>
         </section>

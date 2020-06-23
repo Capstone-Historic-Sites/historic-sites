@@ -6,7 +6,7 @@ import { fetchHistoricSiteByHistoricSiteId } from '../../store/historic-site'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchHistoricSiteImages } from '../../store/image'
 
-export const HistoricSite = () => {
+export const HistoricSite = ({match}) => {
   const dispatch = useDispatch()
 
   const historicSites = useSelector(store => {
@@ -18,10 +18,10 @@ export const HistoricSite = () => {
   })
 
   const sideEffects = () => {
-    dispatch(fetchHistoricSiteByHistoricSiteId("178134ec-b341-11ea-ad34-0242c0a82003"))
-    dispatch(fetchHistoricSiteImages("178134ec-b341-11ea-ad34-0242c0a82003"))
+    dispatch(fetchHistoricSiteByHistoricSiteId(match.params.historicSiteId))
+    dispatch(fetchHistoricSiteImages(match.params.historicSiteId))
   }
-  React.useEffect(sideEffects, [])
+  React.useEffect(sideEffects, [match.params.historicSiteId])
   return (
     <>
       <NavBar/>

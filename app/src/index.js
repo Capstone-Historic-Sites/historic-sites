@@ -13,12 +13,12 @@ import { Upload } from './ui/upload/Upload'
 import { TravelList } from './ui/TravelList'
 import { FourOhFour } from './ui/FourOhFour'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faArrowLeft, faBars, faCar, faCaretRight, faCog, faList, faMapMarkerAlt, faPlusCircle, faSearch, faUpload, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faBars, faCar, faCaretRight, faCog, faList, faMapMarkerAlt, faPlusCircle, faSearch, faUpload, faUserCircle, faHome } from '@fortawesome/free-solid-svg-icons'
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import reducer from './store'
 
-library.add( faArrowLeft, faBars, faCar, faCaretRight, faCog, faList, faMapMarkerAlt, faPlusCircle, faSearch, faUpload, faUserCircle )
+library.add( faArrowLeft, faBars, faCar, faCaretRight, faCog, faList, faMapMarkerAlt, faPlusCircle, faSearch, faUpload, faUserCircle, faHome )
 
 const store = configureStore({reducer})
 
