@@ -43,7 +43,9 @@ export const Home = () => {
               you a better understanding as well as a link to the specific site if you would
               like more in depth knowledge."</p>
             <div className="mb-2">
-            <Link to="/sign-up"> <Button>Create Profile</Button> </Link>
+            <Link to="/sign-up">
+              <Button variant="primary" size="lg">Create Profile</Button>
+            </Link>
             </div>
           </div>
         </section>
