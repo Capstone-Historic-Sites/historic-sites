@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {useDispatch, useSelector} from 'react-redux'
 import { fetchProfileByProfileId } from '../../../store/profile-sidebar'
 import { ProfileSidebarProp } from './ProfileSidebarProp'
+import { Button } from 'react-bootstrap'
+import { httpConfig } from '../../../utils/http-config'
 
 export const ProfileSidebar = () => {
 
@@ -17,6 +19,10 @@ export const ProfileSidebar = () => {
   }
 
   React.useEffect(sideEffects, [])
+
+  function signOut () {
+    httpConfig(`/apis/sign-out`)
+  }
 
   return (
     <>
@@ -46,7 +52,9 @@ export const ProfileSidebar = () => {
             <FontAwesomeIcon icon="caret-right" className="mt-1 ml-auto" id="upload-caret" style={{display: 'none'}} />
           </div>
         </a>
-        <a href="/sign-out" className="position-absolute pb-2" style={{bottom: 0}}>Sign Out</a>
+        <Button onClick={signOut}>
+          Sign Out
+        </Button>
       </div>
     </>
   )
