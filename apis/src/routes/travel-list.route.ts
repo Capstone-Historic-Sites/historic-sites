@@ -8,20 +8,18 @@ import {
 } from '../controllers/travel-list.controller'
 import {isLoggedIn} from '../controllers/isLoggedIn.controller'
 import {asyncValidatorController} from '../controllers/asyncValidator.controller'
-import {travelListProfileIdValidator, travelListIdsValidator, travelListValidator} from '../validators/travel-list.validator'
+import {travelListHistoricSiteIdValidator, travelListValidator} from '../validators/travel-list.validator'
 
 const {checkSchema} = require("express-validator");
 
 export const travelListRouter = Router()
 
 travelListRouter.route('/')
+    .get(isLoggedIn, getTravelListByProfileId)
     .post(isLoggedIn, asyncValidatorController(checkSchema(travelListValidator)),postTravelListController)
     .put(isLoggedIn, asyncValidatorController(checkSchema(travelListValidator)),putTravelListController)
 
 
-travelListRouter.route('/travelListProfileId/:travelListProfileId/travelListHistoricSiteId/:travelListHistoricSiteId')
-    .delete(isLoggedIn, asyncValidatorController(checkSchema(travelListIdsValidator)),deleteTravelListController)
-    .get(asyncValidatorController(checkSchema(travelListIdsValidator)),getTravelListByForeignKeysController)
-
-travelListRouter.route('travelListProfileId/:travelListProfileId')
-    .get(isLoggedIn, asyncValidatorController(checkSchema(travelListProfileIdValidator)), getTravelListByProfileId)
+travelListRouter.route('/travelListHistoricSiteId/:travelListHistoricSiteId')
+    .delete(isLoggedIn, asyncValidatorController(checkSchema(travelListHistoricSiteIdValidator)),deleteTravelListController)
+    .get(asyncValidatorController(checkSchema(travelListHistoricSiteIdValidator)),getTravelListByForeignKeysController)

@@ -8,15 +8,6 @@ export const historicSiteIdValidator = {
     }
 }
 
-export const historicSiteProfileIdValidator = {
-    historicSiteProfileId: {
-        isUUID: {
-            errorMessage: 'Please provide a valid profileId'
-        },
-        trim: true,
-    }
-}
-
 export const historicSiteValidator = {
     historicSiteCost: {
         isLength: {
@@ -90,13 +81,7 @@ export const historicSiteSearchValidator = {
     }
 }
 
-export const postHistoricSiteValidator = {
-    ...historicSiteProfileIdValidator,
-    ...historicSiteValidator
-}
-
 export const putHistoricSiteValidator = {
     ...historicSiteIdValidator,
-    ...historicSiteProfileIdValidator,
     ...historicSiteValidator
 }

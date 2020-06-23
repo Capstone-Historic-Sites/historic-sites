@@ -11,7 +11,7 @@ import {selectTravelListByProfileId} from '../../utils/travel-list/selectTravelL
 export async function postTravelListController(req: Request, res: Response, next: NextFunction) {
     try {
         const profile: Profile = req.session?.profile
-        const travelListProfileId : string = 'd88793bf-b33d-11ea-bb68-0242c0a82002'
+        const travelListProfileId = <string> profile.profileId
         const {travelListHistoricSiteId, travelListRank} = req.body
         const travelList: TravelList = {travelListProfileId, travelListHistoricSiteId, travelListDateAdded: null, travelListRank}
         const result = await insertTravelList(travelList)
@@ -26,7 +26,7 @@ export async function postTravelListController(req: Request, res: Response, next
 export async function deleteTravelListController(req: Request, res: Response, next: NextFunction) {
     try {
         const profile: Profile = req.session?.profile
-        const travelListProfileId : string = 'd88793bf-b33d-11ea-bb68-0242c0a82002'
+        const travelListProfileId = <string> profile.profileId
         const {travelListHistoricSiteId} = req.params
         const result = await deleteTravelList(travelListProfileId, travelListHistoricSiteId);
         console.log(result)
@@ -40,7 +40,7 @@ export async function deleteTravelListController(req: Request, res: Response, ne
 export async function putTravelListController(req: Request, res: Response, next: NextFunction) {
     try {
         const profile: Profile = req.session?.profile
-        const travelListProfileId : string = 'd88793bf-b33d-11ea-bb68-0242c0a82002'
+        const travelListProfileId = <string> profile.profileId
         const {travelListHistoricSiteId, travelListRank} = req.body
         const travelList: TravelList = {travelListProfileId, travelListHistoricSiteId, travelListDateAdded:null, travelListRank}
         const result = await updateTravelList(travelList)
@@ -55,7 +55,7 @@ export async function putTravelListController(req: Request, res: Response, next:
 export async function getTravelListByForeignKeysController(req: Request, res: Response, next: NextFunction) {
     try {
         const profile: Profile = req.session?.profile
-        const travelListProfileId : string = 'd88793bf-b33d-11ea-bb68-0242c0a82002'
+        const travelListProfileId = <string> profile.profileId
         const {travelListHistoricSiteId} = req.params
         const data = await selectTravelListByForeignKeys(travelListProfileId, travelListHistoricSiteId)
         const status: Status = {status: 200, data, message: null}
@@ -68,7 +68,7 @@ export async function getTravelListByForeignKeysController(req: Request, res: Re
 export async function getTravelListByProfileId(req: Request, res: Response, next: NextFunction) {
     try {
         const profile: Profile = req.session?.profile
-        const travelListProfileId : string = 'd88793bf-b33d-11ea-bb68-0242c0a82002'
+        const travelListProfileId = <string> profile.profileId
         const data = await selectTravelListByProfileId(travelListProfileId)
         const status: Status = {status: 200, data, message: null}
         return res.json(status)

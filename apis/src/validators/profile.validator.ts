@@ -25,16 +25,6 @@ export const profileValidator = {
     }
 }
 
-export const profileIdValidator = {
-    profileId: {
-        isUUID: {
-            errorMessage: "Please provide a valid profile Id"
-        },
-        trim: true,
-        in: ["params"]
-    }
-}
-
 export const profileEmailValidator = {
     profileEmail: {
         isEmail: {
@@ -46,7 +36,6 @@ export const profileEmailValidator = {
 }
 
 export const updateProfileValidator = {
-    ...profileIdValidator,
     ...profileEmailValidator,
     ...profileValidator
 }

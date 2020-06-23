@@ -10,7 +10,8 @@ import {setHash} from '../../utils/auth.utils'
 
 export async function getProfileByProfileIdController(req: Request, res: Response, next: NextFunction) {
         try {
-            const {profileId} = req.params
+            const profile: Profile = req.session?.profile
+            const profileId = <string> profile.profileId
             const data = await selectProfileByProfileId(profileId)
             const status: Status = {status: 200, data, message: null}
             return res.json(status)
@@ -22,7 +23,7 @@ export async function getProfileByProfileIdController(req: Request, res: Respons
 export async function putProfileController(req: Request, res: Response, next: NextFunction) {
     try {
         const profileSession: Profile = req.session?.profile
-        const profileId : string = 'd88793bf-b33d-11ea-bb68-0242c0a82002'
+        const profileId = <string> profileSession.profileId
         const {profileEmail, profileName, profileOrganization, profilePassword} = req.body
         const profileHash = await setHash(profilePassword)
         const profile: Profile = {profileId, profileActivationToken: null, profileDateAdded: null, profileEmail, profileHash, profileIsAdmin: false, profileName, profileOrganization}
@@ -36,7 +37,7 @@ export async function putProfileController(req: Request, res: Response, next: Ne
 export async function deleteProfileController(req: Request, res: Response, next: NextFunction) {
     try {
         const profile: Profile = req.session?.profile
-        const profileId : string = 'd88793bf-b33d-11ea-bb68-0242c0a82002'
+        const profileId = <string> profile.profileId
         const result = await deleteProfile(profileId)
         const status: Status = {status: 200, data: null, message: result}
         return res.json(status)
