@@ -21,8 +21,8 @@ export const fetchAllTags = () => async (dispatch) => {
   dispatch(getAllTags(data))
 }
 
-export const fetchHistoricSiteTagsByHistoricSiteId = () => async  (dispatch) => {
-  const {data} = await httpConfig('/apis/tag')
+export const fetchHistoricSiteTagsByHistoricSiteId = (historicSiteId) => async  (dispatch) => {
+  const {data} = await httpConfig(`/apis/tag/${historicSiteId}`)
   dispatch(getHistoricSiteTagsByHistoricSiteId(data))
 }
 

@@ -1,32 +1,26 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import { HistoricSiteImages } from './HistoricSiteImages'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export function HistoricSiteProp (props) {
-  const {historicSiteProp, images} = props
+  const {historicSite, images, tags} = props
+
   return (
     <>
       <div className="row py-5">
-        <div className="col-md-5">
-          <img className="w-100" src="http://placekitten.com/700/700" alt="Historic Site Main Image"/>
-          <div className="py-3 text-center">
-            <img className="w-25 px-1" src="http://placekitten.com/200/200" alt="Historic Site Thumbnail 1"/>
-            <img className="w-25 px-1" src="http://placekitten.com/200/200" alt="Historic Site Thumbnail 2"/>
-            <img className="w-25 px-1" src="http://placekitten.com/200/200" alt="Historic Site Thumbnail 3"/>
-          </div>
-        </div>
-        <div className="col-md-7">
-          <h1>{historicSiteProp.historicSiteName}</h1>
-          <div className="d-flex py-3">
-            <p className="tag">Tag Name 1</p>
-            <p className="tag">Tag Name 2</p>
+        <HistoricSiteImages images={images} />
+        <div className="col-md-6">
+          <h1>{historicSite.historicSiteName}</h1>
+          <div className="d-flex pb-3 flex-wrap">
+            {tags.map(tag => <p className="tag">{tag.tagName}</p>)}
           </div>
           <p>
-            {historicSiteProp.historicSiteDate} <br />
-            {historicSiteProp.historicSiteMunicipality}, {historicSiteProp.historicSiteState}<br />
-            {historicSiteProp.historicSiteCost}
+            {historicSite.historicSiteMunicipality}, {historicSite.historicSiteState}<br />
+            <strong>{historicSite.historicSiteDate}</strong> <br />
+            {historicSite.historicSiteCost}
           </p>
           <p>
-            <div dangerouslySetInnerHTML={{__html: historicSiteProp.historicSiteDescription}} />
+            <div dangerouslySetInnerHTML={{__html: historicSite.historicSiteDescription}} />
           </p>
           <p>
             <FontAwesomeIcon icon="plus-circle" /> <strong>Add to Travel List</strong>
