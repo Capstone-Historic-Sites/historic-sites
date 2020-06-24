@@ -7,16 +7,15 @@ export const travelListHistoricSiteIdValidator = {
     }
 }
 
-export const travelListRankValidator = {
-    travelListRank: {
-        isInt: {
-            errorMessage: "please provide a valid number"
-        },
-    }
-}
+// export const travelListRankValidator = {
+//     travelListRank: {
+//         isInt: {
+//             errorMessage: "please provide a valid number"
+//         },
+//     }
+// }
 
 
 export const travelListValidator = {
-    ...travelListHistoricSiteIdValidator,
-    ...travelListRankValidator
+    ...travelListHistoricSiteIdValidator
 }

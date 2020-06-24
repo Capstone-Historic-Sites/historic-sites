@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { HistoricSiteImages } from './HistoricSiteImages'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {httpConfig} from '../../utils/http-config'
@@ -6,14 +6,12 @@ import {httpConfig} from '../../utils/http-config'
 export function HistoricSiteProp (props) {
   const {historicSite, images, tags} = props
 
+  const [status, setStatus] = useState(null)
+
   function addToTravelList () {
     httpConfig.post('/apis/travel-list/', {travelListHistoricSiteId: historicSite.historicSiteId}).then(reply => {
-      let {message} = reply
-      if (reply.status === 200) {
-        document.getElementById('status').innerText = message
-      } else {
-        document.getElementById('status').innerText = 'huh?'
-      }
+      let {message, type} = reply
+      setStatus({message, type})
     })
   }
 
@@ -37,7 +35,7 @@ export function HistoricSiteProp (props) {
           <p className="blue-link" onClick={addToTravelList}>
             <FontAwesomeIcon icon="plus-circle" /> <strong>Add to Travel List</strong>
           </p>
-          <div id="status"></div>
+          {status !== null && (<div className={status.type}>{status.message}</div>)}
         </div>
       </div>
     </>
