@@ -1,10 +1,25 @@
 import React from 'react'
 import { HistoricSiteImages } from './HistoricSiteImages'
+import { RelatedSite } from './RelatedSite'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { fetchHistoricSiteByTagId } from '../../store/related-sites'
 import {httpConfig} from '../../utils/http-config'
+import { useDispatch, useSelector } from 'react-redux'
 
 export function HistoricSiteProp (props) {
   const {historicSite, images, tags} = props
+
+  const dispatch = useDispatch()
+
+  const relatedSites = useSelector(store => {
+    return store.relatedSites ? store.relatedSites : []
+  })
+
+  const sideEffects = () => {
+    dispatch(fetchHistoricSiteByTagId(tags))
+  }
+
+  React.useEffect(sideEffects, [])
 
   function addToTravelList () {
     httpConfig.post('/apis/travel-list/', {travelListHistoricSiteId: historicSite.historicSiteId}).then(reply => {
@@ -39,6 +54,16 @@ export function HistoricSiteProp (props) {
           </p>
           <div id="status"></div>
         </div>
+      </div>
+      <div className="row pt-2">
+        <h2>Related Sites</h2>
+      </div>
+      <div className="row py-2">
+        {relatedSites.map((relatedSite,index) => {
+          if (index < 4) {
+            return <RelatedSite relatedSite={relatedSite} key={relatedSite.historicSiteId}/>
+          }
+        })}
       </div>
     </>
   )
