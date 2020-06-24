@@ -31,7 +31,6 @@ export const Upload = () => {
   })
 
   const historicSite = {
-    historicSiteProfileId: '',
     historicSiteCost: '',
     historicSiteDate: '',
     historicSiteDescription: '',
@@ -90,20 +89,6 @@ export const Upload = () => {
               return (
                 <>
                   <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                      <label htmlFor="profileId">ProfileId Test</label>
-                      <input
-                        className="form-control"
-                        id="profileId"
-                        name="historicSiteProfileId"
-                        type="text"
-                        placeholder="Profile Id test"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.historicSiteProfileId}
-                      />
-
-                    </div>
                     <div className="form-group">
                       <label htmlFor="name">Name of Historic Site</label>
                       <input

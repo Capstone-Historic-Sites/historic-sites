@@ -27,6 +27,8 @@ export function SignIn () {
     httpConfig.post("/apis/sign-in", values).then(reply => {
       let {message, type} = reply
       if (reply.status === 200) {
+        window.localStorage.removeItem("authorization")
+        window.localStorage.setItem("authorization", reply.headers["authorization"])
         resetForm()
       }
       setStatus({message, type})
