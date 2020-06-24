@@ -15,13 +15,16 @@ export async function postTravelListController(req: Request, res: Response, next
         const travelListProfileId = <string> profile.profileId
         const {travelListHistoricSiteId} = req.body
         const count = await selectTravelListCount(travelListProfileId)
-        console.log(count)
-        const travelListRank = 4
-        const travelList: TravelList = {travelListProfileId, travelListHistoricSiteId, travelListDateAdded: null, travelListRank}
-        const result = await insertTravelList(travelList)
-        console.log(result)
-        const status: Status = {status: 200, data:null, message: result}
-        return res.json(status)
+        if (count.count) {
+            const travelListRank = count.count + 1
+            const travelList: TravelList = {travelListProfileId, travelListHistoricSiteId, travelListDateAdded: null, travelListRank}
+            const result = await insertTravelList(travelList)
+            const status: Status = {status: 200, data:null, message: result}
+            return res.json(status)
+        } else {
+            const status: Status = {status: 400, data:null, message: 'Travel list count is undefined'}
+            return res.json(status)
+        }
     } catch (error) {
         console.log(error)
     }
@@ -32,8 +35,7 @@ export async function deleteTravelListController(req: Request, res: Response, ne
         const profile: Profile = req.session?.profile
         const travelListProfileId = <string> profile.profileId
         const {travelListHistoricSiteId} = req.params
-        const result = await deleteTravelList(travelListProfileId, travelListHistoricSiteId);
-        console.log(result)
+        const result = await deleteTravelList(travelListProfileId, travelListHistoricSiteId)
         const status: Status = {status: 200, data: null, message: result}
         return res.json(status)
     } catch (error) {
@@ -48,7 +50,6 @@ export async function putTravelListController(req: Request, res: Response, next:
         const {travelListHistoricSiteId, travelListRank} = req.body
         const travelList: TravelList = {travelListProfileId, travelListHistoricSiteId, travelListDateAdded:null, travelListRank}
         const result = await updateTravelList(travelList)
-        console.log(result)
         const status: Status = {status: 200, data:null, message: result}
         return res.json(status)
     } catch (error) {
