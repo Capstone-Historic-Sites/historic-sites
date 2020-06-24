@@ -7,12 +7,16 @@ import {deleteTravelList} from '../../utils/travel-list/deleteTravelList'
 import {updateTravelList} from '../../utils/travel-list/updateTravelList'
 import {selectTravelListByForeignKeys} from '../../utils/travel-list/selectTravelListByForeignKeys'
 import {selectTravelListByProfileId} from '../../utils/travel-list/selectTravelListByProfileId'
+import {selectTravelListCount} from '../../utils/travel-list/selectTravelListCount'
 
 export async function postTravelListController(req: Request, res: Response, next: NextFunction) {
     try {
         const profile: Profile = req.session?.profile
         const travelListProfileId = <string> profile.profileId
-        const {travelListHistoricSiteId, travelListRank} = req.body
+        const {travelListHistoricSiteId} = req.body
+        const count = await selectTravelListCount(travelListProfileId)
+        console.log(count)
+        const travelListRank = 4
         const travelList: TravelList = {travelListProfileId, travelListHistoricSiteId, travelListDateAdded: null, travelListRank}
         const result = await insertTravelList(travelList)
         console.log(result)

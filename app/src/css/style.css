@@ -48,6 +48,9 @@ h1, h2 {
 .historic-link { cursor: pointer; }
 .historic-link:hover { color: #6f7565; }
 
+.blue-link { cursor: pointer; }
+.blue-link:hover { color: #526984; }
+
 @media only screen and (max-width: 767px) {
     .display-2 {
         font-size: 3rem;

@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavBar } from '../shared/components/NavBar'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { HistoricSiteProp } from './HistoricSiteProp'
 import { fetchHistoricSiteByHistoricSiteId } from '../../store/historic-site'
 import { fetchHistoricSiteImages } from '../../store/image'

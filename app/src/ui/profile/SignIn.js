@@ -84,7 +84,7 @@ export function SignIn () {
                         className="form-control"
                         id="profile-password"
                         name="profilePassword"
-                        type="text"
+                        type="password"
                         placeholder="Password"
                         onChange={handleChange}
                         onBlur={handleBlur}
