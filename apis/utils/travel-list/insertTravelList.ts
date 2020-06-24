@@ -6,7 +6,7 @@ export async function insertTravelList(travelList: TravelList) {
         const mySqlConnection = await connect()
         const mySqlQuery = 'INSERT INTO travelList(travelListProfileId, travelListHistoricSiteId, travelListDateAdded, travelListRank) VALUES(UUID_TO_BIN(:travelListProfileId), UUID_TO_BIN(:travelListHistoricSiteId), NOW(), :travelListRank)'
         const [rows] = await mySqlConnection.execute(mySqlQuery, travelList)
-        return "Travel List Uploaded Successfully"
+        return "Historic site added to travel list"
     } catch (error) {
         console.log(error)
     }

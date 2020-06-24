@@ -1,16 +1,8 @@
-export const imageValidator = {
+export const imageNameValidator = {
     imageName: {
         isLength: {
             errorMessage: "the name provided for this image is too long",
             options: {min:1,max:32}
-        },
-        trim: true,
-        escape: true
-    },
-    imagePath: {
-        isLength: {
-            errorMessage: "the url for this image is too long",
-            options: {min:1,max:255}
         },
         trim: true,
         escape: true
@@ -38,5 +30,5 @@ export const imageHistoricSiteIdValidator = {
 
 export const postImageValidator = {
     ...imageHistoricSiteIdValidator,
-    ...imageValidator
+    ...imageNameValidator
 }

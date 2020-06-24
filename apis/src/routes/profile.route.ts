@@ -7,7 +7,6 @@ import {
 } from '../controllers/profile.controller'
 import {asyncValidatorController} from '../controllers/asyncValidator.controller'
 import {
-        profileIdValidator,
         profileEmailValidator,
         updateProfileValidator,
 } from '../validators/profile.validator'
@@ -18,9 +17,9 @@ const { checkSchema } = require('express-validator')
 export const profileRouter = Router()
 
 profileRouter.route('/:profileId')
-    .get(asyncValidatorController(checkSchema(profileIdValidator)), getProfileByProfileIdController)
-    .put(asyncValidatorController(checkSchema(updateProfileValidator)), putProfileController)
-    .delete(asyncValidatorController(checkSchema(profileIdValidator)), deleteProfileController)
+    .get(getProfileByProfileIdController)
+    .put(isLoggedIn, asyncValidatorController(checkSchema(updateProfileValidator)), putProfileController)
+    .delete(isLoggedIn, deleteProfileController)
 
 profileRouter.route('/profileEmail/:profileEmail')
     .get(asyncValidatorController(checkSchema(profileEmailValidator)), getProfileByProfileEmailController)

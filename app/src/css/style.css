@@ -40,10 +40,13 @@ h1, h2 {
 .tag {
     background: #6f7565;
     color: #fff;
-    margin: 0 7px 0 0;
+    margin: 7px 7px 0 0;
     padding: 5px 10px;
     font-weight: bold;
 }
+
+.historic-link { cursor: pointer; }
+.historic-link:hover { color: #6f7565; }
 
 @media only screen and (max-width: 767px) {
     .display-2 {
@@ -67,7 +70,7 @@ h1, h2 {
 
 .title-section {
     padding-top: 56px;
-    height: calc(100vh - 370px);
+    height: calc(100vh - 345px);
     min-height: 25rem;
 }
 
@@ -170,5 +173,16 @@ h1, h2 {
 .btn-primary:hover, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active {
     background-color: #69839e;
     border-color: #69839e;
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background-color: #6f7565;
+    border-color: #6f7565;
+    border-radius: 0;
+}
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:not(:disabled):not(.disabled):active {
+    background-color: #7e8473;
+    border-color: #7e8473;
     box-shadow: none;
 }

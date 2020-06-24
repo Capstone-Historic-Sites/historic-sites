@@ -4,9 +4,13 @@ import { SearchResult } from './SearchResult'
 import { Mapbox } from '../mapbox/Mapbox'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllHistoricSites } from '../../store/historic-site'
+import { fetchHistoricSiteBySearch } from '../../store/historic-site'
+import { fetchAllImages } from '../../store/image'
+import { fetchAllTags } from '../../store/tags'
+import { TagsProp } from './TagsProp'
+import { SearchBar } from './SearchBar'
 
-export const SearchResults = () => {
+export const SearchResults = ({match}) => {
 
   const dispatch = useDispatch()
 
@@ -14,11 +18,21 @@ export const SearchResults = () => {
     return store.historicSites ? store.historicSites : []
   })
 
+  const images = useSelector(store => {
+    return store.images ? store.images : []
+  })
+
+  const tags = useSelector(store => {
+    return store.tags ? store.tags : []
+  })
+
   const sideEffects = () => {
-    dispatch(fetchAllHistoricSites())
+    dispatch(fetchHistoricSiteBySearch(match.params.search))
+    dispatch(fetchAllImages())
+    dispatch(fetchAllTags())
   }
 
-  React.useEffect(sideEffects, [])
+  React.useEffect(sideEffects, [match.params.search])
 
   const switchToListView = () => {
     document.getElementById('map-view').style.display = 'none'
@@ -29,9 +43,6 @@ export const SearchResults = () => {
     document.getElementById('map-view').style.display = 'block'
   }
 
-  const openSidebar = () => {
-      document.getElementById('sidebar').style.marginLeft = '0'
-  }
   const closeSidebar = () => {
     document.getElementById('sidebar').style.marginLeft = '-300px'
   }
@@ -49,24 +60,9 @@ export const SearchResults = () => {
               <FontAwesomeIcon className="d-md-none" icon="arrow-left" onClick={closeSidebar} />
             </div>
             <hr/>
-            <div className='ml-2' >
-              <label><input type="checkbox" value='1'/> Tag 1 </label>
-            </div>
-            <div className='ml-2'>
-              <label><input type="checkbox" value='2'/> Tag 2 </label>
-            </div>
-            <div className='ml-2'>
-              <label><input type="checkbox" value='3'/> Tag 3 </label>
-            </div>
-            <div className='ml-2'>
-              <label><input type="checkbox" value='4'/> Tag 4 </label>
-            </div>
-            <div className='ml-2'>
-              <label><input type="checkbox" value='5'/> Tag 5 </label>
-            </div>
-            <div className='ml-2'>
-              <label><input type="checkbox" value='6'/> Tag 6 </label>
-            </div>
+            {
+            tags.map(tag => <TagsProp tag={tag} key={tag.tagId} />)
+            }
           </div>
         </div>
 
@@ -75,11 +71,7 @@ export const SearchResults = () => {
           {/*Search Bar*/}
           <div className="row">
             <div className="col" >
-              <div className="position-relative">
-                <FontAwesomeIcon icon="search" className="search-icon"/>
-                <input className="form-control search-input" type="text" placeholder="Search" aria-label="Search" />
-                <div className="filter-toggle d-md-none" onClick={openSidebar}>Filter</div>
-              </div>
+                <SearchBar />
             </div>
           </div>
           {/*Search Bar*/}
@@ -106,7 +98,7 @@ export const SearchResults = () => {
 
         {/*Sites Container*/}
         <div className="container py-4" id="list-view">
-          {historicSites.map(historicSite => <SearchResult historicSite={historicSite} key={historicSite.historicSiteId} />)}
+          {historicSites.map(historicSite => <SearchResult historicSite={historicSite} images={images} key={historicSite.historicSiteId} />)}
         </div>
 
         <div className="container py-4" id="map-view" style={{display: 'none'}}>

@@ -2,8 +2,20 @@ import React from 'react'
 import { NavBar } from './shared/components/NavBar'
 import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {Link} from 'react-router-dom'
+import { useHistory } from 'react-router'
 
 export const Home = () => {
+
+  const history = useHistory()
+
+  const handleRedirect = () => {
+    let search = document.getElementById('search').value
+    if (search !== '') {
+      history.push(`/search/${search}`)
+    }
+  }
+
   return (
     <>
       <NavBar />
@@ -13,23 +25,27 @@ export const Home = () => {
               <h1 className="display-2" >Historic Sites</h1>
               <div className="mb-4 position-relative">
                 <FontAwesomeIcon icon="search" className="search-icon"/>
-                <input className="form-control search-input" type="text" placeholder="Search" aria-label="Search" />
+                <input id="search" className="form-control search-input" type="text" placeholder="Search" aria-label="Search" />
               </div>
+              <Button variant="secondary" size="lg" onClick={handleRedirect}>
+                Search
+              </Button>
             </div>
           </div>
         </section>
         <section className="about-section">
           <div className="container text-center">
             <h3><strong>About</strong></h3>
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            <p>"Welcome to the Historic Sites website where we have a collection
+              of historic locations in and around Albuquerque. People can visit and
+              explore the many fun and unique sites filled with rich history all throughout
+              New Mexico. The site will also have a short summary of each location to give
+              you a better understanding as well as a link to the specific site if you would
+              like more in depth knowledge."</p>
             <div className="mb-2">
-              <Button variant="primary" size="lg">
-                Create Profile
-              </Button>
+            <Link to="/sign-up">
+              <Button variant="primary" size="lg">Create Profile</Button>
+            </Link>
             </div>
           </div>
         </section>

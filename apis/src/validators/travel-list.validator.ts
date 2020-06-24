@@ -1,15 +1,10 @@
-export const travelListIdsValidator = {
-    travelListProfileId: {
-        isUUID: {
-            errorMessage: "please provide a valid Profile Id"
-        },
-        trim:true,
-    }, travelListHistoricSiteId: {
+export const travelListHistoricSiteIdValidator = {
+    travelListHistoricSiteId: {
         isUUID: {
             errorMessage: "please provide a valid Historic Site Id"
         },
         trim:true,
-    },
+    }
 }
 
 export const travelListRankValidator = {
@@ -22,6 +17,6 @@ export const travelListRankValidator = {
 
 
 export const travelListValidator = {
-    ...travelListRankValidator,
-    ...travelListIdsValidator
+    ...travelListHistoricSiteIdValidator,
+    ...travelListRankValidator
 }

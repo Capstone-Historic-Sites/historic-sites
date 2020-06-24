@@ -9,14 +9,14 @@ import {
     postHistoricSiteController,
     putHistoricSiteController
 } from '../controllers/historic-site.controller'
+import {isLoggedIn} from '../controllers/isLoggedIn.controller'
 import {asyncValidatorController} from '../controllers/asyncValidator.controller'
 import {
+    historicSiteValidator,
     historicSiteIdValidator,
-    historicSiteProfileIdValidator,
     historicSiteTagTagIdValidator,
     historicSiteSearchValidator,
-    postHistoricSiteValidator,
-    putHistoricSiteValidator
+    putHistoricSiteValidator,
 } from '../validators/historic-site.validator'
 
 const {checkSchema} = require('express-validator')
@@ -25,15 +25,15 @@ export const historicSiteRouter = Router()
 
 historicSiteRouter.route('/')
     .get(getAllHistoricSitesController)
-    .post(asyncValidatorController(checkSchema(postHistoricSiteValidator)), postHistoricSiteController)
+    .post(isLoggedIn, asyncValidatorController(checkSchema(historicSiteValidator)), postHistoricSiteController)
 
 historicSiteRouter.route('/:historicSiteId')
     .get(asyncValidatorController(checkSchema(historicSiteIdValidator)), getHistoricSiteByHistoricSiteIdController)
-    .put(asyncValidatorController(checkSchema(putHistoricSiteValidator)), putHistoricSiteController)
-    .delete(asyncValidatorController(checkSchema(historicSiteIdValidator)), deleteHistoricSiteController)
+    .put(isLoggedIn, asyncValidatorController(checkSchema(putHistoricSiteValidator)), putHistoricSiteController)
+    .delete(isLoggedIn, asyncValidatorController(checkSchema(historicSiteIdValidator)), deleteHistoricSiteController)
 
 historicSiteRouter.route('/profileId/:historicSiteProfileId')
-    .get(asyncValidatorController(checkSchema(historicSiteProfileIdValidator)), getHistoricSiteByProfileIdController)
+    .get(getHistoricSiteByProfileIdController)
 
 historicSiteRouter.route('/tagId/:tagId')
     .get(asyncValidatorController(checkSchema(historicSiteTagTagIdValidator)), getHistoricSiteByTagIdController)
