@@ -17,15 +17,13 @@ httpConfig.interceptors.response.use(function ({data, headers}) {
   return Promise.reject(error)
 })
 
-httpConfig.interceptors.request.use(
-  (config) => {
+httpConfig.interceptors.request.use((config) => {
     const authorization = window.localStorage.getItem("authorization")
     if (authorization) {
       config.headers['authorization'] = authorization
     }
     return config
   },(error) =>  {
-    // Do something with response error
     console.log(error);
     return Promise.reject(error);
   }

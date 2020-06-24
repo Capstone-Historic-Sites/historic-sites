@@ -5,7 +5,7 @@ const slice = createSlice({
   name: "profileSidebar",
   initialState: [],
   reducers: {
-    getProfileByProfileId : (posts, action) => {
+    getProfileByProfileId : (profileSidebar, action) => {
       return action.payload
     },
   }

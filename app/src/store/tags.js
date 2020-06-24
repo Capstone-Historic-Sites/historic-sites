@@ -5,10 +5,10 @@ const slice = createSlice({
   name: "tags",
   initialState: [],
   reducers: {
-    getAllTags : (posts, action) => {
+    getAllTags : (tags, action) => {
       return action.payload
     },
-    getHistoricSiteTagsByHistoricSiteId : (posts, action) => {
+    getHistoricSiteTagsByHistoricSiteId : (tags, action) => {
       return action.payload
     }
   }
