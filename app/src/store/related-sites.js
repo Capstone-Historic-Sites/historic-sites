@@ -13,17 +13,19 @@ const slice = createSlice({
 
 export const {getHistoricSiteByTagId} = slice.actions
 
-export const fetchHistoricSiteByTagId = (tags) => (dispatch) => {
-  let historicSites = []
-  tags.forEach(tag => {
-    httpConfig(`/apis/historic-site/tagId/${tag.tagId}`).then(reply => {
-      let {data} = reply
-      console.log(data)
-      historicSites.push(data)
-      console.log(historicSites)
-    })
-  })
-  dispatch(getHistoricSiteByTagId(historicSites))
+export const fetchHistoricSiteByTagId = (tags) => async (dispatch) => {
+  //let historicSites = []
+  let {data} = await httpConfig(`/apis/historic-site/tagId/${tags[0].tagId}`)
+  console.log(data)
+  //historicSites.push(data)
+  //console.log(historicSites)
+  // await tags.map(async tag => {
+  //   let {data} = await httpConfig(`/apis/historic-site/tagId/${tag.tagId}`)
+  //   console.log(data)
+  //   historicSites.push(data)
+  //   console.log(historicSites)
+  // })
+  dispatch(getHistoricSiteByTagId(data))
 }
 
 export default slice.reducer

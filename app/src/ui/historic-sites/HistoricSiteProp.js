@@ -8,18 +8,12 @@ import { useDispatch, useSelector } from 'react-redux'
 
 export function HistoricSiteProp (props) {
   const {historicSite, images, tags} = props
-  
-  const dispatch = useDispatch()
 
   const relatedSites = useSelector(store => {
     return store.relatedSites ? store.relatedSites : []
   })
-
-  const sideEffects = () => {
-    dispatch(fetchHistoricSiteByTagId(tags))
-  }
-
-  React.useEffect(sideEffects, [])
+  
+  console.log(relatedSites)
 
   const [status, setStatus] = useState(null)
 

@@ -26,9 +26,10 @@ export const HistoricSite = ({match}) => {
     dispatch(fetchHistoricSiteByHistoricSiteId(match.params.historicSiteId))
     dispatch(fetchHistoricSiteImages(match.params.historicSiteId))
     dispatch(fetchHistoricSiteTagsByHistoricSiteId(match.params.historicSiteId))
+    dispatch(fetchHistoricSiteByTagId(tags))
   }
 
-  React.useEffect(sideEffects, [match.params.historicSiteId])
+  React.useEffect(sideEffects, [match.params.historicSiteId, tags])
 
   return (
     <>
