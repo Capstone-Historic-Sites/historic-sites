@@ -20,6 +20,7 @@ export const fetchHistoricSiteByTagId = (tags) => (dispatch) => {
       let {data} = reply
       console.log(data)
       historicSites.push(data)
+      console.log(historicSites)
     })
   })
   dispatch(getHistoricSiteByTagId(historicSites))
