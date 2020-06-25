@@ -35,12 +35,14 @@ export const SearchResults = ({match}) => {
   React.useEffect(sideEffects, [match.params.search])
 
   const switchToListView = () => {
-    document.getElementById('map-view').style.display = 'none'
+    document.getElementById('map-view').style.visibility = 'hidden'
+    document.getElementById('mapbox-load-fix').style.display = 'block'
     document.getElementById('list-view').style.display = 'block'
   }
   const switchToMapView = () => {
     document.getElementById('list-view').style.display = 'none'
-    document.getElementById('map-view').style.display = 'block'
+    document.getElementById('map-view').style.visibility = 'visible'
+    document.getElementById('mapbox-load-fix').style.display = 'none'
   }
 
   const closeSidebar = () => {
@@ -101,7 +103,9 @@ export const SearchResults = ({match}) => {
           {historicSites.map(historicSite => <SearchResult historicSite={historicSite} images={images} key={historicSite.historicSiteId} />)}
         </div>
 
-        <div className="container py-4" id="map-view" style={{display: 'none'}}>
+        <div id="mapbox-load-fix"></div>
+
+        <div className="container py-4" id="map-view" style={{visibility: 'hidden'}}>
           <Mapbox historicSites={historicSites} />
         </div>
       </div>
