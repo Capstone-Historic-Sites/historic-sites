@@ -54,7 +54,7 @@ export function SignUp () {
           <ProfileSidebar />
         </div>
         <div className="container py-5">
-          <h2 className="text-left">Sign Up</h2>
+          <h2 className="text-left mb-4">Sign Up</h2>
           <Formik onSubmit={signUpProfile} initialValues={profile} validationSchema={validator}>
             {(props) => {
               const {
@@ -118,7 +118,7 @@ export function SignUp () {
                         className="form-control"
                         id="profile-password"
                         name="profilePassword"
-                        type="text"
+                        type="password"
                         placeholder="Password"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -126,15 +126,14 @@ export function SignUp () {
                       />
                       {errors.profilePassword && touched.profilePassword && (<div className="alert alert-danger">{errors.profilePassword}</div>)}
                     </div>
-                    <div className="d-flex justify-content-between">
-                      <div className="mb-3" align="left">
-                        <Button variant="primary" size="md" type="submit">
-                          Sign Up
-                        </Button>
-                      </div>
+                    <div className="my-4">
+                      <Button variant="primary" size="md" type="submit">
+                        Sign Up
+                      </Button>
                     </div>
                   </form>
                   {status && (<div className={status.type}>{status.message}</div>)}
+                  <p>Already have an account? <a href="/sign-in">Sign in</a></p>
                 </>
               )
             }}

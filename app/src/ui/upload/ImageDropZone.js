@@ -1,4 +1,5 @@
 import React, {useCallback} from 'react'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {useDropzone} from 'react-dropzone'
 
 export const ImageDropZone = ({formikProps}) => {
@@ -13,7 +14,8 @@ export const ImageDropZone = ({formikProps}) => {
   return (
     <>
       <div className="form-group" {...getRootProps()}>
-        <div className="input-group form-control my-5">
+        <div className="photo-select d-flex">
+          <FontAwesomeIcon icon="folder-open" className="mt-1 mr-2" />
           <input
             className="form-control-file"
             accept="image/*"
@@ -21,7 +23,7 @@ export const ImageDropZone = ({formikProps}) => {
             onBlur={formikProps.handleBlur}
             {...getInputProps()}
           />
-          {isDragActive ? <p>Drop Files Here</p> : <p>Drag and drop files, or click to select files</p>}
+          {isDragActive ? <p className="m-0">Select Photos</p> : <p className="m-0">Select Photos</p>}
         </div>
       </div>
     </>

@@ -14,6 +14,8 @@ h1, h2 {
     font-weight: bold;
 }
 
+a { color: #526984; }
+
 .display-2 {
     font-weight: bold;
 }
@@ -167,6 +169,27 @@ h1, h2 {
     border-color: #526984;
     box-shadow: 0 0 0 0.15rem rgba(82, 105, 132, 0.25);
 }
+
+textarea.form-control { padding: 0.8rem 1rem; }
+
+.checkbox {
+    margin-left: -3.8rem;
+    height: 1.2rem;
+}
+
+.checkbox-label {
+    padding-left: 2.5rem;
+    font-size: 1.2em;
+}
+
+.photo-select {
+    background: #526984;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.25em;
+    padding: 0.6rem 1.2rem;
+}
+.photo-select:hover { background: #69839e; }
 
 .btn-primary {
     background-color: #526984;

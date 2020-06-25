@@ -72,7 +72,7 @@ export const Upload = () => {
           <ProfileSidebar />
         </div>
         <div className="container py-5">
-          <h2 className="text-left">Upload Historic Site</h2>
+          <h2 className="text-left mb-4">Upload Historic Site</h2>
           <Formik onSubmit={uploadHistoricSite} initialValues={historicSite} validationSchema={validator}>
             {(props) => {
               const {
@@ -90,7 +90,7 @@ export const Upload = () => {
                 <>
                   <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                      <label htmlFor="name">Name of Historic Site</label>
+                      <label htmlFor="name">Historic Site Name</label>
                       <input
                         className="form-control"
                         id="name"
@@ -103,8 +103,8 @@ export const Upload = () => {
                       />
                       {errors.historicSiteName && touched.historicSiteName && (<div className="alert alert-danger">{errors.historicSiteName}</div>)}
                     </div>
-                    <div className="form-groups, d-inline-block, form-inline">
-                      <div className="w-50">
+                    <div className="form-group d-flex justify-content-between">
+                      <div className="w-50 pr-2">
                         <label htmlFor="municipality" className="justify-content-start">City/Municipality</label>
                         <input
                           className="form-control w-100"
@@ -118,14 +118,14 @@ export const Upload = () => {
                         />
                         {errors.historicSiteMunicipality && touched.historicSiteMunicipality && (<div className="alert alert-danger">{errors.historicSiteMunicipality}</div>)}
                       </div>
-                      <div className="w-50">
+                      <div className="w-50 pl-2">
                         <label htmlFor="state" className="justify-content-start">US State</label>
                         <input
                           className="form-control w-100"
                           id="state"
                           name="historicSiteState"
                           type="text"
-                          placeholder="Two letter abbreviation for US state"
+                          placeholder="Two letter abbreviation"
                           onChange={handleChange}
                           onBlur={handleBlur}
                           value={values.historicSiteState}
@@ -139,15 +139,16 @@ export const Upload = () => {
                         className="form-control"
                         id="description"
                         name="historicSiteDescription"
-                        placeholder="Description of historic site"
+                        placeholder="Description of historic site (600 characters max)"
+                        rows="5"
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.historicSiteDescription}
                       />
                       {errors.historicSiteDescription && touched.historicSiteDescription && (<div className="alert alert-danger">{errors.historicSiteDescription}</div>)}
                     </div>
-                    <div className="form-group, form-inline">
-                      <div className="form-group w-50">
+                    <div className="form-group d-flex align-items-center">
+                      <div className="form-group w-75 pr-2">
                         <label htmlFor="date" className="justify-content-start">Historic Date</label>
                         <input
                           className="form-control w-100"
@@ -161,10 +162,10 @@ export const Upload = () => {
                         />
                         {errors.historicSiteDate && touched.historicSiteDate && (<div className="alert alert-danger">{errors.historicSiteDate}</div>)}
                       </div>
-                      <div className="form-check">
-                        <label htmlFor="free" className="mr-2 ml-3">Free</label>
+                      <div className="form-check pt-3 pl-0">
+                        <label htmlFor="free" className="checkbox-label">Free</label>
                         <input
-                          className="form-check-input"
+                          className="form-check-input checkbox"
                           id="free"
                           name="historicSiteCost"
                           type="checkbox"
@@ -173,9 +174,9 @@ export const Upload = () => {
                           onBlur={handleBlur}
                           checked={values.historicSiteCost}
                         />
-                        <label htmlFor="paid" className="mr-2 ml-3">Paid</label>
+                        <label htmlFor="paid" className="checkbox-label">Paid</label>
                         <input
-                          className="form-check-input"
+                          className="form-check-input checkbox"
                           id="paid"
                           name="historicSiteCost"
                           type="checkbox"
@@ -187,19 +188,21 @@ export const Upload = () => {
                         {errors.historicSiteCost && touched.historicSiteCost && (<div className="alert alert-danger">{errors.historicSiteCost}</div>)}
                       </div>
                     </div>
-                    <ImageDropZone
-                      formikProps={{
-                        values,
-                        handleChange,
-                        handleBlur,
-                        setFieldValue,
-                        fieldValue: 'imagePath'
-                      }}
-                    />
-                    <div className="mb-3" align="left">
-                      <Button variant="primary" size="md" type="submit">
-                        Upload
-                      </Button>
+                    <div className="d-flex">
+                      <ImageDropZone
+                        formikProps={{
+                          values,
+                          handleChange,
+                          handleBlur,
+                          setFieldValue,
+                          fieldValue: 'imagePath'
+                        }}
+                      />
+                      <div className="ml-3">
+                        <Button variant="primary" size="lg" type="submit">
+                          Upload
+                        </Button>
+                      </div>
                     </div>
                   </form>
                   {status && (<div className={status.type}>{status.message}</div>)}

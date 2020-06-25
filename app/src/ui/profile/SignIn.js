@@ -48,7 +48,7 @@ export function SignIn () {
           <ProfileSidebar />
         </div>
         <div className="container py-5">
-          <h2 className="text-left">Sign In</h2>
+          <h2 className="text-left mb-4">Sign In</h2>
           <Formik onSubmit={signInProfile} initialValues={profile} validationSchema={validator}>
             {(props) => {
               const {
@@ -92,12 +92,10 @@ export function SignIn () {
                       />
                       {errors.profilePassword && touched.profilePassword && (<div className="alert alert-danger">{errors.profilePassword}</div>)}
                     </div>
-                    <div className="d-flex justify-content-between">
-                      <div className="mb-3" align="left">
-                        <Button variant="primary" size="md" type="submit">
-                          Sign In
-                        </Button>
-                      </div>
+                    <div className="my-4">
+                      <Button variant="primary" size="md" type="submit">
+                        Sign In
+                      </Button>
                     </div>
                   </form>
                   {status && (<div className={status.type}>{status.message}</div>)}
