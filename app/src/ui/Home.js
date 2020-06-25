@@ -36,12 +36,13 @@ export const Home = () => {
         <section className="about-section">
           <div className="container text-center">
             <h3><strong>About</strong></h3>
-            <p>"Welcome to the Historic Sites website where we have a collection
+            <p className="lead">Welcome to the Historic Sites website where we have a collection
               of historic locations in and around Albuquerque. People can visit and
               explore the many fun and unique sites filled with rich history all throughout
               New Mexico. The site will also have a short summary of each location to give
               you a better understanding as well as a link to the specific site if you would
-              like more in depth knowledge."</p>
+              like more in depth knowledge. All data on this website is user-generated so we encourage
+            you to please make an account and provide high-quality submissions.</p>
             <div className="mb-2">
             <Link to="/sign-up">
               <Button variant="primary" size="lg">Create Profile</Button>
