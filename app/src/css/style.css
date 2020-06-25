@@ -75,9 +75,12 @@ a { color: #526984; }
 
 .title-section {
     padding-top: 56px;
-    height: calc(100vh - 345px);
+    height: calc(100vh - 371px);
     min-height: 25rem;
     background-image: url("../ui/shared/images/zia.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -180px;
 }
 
 .about-section {
@@ -88,6 +91,9 @@ a { color: #526984; }
 @media only screen and (max-width: 767px) {
     .about-section {
         padding: 3.5rem 0;
+    }
+    .title-section {
+        background-image: none;
     }
 }
 
