@@ -1,10 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {useHistory} from 'react-router'
+import { httpConfig } from '../../utils/http-config'
 
 export function SearchResult (props) {
   const {historicSite, images} = props
+
+  const [status, setStatus] = useState(null)
 
   const history = useHistory()
 
@@ -29,6 +32,13 @@ export function SearchResult (props) {
     return historicSiteImages
   }
 
+  function addToTravelList () {
+    httpConfig.post('/apis/travel-list/', {travelListHistoricSiteId: historicSite.historicSiteId}).then(reply => {
+      let {message, type} = reply
+      setStatus({message, type})
+    })
+  }
+
   return (
     <>
       <div className="row py-3">
@@ -44,7 +54,10 @@ export function SearchResult (props) {
             <div dangerouslySetInnerHTML={{__html: historicSite.historicSiteDescription}} />
           </p>
           <p className="d-inline-block historic-link" onClick={handleRedirect} style={{marginRight: '10px'}}>See Details</p>
-          <FontAwesomeIcon icon="plus-circle" /> <p className="d-inline-block">Add Site</p>
+          <p className="d-inline-block blue-link" onClick={addToTravelList}>
+            <FontAwesomeIcon icon="plus-circle" /> Add to Travel List
+          </p>
+          {status !== null && (<div className={status.type}>{status.message}</div>)}
         </div>
       </div>
     </>

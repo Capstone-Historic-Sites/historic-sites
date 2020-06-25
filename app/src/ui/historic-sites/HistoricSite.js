@@ -34,25 +34,25 @@ export const HistoricSite = ({match}) => {
         {
           historicSites.map(historicSite => <HistoricSiteProp historicSite={historicSite} images={images} tags={tags} key={historicSite.historicSiteId} />)
         }
-        <div className="row pt-2">
+        <div className="row py-4 px-3">
             <h2>Related Sites</h2>
         </div>
         <div className="row py-2">
           <div className="col-md-3 col-6 text-center">
-            <img className="w-100" src="http://placekitten.com/600/600" alt="Relate Sited 1"/>
-            <h5 className="my-3">Historic Site Name</h5>
+            <img className="w-100" src="https://res.cloudinary.com/historicsites/image/upload/v1592846650/fort_union1_svlbg6.jpg" alt="Fort Union National Monument"/>
+            <h5 className="my-3">Fort Union National Monument</h5>
           </div>
           <div className="col-md-3 col-6 text-center">
-            <img className="w-100" src="http://placekitten.com/800/800" alt="Relate Sited 1"/>
-            <h5 className="my-3">Historic Site Name</h5>
+            <img className="w-100" src="https://res.cloudinary.com/historicsites/image/upload/v1592846694/glorieta1_i9kuon.jpg" alt="Glorieta Pass Battlefield"/>
+            <h5 className="my-3">Glorieta Pass Battlefield</h5>
           </div>
           <div className="col-md-3 col-6 text-center">
-            <img className="w-100" src="http://placekitten.com/900/900" alt="Relate Sited 1"/>
-            <h5 className="my-3">Historic Site Name</h5>
+            <img className="w-100" src="https://res.cloudinary.com/historicsites/image/upload/v1592846698/lincoln1_lhosw6.jpg" alt="Lincoln Historic Site"/>
+            <h5 className="my-3">Lincoln Historic Site</h5>
           </div>
           <div className="col-md-3 col-6 text-center">
-            <img className="w-100" src="http://placekitten.com/1000/1000" alt="Relate Sited 1"/>
-            <h5 className="my-3">Historic Site Name</h5>
+            <img className="w-100" src="https://res.cloudinary.com/historicsites/image/upload/v1592846651/rio_grande_del_norte3_mkwq5x.jpg" alt="Rio Grande Del Norte National Monument"/>
+            <h5 className="my-3">Rio Grande Del Norte National Monument</h5>
           </div>
         </div>
       </div>

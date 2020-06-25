@@ -149,6 +149,11 @@ a { color: #526984; }
     cursor: pointer;
 }
 
+.sign-out {
+    position: absolute;
+    bottom: 1.5rem;
+}
+
 @media only screen and (max-width: 767px) {
     .sidebar {
         margin-left: -300px;
@@ -211,6 +216,18 @@ textarea.form-control { padding: 0.8rem 1rem; }
     background-color: #7e8473;
     border-color: #7e8473;
     box-shadow: none;
+}
+
+.alert-success {
+    color: #555a4d;
+    background-color: #dfead0;
+    border-color: #b3bdac;
+}
+
+.alert-danger {
+    color: #a04747;
+    background-color: #ffe1de;
+    border-color: #c5918f;
 }
 
 /****************************

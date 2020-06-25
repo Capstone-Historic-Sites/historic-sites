@@ -7,7 +7,7 @@ export const NavBar = () => {
     <>
       <Navbar bg="dark" variant="dark" className="position-fixed w-100">
         <Nav>
-          <Nav.Link href="/sign-in">
+          <Nav.Link href="/travel-list">
             <FontAwesomeIcon icon="user-circle" /> Profile
           </Nav.Link>
         </Nav>

@@ -1,8 +1,8 @@
 import React from 'react'
 
-
 export function ProfileSidebarProp (props) {
   const {profile} = props
+
   return (
     <>
       <div>
