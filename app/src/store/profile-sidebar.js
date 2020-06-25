@@ -14,7 +14,7 @@ const slice = createSlice({
 const {getProfileByProfileId} = slice.actions
 
 export const fetchProfileByProfileId = () => async (dispatch) => {
-  const {data} = await httpConfig('apis/profile/d88793bf-b33d-11ea-bb68-0242c0a82002')
+  const {data} = await httpConfig('apis/profile')
   dispatch(getProfileByProfileId(data))
 }
 

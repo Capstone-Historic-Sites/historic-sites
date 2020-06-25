@@ -22,4 +22,4 @@ travelListRouter.route('/')
 
 travelListRouter.route('/travelListHistoricSiteId/:travelListHistoricSiteId')
     .delete(isLoggedIn, asyncValidatorController(checkSchema(travelListHistoricSiteIdValidator)),deleteTravelListController)
-    .get(asyncValidatorController(checkSchema(travelListHistoricSiteIdValidator)),getTravelListByForeignKeysController)
+    .get(isLoggedIn, asyncValidatorController(checkSchema(travelListHistoricSiteIdValidator)),getTravelListByForeignKeysController)

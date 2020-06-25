@@ -16,7 +16,7 @@ const { checkSchema } = require('express-validator')
 
 export const profileRouter = Router()
 
-profileRouter.route('/:profileId')
+profileRouter.route('/')
     .get(getProfileByProfileIdController)
     .put(isLoggedIn, asyncValidatorController(checkSchema(updateProfileValidator)), putProfileController)
     .delete(isLoggedIn, deleteProfileController)
