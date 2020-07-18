@@ -12,7 +12,7 @@ export const Mapbox = (props) => {
   }
 
   const Map = ReactMapboxGl({
-    accessToken: process.env.MAPBOX_TOKEN
+    accessToken: 'pk.eyJ1IjoiaGlzdG9yaWNzaXRlcyIsImEiOiJja2JvanF5cnMyMHphMzRuY3ZwaHM1YjIwIn0.PGeVtnK6DMFPR5qH72Wncw'
   })
 
   return (
