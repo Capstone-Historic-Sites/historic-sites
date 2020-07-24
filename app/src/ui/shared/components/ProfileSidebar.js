@@ -33,7 +33,7 @@ export const ProfileSidebar = () => {
 
   return (
     <>
-      <div className="sidebar p-4">
+      <div className="sidebar p-4" id="profile-sidebar">
         {
           profileSidebar.map(profile => <ProfileSidebarProp profile={profile} key={profile.profileId} />)
         }
